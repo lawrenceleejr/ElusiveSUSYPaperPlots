@@ -1,10 +1,23 @@
+from matplotlib_tufte import *
+setup()
+
 import matplotlib.pyplot as plt
 import numpy as np
 
 import ROOT
 import seaborn as sns
 
-colors = sns.color_palette("husl", 4)
+# colors = sns.color_palette("husl", 3)
+colors = ["#FF595E",  "#1982C4", "#8AC926",] 
+# colors = ["#E07A5F",  # Terra Cotta
+# 		"#F2CC8F",  # Sand
+# 		"#81B29A"]  # Sage
+
+# colors = ["#FF0000", "#00FF00", "#0000FF"]
+# colors = ["#FF6B6B", "#6BCB77", "#4D96FF"]
+# colors = ["#3A86FF", "#8338EC", "#FB5607"]
+# colors = ["#FF6B6B", "#4ECDC4", "#1A535C"]
+# colors = ["#4477AA", "#CC6677", "#117733"]
 
 def add_zero_endpoints(arr, point=(0,0)):
     """
@@ -103,17 +116,75 @@ data_gg["arXiv_2307.01094_3"] = add_zero_endpoints(data_gg["arXiv_2307.01094_3"]
 data_gg["arXiv_2307.01094_4"] = np.genfromtxt("data/GLUINOGLUINOX/arXiv_2307.01094/HEPData-ins2673888-v1-Exclusion_contour(Obs)_from_Fig_7(f).csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
 data_gg["arXiv_2307.01094_4"] = add_zero_endpoints(data_gg["arXiv_2307.01094_4"],(0,0))
 
-
-
-
-
-
-
-
-
 print(data_gg)
 
-fig, ax = plt.subplots(1,1)
+
+
+data_qq = {}
+
+data_qq["arXiv_1908.04722_1"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_1908.04722/HEPData-ins1749379-v1-T2qq_(1_flavor)_observed_mass_limit_curve.csv", delimiter=",", skip_header=11, skip_footer=0, names=["x","y"])
+data_qq["arXiv_1908.04722_1"] = add_zero_endpoints(data_qq["arXiv_1908.04722_1"],(0,0))
+
+data_qq["arXiv_1908.04722_2"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_1908.04722/HEPData-ins1749379-v1-T2qq_observed_mass_limit_curve.csv", delimiter=",", skip_header=11, skip_footer=0, names=["x","y"])
+data_qq["arXiv_1908.04722_2"] = add_zero_endpoints(data_qq["arXiv_1908.04722_2"],(0,0))
+
+
+
+
+data_qq["arXiv_1909.03460"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_1909.03460/HEPData-ins1753215-v1-Figure_13_(T2qq).csv", delimiter=",", skip_header=11, skip_footer=0, usecols=(0,1), names=["x","y"])
+data_qq["arXiv_1909.03460"] = add_zero_endpoints(data_qq["arXiv_1909.03460"],(0,0))
+
+
+
+
+data_qq["arXiv_2010.14293_1"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_2010.14293/HEPData-ins1827025-v2-Obs.Contour_1.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_qq["arXiv_2010.14293_1"] = add_zero_endpoints(data_qq["arXiv_2010.14293_1"],(0,0))
+
+data_qq["arXiv_2010.14293_2"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_2010.14293/HEPData-ins1827025-v2-Obs.Contour_2.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_qq["arXiv_2010.14293_2"] = add_zero_endpoints(data_qq["arXiv_2010.14293_2"],(0,0))
+
+data_qq["arXiv_2010.14293_3"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_2010.14293/HEPData-ins1827025-v2-Obs.Contour_4.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_qq["arXiv_2010.14293_3"] = add_zero_endpoints(data_qq["arXiv_2010.14293_3"],(0,0))
+
+data_qq["arXiv_2010.14293_4"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_2010.14293/HEPData-ins1827025-v2-Obs.Contour_5.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","dy"])
+data_qq["arXiv_2010.14293_4"] = add_zero_endpoints(data_qq["arXiv_2010.14293_4"],(0,0))
+
+
+
+
+
+data_qq["arXiv_2101.01629_1"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_2101.01629/HEPData-ins1839446-v2-Exclusion_contour_3_(obs.).csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_qq["arXiv_2101.01629_1"] = add_zero_endpoints(data_qq["arXiv_2101.01629_1"],(0,0))
+
+data_qq["arXiv_2101.01629_2"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_2101.01629/HEPData-ins1839446-v2-Exclusion_contour_4_(obs.).csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_qq["arXiv_2101.01629_2"] = add_zero_endpoints(data_qq["arXiv_2101.01629_2"],(0,0))
+
+data_qq["arXiv_2101.01629_3"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_2101.01629/HEPData-ins1839446-v2-Exclusion_contour_5_(obs.).csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_qq["arXiv_2101.01629_3"] = add_zero_endpoints(data_qq["arXiv_2101.01629_3"],(0,0))
+
+data_qq["arXiv_2101.01629_4"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_2101.01629/HEPData-ins1839446-v2-Exclusion_contour_6_(obs.).csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","dy"])
+data_qq["arXiv_2101.01629_4"] = add_zero_endpoints(data_qq["arXiv_2101.01629_4"],(0,0))
+
+
+
+
+data_qq["arXiv_2307.01094_1"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_2307.01094/HEPData-ins2673888-v1-Exclusion_contour(Obs)_from_Fig_7(b).csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_qq["arXiv_2307.01094_1"] = add_zero_endpoints(data_qq["arXiv_2307.01094_1"],(100,100))
+
+data_qq["arXiv_2307.01094_2"] = np.genfromtxt("data/SQUARKSQUARKX/arXiv_2307.01094/HEPData-ins2673888-v1-Exclusion_contour(Obs)_from_Fig_7(d).csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_qq["arXiv_2307.01094_2"] = add_zero_endpoints(data_qq["arXiv_2307.01094_2"],(100,100))
+
+
+
+
+
+
+
+
+
+
+baselength=4
+fig, ax = plt.subplots(1,1, figsize=(1.5*baselength, 1*baselength))
 
 
 def doFillBetween(x,y,n=10,dy=1,color="k",alpha=0.03,log=True,axis=ax):
@@ -191,6 +262,44 @@ ax.fill(data_gg["arXiv_2307.01094_4"]['x'], data_gg["arXiv_2307.01094_4"]['y'], 
 
 
 
+i=1
+
+alpha=1/len(data_qq)#0.3
+
+ax.fill(data_qq["arXiv_1908.04722_1"]['x'], data_qq["arXiv_1908.04722_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_qq["arXiv_1908.04722_2"]['x'], data_qq["arXiv_1908.04722_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+# ax.fill(data_qq["arXiv_1909.03460"]['x'], data_qq["arXiv_1909.03460"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+ax.fill(data_qq["arXiv_2010.14293_1"]['x'], data_qq["arXiv_2010.14293_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_qq["arXiv_2010.14293_2"]['x'], data_qq["arXiv_2010.14293_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_qq["arXiv_2010.14293_3"]['x'], data_qq["arXiv_2010.14293_3"]['y'], color=colors[i], alpha=alpha, lw=0)
+# ax.fill(data_qq["arXiv_2010.14293_4"]['x'], data_qq["arXiv_2010.14293_4"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+ax.fill(data_qq["arXiv_2101.01629_1"]['x'], data_qq["arXiv_2101.01629_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_qq["arXiv_2101.01629_2"]['x'], data_qq["arXiv_2101.01629_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_qq["arXiv_2101.01629_3"]['x'], data_qq["arXiv_2101.01629_3"]['y'], color=colors[i], alpha=alpha, lw=0)
+# ax.fill(data_qq["arXiv_2101.01629_4"]['x'], data_qq["arXiv_2101.01629_4"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+ax.fill(data_qq["arXiv_2307.01094_1"]['x'], data_qq["arXiv_2307.01094_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_qq["arXiv_2307.01094_2"]['x'], data_qq["arXiv_2307.01094_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -209,8 +318,8 @@ ax.set_xlim([0,2700])
 # plt.subplots_adjust(wspace=0.03)
 
 
-# ax.spines['right'].set_visible(False)
-# ax2.spines['left'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
 # ax.yaxis.tick_left()
 # ax.tick_params(labelright='off')
 # ax2.yaxis.tick_right()
@@ -230,9 +339,33 @@ ax.set_xlim([0,2700])
 # ax.text(1e-6, 160, "Prompt", size=9,clip_on=False)
 # ax2.text(1.1e17, 160, "Stable", size=9,clip_on=False)
 
-# ax.text(2e-6, 2050, r"Stop Squark R-Hadron, Various Decays", size=11,clip_on=False)
+ax.text(200, 2050,       r"Sparticle Limits, Strong Production", size=11,clip_on=False, fontweight="bold")
+ax.text(200, 2050-1*150, r"Various Assumptions", size=11,clip_on=False)
+ax.text(200, 2050-2*150, r"Run-2 LHC", size=11,clip_on=False)
+
+ax.text(1700, 1000, r"Gluinos", size=11,clip_on=False, color="k", alpha=0.6, fontweight='bold')
+ax.text(1000, 500, r"Squarks", size=11,clip_on=False,  color="k", alpha=0.6, fontweight='bold')
+
+
+breathe(ax)
+
+
+# Force figure to render, so transforms are accurate
+fig.canvas.draw()
+
+# Transform from data to display coordinates
+p0 = ax.transData.transform((0, 0))
+p1 = ax.transData.transform((1, 1))
+
+# Compute angle in screen/display space
+dx, dy = p1 - p0
+angle_rad = np.arctan2(dy, dx)
+angle_deg = np.degrees(angle_rad)
+
+ax.text(100, 160, r"Kinematically Forbidden", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
+ax.plot( [0,2500], [0,2500], "--", lw=0.5, color="black" )
 
 
 
-fig.savefig("test.pdf")
-plt.show()
+fig.savefig("Vanilla.pdf")
+# plt.show()

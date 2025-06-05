@@ -1,0 +1,107 @@
+#: table_doi: 10.17182/hepdata.95664.v2/t48
+#: name: Obs.Contour 2
+#: description: Exclusion limits in the mass plane of the lightest neutralino and non degenerated squark pair production and direct decays obtained by using the signal region with the best expected sensitivity at each point. The observed limits are indicated by the medium dark (maroon) curve where the solid contour represents the nominal limit, and the dotted lines are obtained by varying the signal cross-section by the renormalisation and factorisation scale and PDF uncertainties.
+#: data_file: obs.contour_2.yaml
+#: keyword reactions: PP --> SQUARK SQUARK | PP --> GLUINO GLUINO | PP --> SQUARK GLUINO
+#: keyword observables: N
+#: keyword cmenergies: 13000
+#: keyword phrases: SUSY | Supersymmetry | Proton-Proton Scattering
+M(Squark) [GeV],M(LSP) [GeV]
+1220.0,0.0
+1215.0,16.162
+1214.0,19.587
+1209.0,32.323
+1202.0,48.485
+1201.0,52.633
+1195.0,64.646
+1187.0,79.088
+1186.0,80.808
+1177.0,96.97
+1174.0,102.33
+1168.0,113.13
+1161.0,125.54
+1159.0,129.29
+1151.0,145.45
+1148.0,151.33
+1143.0,161.62
+1136.0,177.78
+1135.0,180.36
+1129.0,193.94
+1122.0,210.06
+1122.0,210.1
+1114.0,226.26
+1109.0,237.68
+1106.0,242.42
+1098.0,258.59
+1095.0,263.1
+1089.0,274.75
+1082.0,287.52
+1081.0,290.91
+1072.0,307.07
+1069.0,312.66
+1064.0,323.23
+1056.0,336.84
+1055.0,339.39
+1045.0,355.56
+1043.0,358.9
+1035.0,371.72
+1030.0,378.54
+1023.0,387.88
+1017.0,395.44
+1009.0,404.04
+1004.0,408.72
+990.0,416.77
+984.0,420.2
+977.0,423.25
+964.0,428.77
+951.0,433.58
+942.0,436.36
+938.0,437.63
+925.0,440.91
+912.0,443.36
+898.0,444.88
+885.0,445.47
+872.0,445.32
+859.0,444.66
+846.0,443.71
+833.0,442.61
+820.0,441.47
+807.0,440.32
+793.0,439.11
+780.0,437.83
+767.0,436.47
+766.0,436.36
+754.0,435.08
+741.0,433.69
+728.0,432.32
+715.0,430.99
+702.0,429.72
+688.0,428.45
+675.0,427.1
+662.0,425.5
+649.0,423.38
+636.0,420.31
+635.0,420.2
+623.0,416.61
+610.0,411.38
+596.0,408.79
+583.0,418.39
+580.0,420.2
+570.0,425.6
+557.0,429.6
+544.0,430.69
+531.0,429.84
+518.0,428.18
+505.0,426.89
+491.0,426.96
+478.0,427.17
+465.0,422.94
+462.0,420.2
+452.0,412.62
+441.0,404.04
+439.0,402.63
+426.0,395.63
+413.0,390.94
+404.0,387.88
+400.0,386.22
+

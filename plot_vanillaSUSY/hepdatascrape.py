@@ -4,7 +4,7 @@ import os
 client = Client(verbose=True)
 
 reactionsList = [
-    "(\"P P --> GLU GLU\" OR \"P P --> GLU GLU X\" OR \"PP --> GLUINO GLUINO\" OR \"PP --> GLUINO GLUINO X\" OR \"P P --> GLUINO GLUINO\" OR \"P P --> GLUINO GLUINO X\")",
+    # "(\"P P --> GLU GLU\" OR \"P P --> GLU GLU X\" OR \"PP --> GLUINO GLUINO\" OR \"PP --> GLUINO GLUINO X\" OR \"P P --> GLUINO GLUINO\" OR \"P P --> GLUINO GLUINO X\")",
     "(\"PP --> SQUARK SQUARK\" OR \"PP --> SQUARK SQUARK X\" OR \"P P --> SQUARK SQUARK\" OR \"P P --> SQUARK SQUARK X\")",
     "(\"PP --> STOP STOP\" OR \"PP --> STOP STOP X\" OR \"P P --> STOP STOP\" OR \"P P --> STOP STOP X\")",
 ]
@@ -48,6 +48,7 @@ def save_tuples_to_markdown(tuples_list, headers=None, filename="output.md"):
     print(f"Markdown table saved to {filename}")
 
 for reaction in reactionsList:
+    print(reaction)
     queryString = ""
     queryString += f' reactions:{reaction} '
     queryString += f' AND year:[2018 TO 2026] '
@@ -59,7 +60,9 @@ for reaction in reactionsList:
     label = reaction.split("-->")[-1]
     label = ''.join(c for c in label if c.isalnum())
 
+    print(len(myresults))
     for result in myresults:
+        print(result["arxiv_id"])
         # print(result.keys())
         # dict_keys(['abstract', 'access_urls', 'analyses', 'arxiv_id', 'authors', 'collaborations', 'control_number', 'creation_date', 'data', 'data_abstract', 'data_keywords', 'date', 'doc_type', 'doi', 'first_author', 'hepdata_doi', 'id', 'inspire_id', 'journal_info', 'keywords', 'last_updated', 'parent_child_join', 'publication_date', 'recid', 'resources', 'subject_area', 'summary_authors', 'title', 'total_tables', 'type', 'uuid', 'version', 'year'])
 
