@@ -1,0 +1,102 @@
+#: table_doi: 10.17182/hepdata.95928.v2/t51
+#: name: Observed CLs limit for Gbb from NN
+#: description: Observed exclusion limit in the $\tilde{g}$--$\tilde\chi^0_1$ mass plane for the Gbb models obtained from the NN analysis. The dashed and solid bold lines show the 95\% CL expected and observed limits, respectively. The shaded bands around the expected limits show the impact of the experimental and background uncertainties. The dotted lines show the impact on the observed limit of the variation of the nominal signal cross-section by $\pm 1 \sigma$ of its theoretical uncertainty.
+#: data_file: observed_cls_limit_for_gbb_from_nn.yaml
+#: keyword phrases: SUSY | Supersymmetry | Proton-Proton
+#: keyword observables: CLs
+#: keyword cmenergies: 13000
+#: keyword reactions: P P --> GLU GLU X
+Gluino mass [GeV],Neutralino mass [GeV]
+2355.5,0.0
+2359.6,40.404
+2363.5,80.808
+2363.6,121.21
+2359.0,161.62
+2355.7,202.02
+2364.9,242.42
+2373.8,282.83
+2379.0,323.23
+2382.1,363.64
+2383.8,389.91
+2384.9,404.04
+2389.3,444.44
+2393.8,484.85
+2397.5,525.25
+2399.5,565.66
+2400.9,606.06
+2404.8,646.46
+2406.8,686.87
+2406.9,727.27
+2405.4,767.68
+2404.8,808.08
+2408.7,848.48
+2412.0,888.89
+2413.8,929.29
+2413.8,969.7
+2410.6,1010.1
+2403.7,1050.5
+2394.0,1090.9
+2383.8,1123.9
+2381.7,1131.3
+2367.8,1171.7
+2354.3,1212.1
+2344.8,1252.5
+2343.4,1257.5
+2336.2,1292.9
+2323.5,1333.3
+2303.0,1371.4
+2302.2,1373.7
+2291.8,1414.1
+2291.3,1454.5
+2284.9,1494.9
+2270.5,1535.4
+2262.6,1549.0
+2245.7,1575.8
+2222.2,1597.3
+2193.9,1616.2
+2181.8,1621.5
+2141.4,1635.2
+2101.0,1645.2
+2060.6,1651.9
+2020.2,1654.4
+1979.8,1649.7
+1939.4,1636.8
+1899.0,1619.2
+1894.6,1616.2
+1858.6,1581.6
+1853.6,1575.8
+1818.2,1543.8
+1806.8,1535.4
+1777.8,1519.3
+1737.4,1504.3
+1697.0,1496.8
+1676.0,1494.9
+1656.6,1493.3
+1616.2,1492.0
+1575.8,1492.6
+1537.7,1454.5
+1538.6,1414.1
+1535.4,1398.0
+1529.2,1373.7
+1495.9,1333.3
+1494.9,1332.5
+1454.5,1312.9
+1414.1,1304.8
+1373.7,1309.9
+1333.3,1301.2
+1325.4,1292.9
+1292.9,1269.1
+1277.7,1252.5
+1252.5,1228.3
+1236.5,1212.1
+1212.1,1185.0
+1199.1,1171.7
+1171.7,1141.9
+1162.0,1131.3
+1131.3,1099.7
+1118.9,1090.9
+1090.9,1072.3
+1051.4,1050.5
+1050.5,1049.9
+1010.1,1021.6
+
