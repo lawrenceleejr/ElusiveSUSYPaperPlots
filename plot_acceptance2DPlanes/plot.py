@@ -53,6 +53,8 @@ def getArraysFromTGraph(tgraph):
 
 results = {
 	"atlas_run2_ee_selectron_300_1": {"etrig":238/870, "axe":52.2/870, "sig":0},
+	"atlas_run2_ee_selectron_500_0.1": {"etrig":66.3/93.6, "axe":17.7/93.6, "sig":0},
+	"cms_run2_ee_selectron_500_1cm": {"etrig":66.3/93.6, "axe":0.17, "sig":0},
 	# 1400 Gluino. 3.018E-02 pb * 1000 fb/pb * 36 ifb = 1086.48
 	"atlas_36_0l_gluino_rjr_g2a_1400_800": {"etrig":673/1086, "axe":44.7/1086,"sig":0}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-07/tabaux_009.pdf
 	"atlas_36_1l_stop_1000_1": {"etrig":16881/102121, "axe":3192.5/102121,"sig":0}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2013-15/
@@ -70,12 +72,15 @@ ax.plot( [0.8], [0.9], "o", label="Run-2 X Ana")
 
 # Run-2 ATLAS Displaced Leptons (ee channel, selectron (300,1))
 ax.plot( [results["atlas_run2_ee_selectron_300_1"]["axe"]], [results["atlas_run2_ee_selectron_300_1"]["etrig"]], "o", label=r"Run-2 Displaced $ee$, $m, \tau = (300 GeV, 1 ns)$ ")
+ax.plot( [results["atlas_run2_ee_selectron_500_0.1"]["axe"]], [results["atlas_run2_ee_selectron_500_0.1"]["etrig"]], "o", label=r"Run-2 Displaced $ee$, $m, \tau = (300 GeV, 1 ns)$ ")
 
 
 # Stop 1L
 ax.plot( [results["atlas_20_8TeV_1l_stop_700_1_e"]["axe"]], [results["atlas_20_8TeV_1l_stop_700_1_e"]["etrig"]], "o", label=r"Run-1 Stop 1L ")
 ax.plot( [results["atlas_36_1l_stop_1000_1"]["axe"]], [results["atlas_36_1l_stop_1000_1"]["etrig"]], "o", label=r"Run-2 Stop 1L ")
 
+ax.plot( [results["atlas_36_0l_gluino_rjr_g2a_1400_800"]["axe"]], [results["atlas_36_0l_gluino_rjr_g2a_1400_800"]["etrig"]], "o", label=r"Run-2 Gluino 0L RJR ")
+ax.plot( [results["atlas_36_1l_stop_1000_1"]["axe"]], [results["atlas_36_1l_stop_1000_1"]["etrig"]], "o", label=r"Run-2 Stop 1L ")
 
 
 # Run-2 ATLAS Displaced Leptons (\mu\mu channel, selectron (300,1))
