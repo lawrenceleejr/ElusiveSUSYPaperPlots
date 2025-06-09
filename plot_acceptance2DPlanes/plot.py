@@ -6,6 +6,8 @@ setup()
 import matplotlib.pyplot as plt
 import numpy as np
 
+from matplotlib.patches import ConnectionPatch
+
 import ROOT
 import seaborn as sns
 
@@ -26,6 +28,7 @@ colors = ["#FF595E",  "#1982C4", "#8AC926",]
 
 baselength=4
 fig, (ax2,ax1) = plt.subplots(2,1, figsize=(1.8*baselength, 2*1*baselength))
+plt.subplots_adjust(top=0.95, bottom=0.1, left=0.15, right=0.95)
 
 ax2.set_yscale('log')
 
@@ -39,7 +42,7 @@ def doFillBetween(x,y,n=10,dy=1,color="k",alpha=0.03,log=True,axis=ax1):
     colorpal = sns.light_palette(color, n)[::-1]
     for i in range(n):
         if log:
-            axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
+            axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) ,  clip_on=False)
             tmpy = [thing*dy for thing in tmpy]
         # else:
         # 	axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
@@ -83,10 +86,20 @@ results = {
 
     #  let's compare at 3cm, 0.1ns, 1 TeV, large dm.
     "atlas_36_dvmet": {"label":r"+R2","etrig":717/827, "axe":442/827,"xslimit":1.5e-4}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
-    "atlas_139_dvmet": {"label":r"ATL R2 DV+MET","etrig":0.8, "axe":0.8,"xslimit":3/139000}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
+
+    "atlas_137_dvmet": {"label":r"ATL R2 137 DV+MET","etrig":0.99, "axe":0.4,"xslimit":5e-4}, #https://www.uvic.ca/science/physics/current/masters/theses/index.php
+
+    "atlas_137_dvjets_rpv": {"label":r"ATL R2 DV+Jets","etrig":0.966, "axe":0.577,"xslimit":0.040096/1000}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-13/tabaux_05.png
+    # 1500,0.1
 
 
     "cms_137_dijet": {"label":r"CMS R2 Dijet","etrig":1, "axe":0.5,"xslimit":2e-2/0.5}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
+
+
+    "atlas_36_rpvmultijet": {"label":r"ATL R2 RPV Jets","etrig":0.997, "axe":3.9/99.8,"xslimit":1.5e-2}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-22/
+    # 6 jet, 1800
+    "atlas_140_rpvmultijet": {"label":r"ATL R2 140 RPV Jets","etrig":1.0, "axe":12/410,"xslimit":4.5e-3}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-22/
+    # 6 jet, 1800
 
 
 }
@@ -137,7 +150,7 @@ listtoplot = [
 
     "atlas_20_dvmet",
     "atlas_36_dvmet", #fix numbers (were made up)
-    # "atlas_139_dvmet",
+    "atlas_137_dvmet",
     # Add DV+jets since it's full dataset
 
     # Some EWK evolution?
@@ -148,30 +161,59 @@ listtoplot = [
     # CMS https://cms-results.web.cern.ch/cms-results/public-results/publications/EXO-19-012/
     # States Axe ~ 0.5
     # Gives upper limit xs
-    # Trigger efficiency assumed to be 1?
+    # Trigger efficiency assumed to be 1 as stated in paper
     "cms_137_dijet",
 
     # RPV 1L+jets for higgsinos
     # DV for RPV Higgsinos
+
+    # "atlas_137_dvjets_rpv",
+
+    "atlas_36_rpvmultijet",
+    "atlas_140_rpvmultijet",
 ]
 
 arrows = [
     ("atlas_20_8TeV_1l_stop_700_1_e","atlas_36_1l_stop_700_1",""),
     ("atlas_20_dvmet","atlas_36_dvmet",""),
-    # ("atlas_36_dvmet","atlas_139_dvmet",""),
+    ("atlas_36_dvmet","atlas_137_dvmet",""),
     ("atlas_run2_mumu_selectron_500_0.01", "atlas_run2_micro_mumu_selectron_500_0.01",""),
+    ("atlas_36_rpvmultijet","atlas_140_rpvmultijet",""),
+
 ]
 
 
 
 for key1,key2,label in arrows:
-    ax1.plot( [results[key1]["axe"],results[key2]["axe"]], [results[key1]["etrig"],results[key2]["etrig"]], "-", label=label, c="k",lw=1.5)
-    ax2.plot( [results[key1]["axe"],results[key2]["axe"]], [results[key1]["xslimit"],results[key2]["xslimit"]], "-", label=label, c="k",lw=1.5)
+
+    ax1.annotate("",
+        xy=(results[key2]["axe"],results[key2]["etrig"]),
+        xytext=(results[key1]["axe"],results[key1]["etrig"]),
+        arrowprops=dict(arrowstyle="-|>", color='black', lw=1.5)
+    )
+    ax2.annotate("",
+        xy=(results[key2]["axe"],results[key2]["xslimit"]),
+        xytext=(results[key1]["axe"],results[key1]["xslimit"]),
+        arrowprops=dict(arrowstyle="-|>", color='black', lw=1.5)
+    )
+
+    # ax1.plot( [results[key1]["axe"],results[key2]["axe"]], [results[key1]["etrig"],results[key2]["etrig"]], "-", label=label, c="k",lw=1.5)
+    # ax2.plot( [results[key1]["axe"],results[key2]["axe"]], [results[key1]["xslimit"],results[key2]["xslimit"]], "-", label=label, c="k",lw=1.5)
 
 
 for key in listtoplot:
-    ax1.plot( [results[key]["axe"]], [results[key]["etrig"]], "o", label=results[key]["label"], mew=0.5, mec="k")
-    ax2.plot( [results[key]["axe"]], [results[key]["xslimit"]], "o", label=results[key]["label"], mew=0.5, mec="k")
+
+    con = ConnectionPatch(xyA=(results[key]["axe"], results[key]["etrig"]),
+                        xyB=(results[key]["axe"], results[key]["xslimit"]),
+                        coordsA="data", coordsB="data",
+                        axesA=ax1, axesB=ax2, color="k", lw=0.1, alpha=0.15)
+    con.set_zorder(-100)
+    # ax1.add_artist(con)
+    ax2.add_artist(con)
+    ax1.set_zorder(-1)
+
+    ax1.plot( [results[key]["axe"]], [results[key]["etrig"]], "o", label=results[key]["label"], mew=0.5, mec="k", clip_on=False, zorder=100)
+    ax2.plot( [results[key]["axe"]], [results[key]["xslimit"]], "o", label=results[key]["label"], mew=0.5, mec="k", clip_on=False, zorder=100)
 
 # Run-2 ATLAS Displaced Leptons (ee channel, selectron (300,1))
 # ax.plot( [results["atlas_run2_ee_selectron_300_1"]["axe"]], [results["atlas_run2_ee_selectron_300_1"]["etrig"]], "o", label=r"Run-2 Displaced $ee$, $m, \tau = (300 GeV, 1 ns)$ ")
@@ -223,7 +265,7 @@ ax1.set_xlim([-0.00,maxxvalue])
 
 ax2.set_xlabel(r'$A\times\varepsilon$',)
 ax2.set_ylabel(r'95% CL Excluded Cross Section [pb]',)
-ax2.set_ylim([1e-5,0.05])
+ax2.set_ylim([1e-5,0.1])
 ax2.set_xlim([-0.00,maxxvalue])
 
 
@@ -238,6 +280,8 @@ ax2.set_xlim([-0.00,maxxvalue])
 
 breathe(ax1)
 breathe(ax2)
+
+# ax1.margins(x=0.1, y=0.2)
 
 
 # Force figure to render, so transforms are accurate

@@ -362,7 +362,7 @@ dx, dy = p1 - p0
 angle_rad = np.arctan2(dy, dx)
 angle_deg = np.degrees(angle_rad)
 
-ax.text(100, 160, r"Kinematically Forbidden", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
+ax.text(100, 160, r"$m_{\tilde{\chi}^0_1}>m_X$", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
 ax.plot( [0,2500], [0,2500], "--", lw=0.5, color="black" )
 
 
