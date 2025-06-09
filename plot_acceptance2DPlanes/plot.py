@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from matplotlib_tufte import *
 setup()
 
@@ -23,42 +25,69 @@ colors = ["#FF595E",  "#1982C4", "#8AC926",]
 
 
 baselength=4
-fig, ax = plt.subplots(1,1, figsize=(1.5*baselength, 1*baselength))
+fig, (ax2,ax1) = plt.subplots(2,1, figsize=(1.8*baselength, 2*1*baselength))
+
+ax2.set_yscale('log')
 
 
-def doFillBetween(x,y,n=10,dy=1,color="k",alpha=0.03,log=True,axis=ax):
-	initialY = y
-	tmpy = initialY
 
-	colorpal = sns.light_palette(color, n)[::-1]
-	for i in range(n):
-		if log:
-			axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
-			tmpy = [thing*dy for thing in tmpy]
+def doFillBetween(x,y,n=10,dy=1,color="k",alpha=0.03,log=True,axis=ax1):
+    initialY = y
+    tmpy = initialY
+    print(x,y)
+
+    colorpal = sns.light_palette(color, n)[::-1]
+    for i in range(n):
+        if log:
+            axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
+            tmpy = [thing*dy for thing in tmpy]
+        # else:
+        # 	axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
+        # 	tmpy = [thing*dy for thing in tmpy]
 
 
 def getArraysFromTGraph(tgraph):
-	xArray, yArray = [],[]
-	for iPoint in range(tgraph.GetN()):
-		x,y = ROOT.Double(0), ROOT.Double(0)
-		# print (x,y)
-		tgraph.GetPoint(iPoint,x,y)
-		xArray.append(x)
-		yArray.append(y)
-	# print (xArray)
-	return xArray,yArray
+    xArray, yArray = [],[]
+    for iPoint in range(tgraph.GetN()):
+        x,y = ROOT.Double(0), ROOT.Double(0)
+        # print (x,y)
+        tgraph.GetPoint(iPoint,x,y)
+        xArray.append(x)
+        yArray.append(y)
+    # print (xArray)
+    return xArray,yArray
 
 
 
 
 results = {
-	"atlas_run2_ee_selectron_300_1": {"etrig":238/870, "axe":52.2/870, "sig":0},
-	"atlas_run2_ee_selectron_500_0.1": {"etrig":66.3/93.6, "axe":17.7/93.6, "sig":0},
-	"cms_run2_ee_selectron_500_1cm": {"etrig":66.3/93.6, "axe":0.17, "sig":0},
-	# 1400 Gluino. 3.018E-02 pb * 1000 fb/pb * 36 ifb = 1086.48
-	"atlas_36_0l_gluino_rjr_g2a_1400_800": {"etrig":673/1086, "axe":44.7/1086,"sig":0}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-07/tabaux_009.pdf
-	"atlas_36_1l_stop_1000_1": {"etrig":16881/102121, "axe":3192.5/102121,"sig":0}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2013-15/
-	"atlas_20_8TeV_1l_stop_700_1_e": {"etrig":2462.9/20000, "axe":303.5/20000,"sig":0}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2013-15/
+    #xslimit in pb
+    "atlas_run2_ee_selectron_300_1": {"label":r"ATL R2 Disp $ee$ (200,1)","etrig":238/870, "axe":52.2/870, "xslimit":3/36000}, #fake
+    "atlas_run2_ee_selectron_500_0.1": {"label":r"ATL R2 Disp $ee$ (500,0.1)","etrig":66.3/93.6, "axe":17.7/93.6, "xslimit":3/36000}, #fake
+    "cms_run2_ee_selectron_500_1cm": {"label":r"CMS RX Disp $ee$ (500,0.1)","etrig":66.3/93.6, "axe":0.17, "xslimit":3/36000}, #fake xs, trig
+
+    "atlas_run2_mumu_selectron_500_0.01": {"label":r"ATL R2 Disp $\mu\mu$ (500,0.01)","etrig":66.3/93.6, "axe":0.02/3.28, "xslimit":3.28e-3}, 
+    "atlas_run2_micro_mumu_selectron_500_0.01": {"label":r"+µDisp $\mu\mu$","etrig":48.2/93.6, "axe":6.7/93.6, "xslimit":0.169e-3},
+    # 0.16*0.63,
+
+
+    # 1400 Gluino. 3.018E-02 pb * 1000 fb/pb * 36 ifb = 1086.48
+    "atlas_36_0l_gluino_rjr_g2a_1400_800": {"etrig":673/1086, "axe":44.7/1086,"xslimit":0}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-07/tabaux_009.pdf
+    "atlas_36_1l_stop_1000_1": {"label":r"+R2", "etrig":16881/102121, "axe":3192.5/102121,"xslimit":0.0091}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
+    "atlas_36_1l_stop_700_1": {"label":r"+R2","etrig":0.037, "axe":0.83*0.037,"xslimit":0.021}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
+    "atlas_20_8TeV_1l_stop_700_1_e": {"label":r"ATL R1 Stop $1\ell$ (700,1)","etrig":2462.9/20000, "axe":303.5/20000,"xslimit":0.01}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2013-15/
+
+    "atlas_20_dvmet": {"label":r"ATL R1 DV+MET","etrig":0.885, "axe":.376,"xslimit":3e-4}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2014-02/figaux_10a.png 1 TeV
+    # XS from https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2014-02/fig_18a.png
+
+
+    #  let's compare at 3cm, 0.1ns, 1 TeV, large dm.
+    "atlas_36_dvmet": {"label":r"+R2","etrig":717/827, "axe":442/827,"xslimit":1.5e-4}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
+    "atlas_139_dvmet": {"label":r"ATL R2 DV+MET","etrig":0.8, "axe":0.8,"xslimit":3/139000}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
+
+
+    "cms_137_dijet": {"label":r"CMS R2 Dijet","etrig":1, "axe":0.5,"xslimit":2e-2/0.5}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
+
 
 }
 
@@ -68,19 +97,92 @@ results = {
 i=0
 
 
-ax.plot( [0.8], [0.9], "o", label="Run-2 X Ana")
+# ax.plot( [0.8], [0.9], "o", label="Run-2 X Ana")
+doFillBetween([0,1], [0,1], axis=ax1, dy=0.99, alpha=0.2, n=100)
+ax1.plot([0,1], [0,1], c="k",lw=0.5)
+
+# perfect analysis would exclude 3 events for a given dataset.
+# for 139 ifb, this corresponds to a cross section of 3/139 fb
+# xs*(axe=1)*lumi=3
+# 3/lumi = xs limit
+x = np.linspace(0.001,1,1000)
+for lumibenchmark in [36,139]: #0.1 for test
+    doFillBetween(x, 3/(lumibenchmark*1000*x), axis=ax2, dy=0.994, alpha=0.2, n=200)
+    # doFillBetween([0,1], [3/(lumibenchmark*1000),3/(lumibenchmark*1000)], axis=ax2, dy=0.994, alpha=0.2, n=200)
+
+    ax2.plot(x, 3/(lumibenchmark*1000*x),c="k",lw=0.5)
+    ax2.plot([0,1], [3/(lumibenchmark*1000),3/(lumibenchmark*1000)],"--",c="k",lw=0.5)
+    ax2.text(0.98, 3/(lumibenchmark*1000)*0.65 , f"Minimum for {lumibenchmark} fb"+r"${}^{-1}$", size=9,clip_on=False, ha="right")
+    # this should actually scale with A*e!!!
+    # Will be some curve upwards
+
+
+
+
+
+
+listtoplot = [
+    "atlas_20_8TeV_1l_stop_700_1_e",
+    # "atlas_36_1l_stop_1000_1",
+    "atlas_36_1l_stop_700_1",
+
+    # "atlas_run2_ee_selectron_300_1",
+    # "atlas_run2_ee_selectron_500_0.1",
+    # "cms_run2_ee_selectron_500_1cm",
+    "atlas_run2_mumu_selectron_500_0.01",
+    "atlas_run2_micro_mumu_selectron_500_0.01",
+    # Add newer trigger for run 3
+
+    # disappearing track evolution?
+
+    "atlas_20_dvmet",
+    "atlas_36_dvmet", #fix numbers (were made up)
+    # "atlas_139_dvmet",
+    # Add DV+jets since it's full dataset
+
+    # Some EWK evolution?
+
+    # Dijet search to fill in upper right? Or RPV?
+
+    # 3 TeV quark quark
+    # CMS https://cms-results.web.cern.ch/cms-results/public-results/publications/EXO-19-012/
+    # States Axe ~ 0.5
+    # Gives upper limit xs
+    # Trigger efficiency assumed to be 1?
+    "cms_137_dijet",
+
+    # RPV 1L+jets for higgsinos
+    # DV for RPV Higgsinos
+]
+
+arrows = [
+    ("atlas_20_8TeV_1l_stop_700_1_e","atlas_36_1l_stop_700_1",""),
+    ("atlas_20_dvmet","atlas_36_dvmet",""),
+    # ("atlas_36_dvmet","atlas_139_dvmet",""),
+    ("atlas_run2_mumu_selectron_500_0.01", "atlas_run2_micro_mumu_selectron_500_0.01",""),
+]
+
+
+
+for key1,key2,label in arrows:
+    ax1.plot( [results[key1]["axe"],results[key2]["axe"]], [results[key1]["etrig"],results[key2]["etrig"]], "-", label=label, c="k",lw=1.5)
+    ax2.plot( [results[key1]["axe"],results[key2]["axe"]], [results[key1]["xslimit"],results[key2]["xslimit"]], "-", label=label, c="k",lw=1.5)
+
+
+for key in listtoplot:
+    ax1.plot( [results[key]["axe"]], [results[key]["etrig"]], "o", label=results[key]["label"], mew=0.5, mec="k")
+    ax2.plot( [results[key]["axe"]], [results[key]["xslimit"]], "o", label=results[key]["label"], mew=0.5, mec="k")
 
 # Run-2 ATLAS Displaced Leptons (ee channel, selectron (300,1))
-ax.plot( [results["atlas_run2_ee_selectron_300_1"]["axe"]], [results["atlas_run2_ee_selectron_300_1"]["etrig"]], "o", label=r"Run-2 Displaced $ee$, $m, \tau = (300 GeV, 1 ns)$ ")
-ax.plot( [results["atlas_run2_ee_selectron_500_0.1"]["axe"]], [results["atlas_run2_ee_selectron_500_0.1"]["etrig"]], "o", label=r"Run-2 Displaced $ee$, $m, \tau = (300 GeV, 1 ns)$ ")
-
+# ax.plot( [results["atlas_run2_ee_selectron_300_1"]["axe"]], [results["atlas_run2_ee_selectron_300_1"]["etrig"]], "o", label=r"Run-2 Displaced $ee$, $m, \tau = (300 GeV, 1 ns)$ ")
+# ax.plot( [results["atlas_run2_ee_selectron_500_0.1"]["axe"]], [results["atlas_run2_ee_selectron_500_0.1"]["etrig"]], "o", label=r"Run-2 Displaced $ee$, $m, \tau = (500 GeV, 0.1 ns)$ ")
 
 # Stop 1L
-ax.plot( [results["atlas_20_8TeV_1l_stop_700_1_e"]["axe"]], [results["atlas_20_8TeV_1l_stop_700_1_e"]["etrig"]], "o", label=r"Run-1 Stop 1L ")
-ax.plot( [results["atlas_36_1l_stop_1000_1"]["axe"]], [results["atlas_36_1l_stop_1000_1"]["etrig"]], "o", label=r"Run-2 Stop 1L ")
+# ax.plot( [results["atlas_20_8TeV_1l_stop_700_1_e"]["axe"]], [results["atlas_20_8TeV_1l_stop_700_1_e"]["etrig"]], "o", label=r"Run-1 Stop 1L ")
+# ax.plot( [results["atlas_36_1l_stop_1000_1"]["axe"]], [results["atlas_36_1l_stop_1000_1"]["etrig"]], "o", label=r"Run-2 Stop 1L ")
 
-ax.plot( [results["atlas_36_0l_gluino_rjr_g2a_1400_800"]["axe"]], [results["atlas_36_0l_gluino_rjr_g2a_1400_800"]["etrig"]], "o", label=r"Run-2 Gluino 0L RJR ")
-ax.plot( [results["atlas_36_1l_stop_1000_1"]["axe"]], [results["atlas_36_1l_stop_1000_1"]["etrig"]], "o", label=r"Run-2 Stop 1L ")
+# ax.plot( [results["atlas_36_0l_gluino_rjr_g2a_1400_800"]["axe"]], [results["atlas_36_0l_gluino_rjr_g2a_1400_800"]["etrig"]], "o", label=r"Run-2 Gluino 0L RJR ")
+# ax.plot( [results["atlas_36_1l_stop_1000_1"]["axe"]], [results["atlas_36_1l_stop_1000_1"]["etrig"]], "o", label=r"Run-2 Stop 1L ")
 
 
 # Run-2 ATLAS Displaced Leptons (\mu\mu channel, selectron (300,1))
@@ -91,36 +193,39 @@ ax.plot( [results["atlas_36_1l_stop_1000_1"]["axe"]], [results["atlas_36_1l_stop
 # HL-LHC Projection https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2018-031/
 # ATLAS 36 https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-06/tab_02.png
 
-for line in ax.get_lines():
+
+
+maxxvalue = 1
+
+for line in ax2.get_lines():
     label = line.get_label()
     if label.startswith('_'):  # Ignore default/empty labels
         continue
     xdata, ydata = line.get_data()
-    ax.annotate(label,
+    if xdata[0]<0.7:
+        ha="left"
+        xoffset = 5
+    else:
+        ha="right"
+        xoffset = -5
+    ax2.annotate(label,
                 xy=(xdata[0], ydata[0]),
-                xytext=(5, 5),
+                xytext=(xoffset, 5),
                 textcoords='offset points',
-                fontsize=9)
+                fontsize=9,
+                ha=ha)
 
 
+ax1.set_xlabel(r'$A\times\varepsilon$',)
+ax1.set_ylabel(r'$\varepsilon_{\text{trigger}}$',)
+ax1.set_ylim([0,1])
+ax1.set_xlim([-0.00,maxxvalue])
 
+ax2.set_xlabel(r'$A\times\varepsilon$',)
+ax2.set_ylabel(r'95% CL Excluded Cross Section [pb]',)
+ax2.set_ylim([1e-5,0.05])
+ax2.set_xlim([-0.00,maxxvalue])
 
-ax.set_xlabel(r'$A\times\varepsilon$',)
-ax.set_ylabel(r'$\varepsilon_{trigger}$',)
-# ax.xaxis.set_label_coords(1.02, -0.07)
-# ax.set_ylabel(r'Excluded Stop Squark Mass $m_{\tilde{t}}$ [GeV]')
-# ax.set_xlim([2e-6,2e4])
-# ax2.set_xlim([1.1e13,9e18])
-ax.set_ylim([0,1])
-ax.set_xlim([0,1])
-# plt.grid()
-
-
-# plt.subplots_adjust(wspace=0.03)
-
-
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
 
 
 # ax.text(200, 2050,       r"Sparticle Limits, Strong Production", size=11,clip_on=False, fontweight="bold")
@@ -131,25 +236,33 @@ ax.spines['top'].set_visible(False)
 # ax.text(1000, 500, r"Squarks", size=11,clip_on=False,  color="k", alpha=0.6, fontweight='bold')
 
 
-breathe(ax)
+breathe(ax1)
+breathe(ax2)
 
 
 # Force figure to render, so transforms are accurate
 fig.canvas.draw()
 
 # Transform from data to display coordinates
-p0 = ax.transData.transform((0, 0))
-p1 = ax.transData.transform((1, 1))
+p0 = ax1.transData.transform((0, 0))
+p1 = ax1.transData.transform((1, 1))
 
 # Compute angle in screen/display space
 dx, dy = p1 - p0
 angle_rad = np.arctan2(dy, dx)
 angle_deg = np.degrees(angle_rad)
 
-ax.text(100, 160, r"Forbidden", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
-ax.plot( [0,2500], [0,2500], "--", lw=0.5, color="black" )
+# ax1.text(100, 160, r"Forbidden", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
+# ax1.plot( [0,1], [0,1], "--", lw=0.5, color="black" )
+# doFillBetween([0,1], [0,1], axis=ax1, dy=0.99, alpha=0.5, n=100)
+
+
+ax1.text(0.6, 0.25 , r"SUSY Analysis Features", size=11,clip_on=False, fontweight="bold")
+ax1.text(0.6, 0.25-0.05, r"Various Assumptions", size=11,clip_on=False)
+ax1.text(0.6, 0.25-0.10, r"Run-1/2/3 LHC", size=11,clip_on=False)
 
 
 
-fig.savefig("TrigVsAe.pdf")
-plt.show()
+
+fig.savefig("Axe.pdf")
+# plt.show()
