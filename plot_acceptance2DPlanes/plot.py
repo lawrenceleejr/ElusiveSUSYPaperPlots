@@ -28,7 +28,6 @@ colors = ["#FF595E",  "#1982C4", "#8AC926",]
 
 baselength=4
 fig, (ax2,ax1) = plt.subplots(2,1, figsize=(1.8*baselength, 2*1*baselength))
-plt.subplots_adjust(top=0.95, bottom=0.1, left=0.15, right=0.95)
 
 ax2.set_yscale('log')
 
@@ -283,6 +282,8 @@ breathe(ax2)
 
 # ax1.margins(x=0.1, y=0.2)
 
+
+plt.subplots_adjust(top=0.95, bottom=0.1, left=0.15, right=0.95)
 
 # Force figure to render, so transforms are accurate
 fig.canvas.draw()
