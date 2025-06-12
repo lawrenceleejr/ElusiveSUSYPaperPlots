@@ -1,0 +1,52 @@
+#: table_doi: 10.17182/hepdata.80609.v2/t6
+#: name: Table 6
+#: description: <b>Exclusion 1 (obs)</b>  Expected 95% CL exclusion sensitivity (blue dashed line) with pm1&sigma;<sub>exp</sub> (yellow band) from experimental systematic uncertainties and observed limits (red solid line) with pm1&sigma;<sub>theory</sub> (dotted red line) from signal cross-section uncertainties for simplified models of direct Higgsino (top) and wino (bottom) production. A fit of signals to the m<sub>&#8467;&#8467;</sub> spectrum is used to derive the limit, which is projected into the &Delta; m(&chi;&#771;<sub>2</sub><sup>0</sup>, &chi;&#771;<sub>1</sub><sup>0</sup>) vs. m(&chi;&#771;<sub>2</sub><sup>0</sup>) plane. For Higgsino production, the chargino &chi;&#771;<sub>1</sub><sup>pm</sup> mass is assumed to be halfway between the two lightest neutralino masses, while m(&chi;&#771;<sub>2</sub><sup>0</sup>) = m(&chi;&#771;<sub>1</sub><sup>pm</sup>) is assumed for the wino--bino model. The gray regions denote the lower chargino mass limit from LEP [20]. The blue region in the lower plot indicates the limit from the 2&#8467;+3&#8467; combination of ATLAS Run 1 [41,42].
+#: data_file: data6.yaml
+#: keyword reactions: 
+#: keyword observables: 
+#: keyword phrases: 
+#: keyword cmenergies: 13000.0
+#: SQRT(S) [GEV],13000.0
+$m(\tilde{\chi}^0_2)$ [GeV],"$\Delta m(\tilde{\chi}^0_2, \tilde{\chi}^0_1)$ [GeV]"
+126.1,20.78
+128.7,19.15
+129.0,18.84
+130.6,17.52
+133.1,15.88
+135.4,14.25
+137.9,12.62
+139.5,11.57
+140.4,10.98
+142.1,9.35
+142.6,7.717
+143.5,6.083
+139.5,4.879
+138.1,4.45
+129.0,4.061
+118.6,3.547
+108.1,3.091
+103.3,2.817
+97.67,2.615
+87.22,2.252
+83.61,2.817
+81.45,4.45
+81.09,6.083
+87.22,7.043
+92.24,7.717
+92.31,9.35
+92.53,10.98
+92.89,12.62
+93.29,14.25
+93.76,15.88
+94.3,17.52
+97.67,18.04
+106.2,19.15
+106.7,20.78
+107.2,22.42
+107.8,24.05
+108.1,25.07
+117.5,24.05
+118.6,23.93
+122.5,22.42
+126.1,20.78
+
