@@ -110,7 +110,7 @@ results = {
     "atlas_140_rpvmultijet": {"label":r"ATL R2 140 RPV Jets","etrig":1.0, "axe":12/410,"xslimit":4.5e-3}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-22/
     # 6 jet, 1800
 
-
+    #   BUT THE DISCOVERY REGIONS ARE DIFFERENT!!!
     "atlas_1_dt": {"label":r"ATL R1 DT","etrig":0.902, "axe":0.068,"xslimit":3.5e-2},
     # 1 ns
     "atlas_20_dt": {"label":r"+20 ifb","etrig":0.088, "axe":0.00087,"xslimit":1},
