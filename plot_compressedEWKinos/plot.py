@@ -1,6 +1,14 @@
 from matplotlib_tufte import *
 setup()
 
+from matplotlib import rcParams
+
+import matplotlib.font_manager as fm
+fm.fontManager.addfont("../fonts/MyriadPro-Regular.ttf")
+fm.fontManager.addfont("../fonts/MyriadPro-Bold.ttf")
+
+rcParams['font.family'] = 'Myriad Pro'
+
 import matplotlib.pyplot as plt
 import numpy as np
 

@@ -1,6 +1,13 @@
 from matplotlib_tufte import *
 setup()
 
+import matplotlib.font_manager as fm
+fm.fontManager.addfont("../fonts/MyriadPro-Regular.ttf")
+fm.fontManager.addfont("../fonts/MyriadPro-Bold.ttf")
+from matplotlib import rcParams
+rcParams['font.family'] = 'Myriad Pro'
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -345,6 +352,10 @@ ax.text(200, 2050-2*150, r"Run-2 LHC", size=11,clip_on=False)
 
 ax.text(1700, 1000, r"Gluinos", size=11,clip_on=False, color="k", alpha=0.6, fontweight='bold')
 ax.text(1000, 500, r"Squarks", size=11,clip_on=False,  color="k", alpha=0.6, fontweight='bold')
+
+
+ax.text(1000, 500, r"Make another plot with EWK production", size=11,clip_on=False,  color="k", alpha=0.6, fontweight='bold')
+
 
 
 breathe(ax)
