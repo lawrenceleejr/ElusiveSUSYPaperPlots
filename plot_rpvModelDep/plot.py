@@ -127,10 +127,14 @@ doFillBetween(tmpx, tmpy, axis=ax[0], dy=0.99, alpha=0.2, n=50, color=colors[0])
 
 # But on the right side, you don't get a shift since it's all prompt. You do get that same factor 4 reduction in the BR.
 newMass = getMassFromXS(getXSFromMass(data["rpv1l"]["y"][-1])*4)
+tmpx = [tmpx[-1],data["rpv1l"]["x"][-1]]
+tmpy = [tmpy[-1],newMass]
 ax[0].plot( 
-      [tmpx[-1],data["rpv1l"]["x"][-1]], 
-      [tmpy[-1],newMass], 
+      tmpx, tmpy,
       ":", lw=1.5 , c="k", alpha=0.3)
+
+doFillBetween(tmpx, tmpy, axis=ax[0], dy=0.99, alpha=0.2, n=50, color=colors[0])
+
 
 # Multi-b on the other hand... it mostly has sensitivity on the left from the chi escapes. So it's affected by the change in lifetime. But since the b's are coming from the prompt Gtt tops, there's no reduction in the upper limit.
 tmpx = ([x/reductionfactor for x in data["multib_trunc"]["x"]])
@@ -141,11 +145,13 @@ ax[0].plot( tmpx, tmpy, "--",lw=1.5 , c=colors[1])
 doFillBetween(tmpx, tmpy, axis=ax[0], dy=0.99, alpha=0.2, n=50, color=colors[1])
 
 newMass = getMassFromXS(getXSFromMass(data["multib"]["y"][-1])*4)
+tmpx = [tmpx[-1],data["multib"]["x"][-1]]
+tmpy = [tmpy[-1],newMass]
 ax[0].plot( 
-      [tmpx[-1],data["multib"]["x"][-1]], 
-      [tmpy[-1],newMass], 
+      tmpx, tmpy,
       ":", lw=1.5 , c="k", alpha=0.3)
 
+doFillBetween(tmpx, tmpy, axis=ax[0], dy=0.99, alpha=0.2, n=50, color=colors[1])
 
 
 
@@ -164,10 +170,13 @@ doFillBetween(tmpx, tmpy, axis=ax[1], dy=0.99, alpha=0.2, n=50, color=colors[0])
 
 # But on the right side, you don't get a shift since it's all prompt. You do get that same factor 4 reduction in the BR.
 newMass = getMassFromXS(getXSFromMass(data["rpv1l"]["y"][-1])*100)
+tmpx = [tmpx[-1],data["rpv1l"]["x"][-1]]
+tmpy = [tmpy[-1],newMass]
 ax[1].plot( 
-      [tmpx[-1],data["rpv1l"]["x"][-1]], 
-      [tmpy[-1],newMass], 
+      tmpx, tmpy,
       ":", lw=1.5 , c="k", alpha=0.3)
+
+doFillBetween(tmpx, tmpy, axis=ax[1], dy=0.99, alpha=0.2, n=50, color=colors[0])
 
 # Multi-b on the other hand... it mostly has sensitivity on the left from the chi escapes. So it's affected by the change in lifetime. But since the b's are coming from the prompt Gtt tops, there's no reduction in the upper limit.
 tmpx = ([x/reductionfactor for x in data["multib_trunc"]["x"]])
@@ -179,11 +188,13 @@ doFillBetween(tmpx, tmpy, axis=ax[1], dy=0.99, alpha=0.2, n=50, color=colors[1])
 
 
 newMass = getMassFromXS(getXSFromMass(data["multib"]["y"][-1])*100)
+tmpx = [tmpx[-1],data["multib"]["x"][-1]]
+tmpy = [tmpy[-1],newMass]
 ax[1].plot( 
-      [tmpx[-1],data["multib"]["x"][-1]], 
-      [tmpy[-1],newMass], 
+      tmpx, tmpy,
       ":", lw=1.5 , c="k", alpha=0.3)
 
+doFillBetween(tmpx, tmpy, axis=ax[1], dy=0.99, alpha=0.2, n=50, color=colors[1])
 
 
 
@@ -236,20 +247,26 @@ ax[1].set_xscale('log')
 
 
 
-ax[0].text(-0., 2400,       r"Limits on RPV SUSY, ATLAS", size=11,clip_on=False, ha="right", fontweight="bold")
-ax[0].text(-0., 2400-1*80, r"RPV Model Dependence", size=11,clip_on=False, ha="right")
+ax[0].text(10**-0., 2400,       r"Limits on RPV SUSY, ATLAS", size=11,clip_on=False, ha="right", fontweight="bold")
+ax[0].text(10**-0., 2400-1*80, r"RPV Model Dependence", size=11,clip_on=False, ha="right")
+
+ax[1].text(10**-0., 2400,       r"Limits on RPV SUSY, ATLAS", size=11,clip_on=False, ha="right", fontweight="bold")
+ax[1].text(10**-0., 2400-1*80, r"RPV Model Dependence", size=11,clip_on=False, ha="right")
 
 
-ax[0].text(-3.45, 1200, r"$\Gamma_{\tilde{\chi}^0_1}\  (\lambda^{\prime\prime}_{323})=50\%$", size=13,clip_on=False,  color="k", alpha=1, fontweight='bold')
+ax[0].text(1e-3, 1200, r"$\Gamma_{\tilde{\chi}^0_1}\  (\lambda^{\prime\prime}_{323})=\Gamma_{\tilde{\chi}^0_1}/2$", size=13,clip_on=False,  color="k", alpha=1, fontweight='bold')
 
-ax[1].text(-3.45, 1400, r"$\Gamma_{\tilde{\chi}^0_1}\  (\lambda^{\prime\prime}_{323})=10\%$", size=13,clip_on=False,  color="k", alpha=1, fontweight='bold')
+ax[1].text(1e-3, 1090, r"$\Gamma_{\tilde{\chi}^0_1}\  (\lambda^{\prime\prime}_{323})=\Gamma_{\tilde{\chi}^0_1}/10$", size=13,clip_on=False,  color="k", alpha=1, fontweight='bold')
 
+ax[0].text(0.7e-3, 2100, r"$\Gamma_{\tilde{\chi}^0_1}\  (\lambda^{\prime\prime}_{323})=\Gamma_{\tilde{\chi}^0_1}$", size=13,clip_on=False,  color="k", alpha=1, fontweight='bold')
 
+ax[1].text(10**-2.0, 1800, r"$\Gamma_{\tilde{\chi}^0_1}\  (\lambda^{\prime\prime}_{323})=\Gamma_{\tilde{\chi}^0_1}$", size=13,clip_on=False,  color="k", alpha=1, fontweight='bold')
 
-ax[1].text(-2.0, 1800, r"$\Gamma_{\tilde{\chi}^0_1}\  (\lambda^{\prime\prime}_{323})=100\%$", size=13,clip_on=False,  color="k", alpha=1, fontweight='bold')
+ax[0].text(10**-0.5, 1450, r"$≥3$ b-jets", size=11,clip_on=False,  color="k", alpha=1, fontweight='bold')
+ax[0].text(10**-0.5, 2100, r"$1\ell$+jets", size=11,clip_on=False,  color="k", alpha=1, fontweight='bold')
 
-ax[0].text(-0.5, 1450, r"$≥3$ b-jets", size=11,clip_on=False,  color="k", alpha=1, fontweight='bold')
-ax[0].text(-0.5, 2100, r"$1\ell$+jets", size=11,clip_on=False,  color="k", alpha=1, fontweight='bold')
+ax[1].text(10**-0.5, 1450, r"$≥3$ b-jets", size=11,clip_on=False,  color="k", alpha=1, fontweight='bold')
+ax[1].text(10**-0.5, 2100, r"$1\ell$+jets", size=11,clip_on=False,  color="k", alpha=1, fontweight='bold')
 
 
 
