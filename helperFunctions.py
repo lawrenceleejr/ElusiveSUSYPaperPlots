@@ -1,7 +1,9 @@
 import numpy as np
+import seaborn as sns
+import ROOT
 
 
-def doFillBetween(x,y,n=10,dy=1,color="k",alpha=0.03,log=True,axis=ax1):
+def doFillBetween(x,y,axis,n=10,dy=1,color="k",alpha=0.03,log=True):
     initialY = y
     tmpy = initialY
     print(x,y)
@@ -9,7 +11,7 @@ def doFillBetween(x,y,n=10,dy=1,color="k",alpha=0.03,log=True,axis=ax1):
     colorpal = sns.light_palette(color, n)[::-1]
     for i in range(n):
         if log:
-            axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) ,  clip_on=False)
+            axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) ,  clip_on=True)
             tmpy = [thing*dy for thing in tmpy]
         # else:
         # 	axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
@@ -84,6 +86,7 @@ def breathe_logy(ax):
 
 def breathe_logx(ax):
     limy = ax.get_ylim()
+    span = limy[1] - limy[0]
     m0 = limy[0] - span*0.04
     ax.spines.bottom.set_position(('data', m0))
 

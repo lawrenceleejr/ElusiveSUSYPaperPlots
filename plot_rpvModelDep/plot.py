@@ -16,6 +16,11 @@ import seaborn as sns
 import csv
 from array import array
 
+import sys
+sys.path.insert(0, "..")
+from helperFunctions import *
+
+
 # colors = sns.color_palette("husl", 3)
 # colors = ["#FF595E",  "#1982C4", "#8AC926",] 
 colors = ["#E07A5F",  # Terra Cotta
@@ -29,26 +34,11 @@ colors = ["#E07A5F",  # Terra Cotta
 # colors = ["#FF6B6B","#1A535C", "#4ECDC4", ]
 # colors = ["#4477AA", "#CC6677", "#117733"]
 
-def add_zero_endpoints(arr, point=(0,0)):
-    """
-    Adds a (0, 0) point at the beginning and end of a structured numpy array
-    with fields 'x' and 'y'.
-    
-    Parameters:
-        arr (np.ndarray): A structured array with dtype containing 'x' and 'y'.
-    
-    Returns:
-        np.ndarray: A new structured array with (0,0) added at both ends.
-    """
-    # Create the (0, 0) point with same dtype
-    zero_point = np.array([point], dtype=arr.dtype)
-    
-    # Concatenate zero, original array, zero
-    return np.concatenate([zero_point, arr, zero_point])
-
 
 baselength=4
-fig, ax = plt.subplots(2,1, figsize=(1.5*baselength, 2*baselength))
+ax = [0,0]
+fig1, ax[0] = plt.subplots(1,1, figsize=(1.5*baselength, 1*baselength))
+fig2, ax[1] = plt.subplots(1,1, figsize=(1.5*baselength, 1*baselength))
 
 
 data = {}
@@ -59,31 +49,6 @@ data["0l"] =  np.genfromtxt("data/0l.txt", delimiter=",", skip_header=0, names=[
 
 data["rpv1l_trunc"] = data["rpv1l"][data['rpv1l']['x'] <= 4e-2]
 data["multib_trunc"] = data["multib"][data['multib']['x'] <= 4e-2]
-
-
-
-
-def doFillBetween(x,y,n=10,dy=1,color="k",alpha=0.03,log=True,axis=None):
-	initialY = y
-	tmpy = initialY
-
-	colorpal = sns.light_palette(color, n)[::-1]
-	for i in range(n):
-		if log:
-			axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
-			tmpy = [thing*dy for thing in tmpy]
-
-
-def getArraysFromTGraph(tgraph):
-	xArray, yArray = [],[]
-	for iPoint in range(tgraph.GetN()):
-		x,y = ROOT.Double(0), ROOT.Double(0)
-		# print (x,y)
-		tgraph.GetPoint(iPoint,x,y)
-		xArray.append(x)
-		yArray.append(y)
-	# print (xArray)
-	return xArray,yArray
 
 
 
@@ -126,7 +91,6 @@ inverted_xsgraph = invert_graph(xsgraph)
 def getMassFromXS(xs):
     return inverted_xsgraph.Eval(xs)      
 
-
 def arrXSFromMass(arr):
       return [getXSFromMass(x) for x in arr]
 def arrMassFromXS(arr):
@@ -135,13 +99,13 @@ def arrMassFromXS(arr):
 
 
 
-ax[0].plot( np.log10(data["rpv1l"]["x"]), data["rpv1l"]["y"], lw=2 , c=colors[0], zorder=0)
-ax[0].plot( np.log10(data["multib"]["x"]), data["multib"]["y"], lw=2 , c=colors[1],zorder=0)
+ax[0].plot( (data["rpv1l"]["x"]), data["rpv1l"]["y"], lw=2 , c=colors[0], zorder=0)
+ax[0].plot( (data["multib"]["x"]), data["multib"]["y"], lw=2 , c=colors[1],zorder=0)
 
 
 
-ax[1].plot( np.log10(data["rpv1l"]["x"]), data["rpv1l"]["y"], lw=2 , c=colors[0], zorder=0)
-ax[1].plot( np.log10(data["multib"]["x"]), data["multib"]["y"], lw=2 , c=colors[1],zorder=0)
+ax[1].plot( (data["rpv1l"]["x"]), data["rpv1l"]["y"], lw=2 , c=colors[0], zorder=0)
+ax[1].plot( (data["multib"]["x"]), data["multib"]["y"], lw=2 , c=colors[1],zorder=0)
 
 
 
@@ -153,7 +117,7 @@ ax[1].plot( np.log10(data["multib"]["x"]), data["multib"]["y"], lw=2 , c=colors[
 reductionfactor=2
 
 # Since RPV1L cares about getting a prompt lepton, and doesn't care about MET, as soon as there's another component to the chi decay, it loses sensitivity. Since there are two decays, this is reduced by a factor of 4. Since it now has two decay modes, the lifetime is halved.
-tmpx = np.log10([x/(reductionfactor) for x in data["rpv1l_trunc"]["x"]])
+tmpx = ([x/(reductionfactor) for x in data["rpv1l_trunc"]["x"]])
 tmpy = [x*reductionfactor*reductionfactor for x in arrXSFromMass(data["rpv1l_trunc"]["y"])]
 tmpy = arrMassFromXS(tmpy)
 ax[0].plot( tmpx, tmpy, "--", lw=1.5 , c=colors[0])
@@ -169,7 +133,7 @@ ax[0].plot(
       ":", lw=1.5 , c="k", alpha=0.3)
 
 # Multi-b on the other hand... it mostly has sensitivity on the left from the chi escapes. So it's affected by the change in lifetime. But since the b's are coming from the prompt Gtt tops, there's no reduction in the upper limit.
-tmpx = np.log10([x/reductionfactor for x in data["multib_trunc"]["x"]])
+tmpx = ([x/reductionfactor for x in data["multib_trunc"]["x"]])
 tmpy = [x for x in arrXSFromMass(data["multib_trunc"]["y"])]
 tmpy = arrMassFromXS(tmpy)
 ax[0].plot( tmpx, tmpy, "--",lw=1.5 , c=colors[1])
@@ -190,7 +154,7 @@ ax[0].plot(
 reductionfactor=10
 
 # Since RPV1L cares about getting a prompt lepton, and doesn't care about MET, as soon as there's another component to the chi decay, it loses sensitivity. Since there are two decays, this is reduced by a factor of 4. Since it now has two decay modes, the lifetime is halved.
-tmpx = np.log10([x/(reductionfactor) for x in data["rpv1l_trunc"]["x"]])
+tmpx = ([x/(reductionfactor) for x in data["rpv1l_trunc"]["x"]])
 tmpy = [x*reductionfactor*reductionfactor for x in arrXSFromMass(data["rpv1l_trunc"]["y"])]
 tmpy = arrMassFromXS(tmpy)
 ax[1].plot( tmpx, tmpy, "--", lw=1.5 , c=colors[0])
@@ -206,7 +170,7 @@ ax[1].plot(
       ":", lw=1.5 , c="k", alpha=0.3)
 
 # Multi-b on the other hand... it mostly has sensitivity on the left from the chi escapes. So it's affected by the change in lifetime. But since the b's are coming from the prompt Gtt tops, there's no reduction in the upper limit.
-tmpx = np.log10([x/reductionfactor for x in data["multib_trunc"]["x"]])
+tmpx = ([x/reductionfactor for x in data["multib_trunc"]["x"]])
 tmpy = [x for x in arrXSFromMass(data["multib_trunc"]["y"])]
 tmpy = arrMassFromXS(tmpy)
 ax[1].plot( tmpx, tmpy, "--",lw=1.5 , c=colors[1])
@@ -229,7 +193,7 @@ ax[1].plot(
 # And when you turn on 112, you start to get limits from 0L. This similarly uses the chi escaping the detector, so only the lifetime change is relevant.
 # But the problem is in that analysis, the 
 # Nevermind -- this actually doens't do anything. No idea what the Gtt eff is for 0L instead of the Gqq.
-# tmpx = np.log10([x/reductionfactor for x in data["0l"]["x"]])
+# tmpx = ([x/reductionfactor for x in data["0l"]["x"]])
 # tmpy = [x for x in arrXSFromMass(data["0l"]["y"])]
 # tmpy = arrMassFromXS(tmpy)
 # ax[0].plot( tmpx, tmpy, "--",lw=1.5 , c=colors[2])
@@ -246,19 +210,19 @@ ax[1].plot(
 
 ax[0].set_xlabel(r'$\lambda^{\prime\prime}_{323}$',)
 ax[0].set_ylabel(r'$m(\tilde{g})$ [GeV]',)
-ax[0].set_xlim([-3.5,0])
+ax[0].set_xlim([5e-4,1])
 ax[0].set_ylim([1000,2400])
 
 ax[1].set_xlabel(r'$\lambda^{\prime\prime}_{323}$',)
 ax[1].set_ylabel(r'$m(\tilde{g})$ [GeV]',)
-ax[1].set_xlim([-3.5,0])
+ax[1].set_xlim([5e-4,1])
 ax[1].set_ylim([1000,2400])
 
-ax[0].spines['bottom'].set_visible(False)
-ax[0].xaxis.set_ticks_position('none')  # Optional: hide the ticks
-ax[0].tick_params(bottom=False)     
-ax[0].set_xticklabels([])
-ax[0].set_xlabel("")
+# # ax[0].spines['bottom'].set_visible(False)
+# ax[0].xaxis.set_ticks_position('none')  # Optional: hide the ticks
+# ax[0].tick_params(bottom=False)     
+# ax[0].set_xticklabels([])
+# ax[0].set_xlabel("")
 
 
 # ax[0].set_xlabel(r'$\lambda^{\prime\prime}_{323}=\lambda^{\prime\prime}_{112}$',)
@@ -267,7 +231,8 @@ ax[0].set_xlabel("")
 # ax[0].set_ylim([1000,2500])
 
 
-# ax[0].set_xscale('log')
+ax[0].set_xscale('log')
+ax[1].set_xscale('log')
 
 
 
@@ -288,23 +253,25 @@ ax[0].text(-0.5, 2100, r"$1\ell$+jets", size=11,clip_on=False,  color="k", alpha
 
 
 
-breathe(ax[0])
-breathe(ax[1])
+breathe_logx(ax[0])
+breathe_logx(ax[1])
 
-fig.subplots_adjust(left=0.15, right=0.96, bottom=0.15, top=0.98)
+fig1.subplots_adjust(left=0.15, right=0.96, bottom=0.18, top=0.95)
+fig2.subplots_adjust(left=0.15, right=0.96, bottom=0.18, top=0.95)
 # Force figure to render, so transforms are accurate
-fig.canvas.draw()
+# fig.canvas.draw()
 
-ax[1].set_xticklabels([
-      r"$10^{-3.5}$",
-      r"$10^{-3}$",
-      r"$10^{-2.5}$",
-      r"$10^{-2}$",
-      r"$10^{-1.5}$",
-      r"$10^{-1}$",
-      r"$10^{-0.5}$",
-      r"$10^{-0}$",
-])
+# ax[1].set_xticklabels([
+#       r"$10^{-3.5}$",
+#       r"$10^{-3}$",
+#       r"$10^{-2.5}$",
+#       r"$10^{-2}$",
+#       r"$10^{-1.5}$",
+#       r"$10^{-1}$",
+#       r"$10^{-0.5}$",
+#       r"$10^{-0}$",
+# ])
 
-fig.savefig("RPVModelDep.pdf")
+fig1.savefig("RPVModelDep_2.pdf")
+fig2.savefig("RPVModelDep_10.pdf")
 # plt.show()

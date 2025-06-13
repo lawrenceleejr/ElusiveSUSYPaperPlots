@@ -46,32 +46,6 @@ ax2.set_yscale('log')
 
 
 
-def doFillBetween(x,y,n=10,dy=1,color="k",alpha=0.03,log=True,axis=ax1):
-    initialY = y
-    tmpy = initialY
-    print(x,y)
-
-    colorpal = sns.light_palette(color, n)[::-1]
-    for i in range(n):
-        if log:
-            axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) ,  clip_on=False)
-            tmpy = [thing*dy for thing in tmpy]
-        # else:
-        # 	axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
-        # 	tmpy = [thing*dy for thing in tmpy]
-
-
-def getArraysFromTGraph(tgraph):
-    xArray, yArray = [],[]
-    for iPoint in range(tgraph.GetN()):
-        x,y = ROOT.Double(0), ROOT.Double(0)
-        # print (x,y)
-        tgraph.GetPoint(iPoint,x,y)
-        xArray.append(x)
-        yArray.append(y)
-    # print (xArray)
-    return xArray,yArray
-
 
 
 
