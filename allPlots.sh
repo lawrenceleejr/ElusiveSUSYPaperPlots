@@ -9,7 +9,7 @@ python plot.py
 
 cd ../plot_compressedEWKinos
 python plot.py
-
+cd ..
 
 cp */*.pdf plots/.
 

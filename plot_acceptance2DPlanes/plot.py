@@ -18,6 +18,12 @@ from matplotlib.patches import ConnectionPatch
 import ROOT
 import seaborn as sns
 
+
+import sys
+sys.path.insert(0, "..")
+from helperFunctions import *
+
+
 # colors = sns.color_palette("husl", 3)
 colors = ["#FF595E",  "#1982C4", "#8AC926",] 
 # colors = ["#E07A5F",  # Terra Cotta
