@@ -132,30 +132,6 @@ baselength=4
 fig, ax = plt.subplots(1,1, figsize=(1.5*baselength, 1*baselength))
 
 
-def doFillBetween(x,y,n=10,dy=1,color="k",alpha=0.03,log=True,axis=ax):
-	initialY = y
-	tmpy = initialY
-
-	colorpal = sns.light_palette(color, n)[::-1]
-	for i in range(n):
-		if log:
-			axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
-			tmpy = [thing*dy for thing in tmpy]
-
-
-def getArraysFromTGraph(tgraph):
-	xArray, yArray = [],[]
-	for iPoint in range(tgraph.GetN()):
-		x,y = ROOT.Double(0), ROOT.Double(0)
-		# print (x,y)
-		tgraph.GetPoint(iPoint,x,y)
-		xArray.append(x)
-		yArray.append(y)
-	# print (xArray)
-	return xArray,yArray
-
-
-
 
 ax.plot(data["purehiggsino"]['x'],  ((data["purehiggsino"]['y'])), ":", color="k", alpha=1, lw=1)
 

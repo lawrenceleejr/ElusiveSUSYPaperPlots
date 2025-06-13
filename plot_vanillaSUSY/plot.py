@@ -14,6 +14,12 @@ import numpy as np
 import ROOT
 import seaborn as sns
 
+
+import sys
+sys.path.insert(0, "..")
+from helperFunctions import *
+
+
 # colors = sns.color_palette("husl", 3)
 colors = ["#FF595E",  "#1982C4", "#8AC926",] 
 # colors = ["#E07A5F",  # Terra Cotta
@@ -26,22 +32,6 @@ colors = ["#FF595E",  "#1982C4", "#8AC926",]
 # colors = ["#FF6B6B", "#4ECDC4", "#1A535C"]
 # colors = ["#4477AA", "#CC6677", "#117733"]
 
-def add_zero_endpoints(arr, point=(0,0)):
-    """
-    Adds a (0, 0) point at the beginning and end of a structured numpy array
-    with fields 'x' and 'y'.
-    
-    Parameters:
-        arr (np.ndarray): A structured array with dtype containing 'x' and 'y'.
-    
-    Returns:
-        np.ndarray: A new structured array with (0,0) added at both ends.
-    """
-    # Create the (0, 0) point with same dtype
-    zero_point = np.array([point], dtype=arr.dtype)
-    
-    # Concatenate zero, original array, zero
-    return np.concatenate([zero_point, arr, zero_point])
 
 data_gg = {}
 
@@ -192,33 +182,6 @@ data_qq["arXiv_2307.01094_2"] = add_zero_endpoints(data_qq["arXiv_2307.01094_2"]
 
 baselength=4
 fig, ax = plt.subplots(1,1, figsize=(1.5*baselength, 1*baselength))
-
-
-def doFillBetween(x,y,n=10,dy=1,color="k",alpha=0.03,log=True,axis=ax):
-	initialY = y
-	tmpy = initialY
-
-	colorpal = sns.light_palette(color, n)[::-1]
-	for i in range(n):
-		if log:
-			axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
-			tmpy = [thing*dy for thing in tmpy]
-
-
-def getArraysFromTGraph(tgraph):
-	xArray, yArray = [],[]
-	for iPoint in range(tgraph.GetN()):
-		x,y = ROOT.Double(0), ROOT.Double(0)
-		# print (x,y)
-		tgraph.GetPoint(iPoint,x,y)
-		xArray.append(x)
-		yArray.append(y)
-	# print (xArray)
-	return xArray,yArray
-
-
-
-
 
 
 ### Actual Curves:
