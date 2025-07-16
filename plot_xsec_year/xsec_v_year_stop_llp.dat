@@ -1,0 +1,13 @@
+# stop dE/dx / SMP
+# {sqrt(s), lumi [fb], xsec [fb] at mass excluded, xsec [fb] min excluded on plot, mass [GeV] excluded, date}
+7,0.034,1000,1000,300,2011-03-10
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2012-01/fig_05b.png
+7,4.7,4,4,700,2012-09-07
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2013-22/fig_11f.png
+8, 19.1,1.0,1.0,900,2014-09-25
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-02/fig_05c.png
+13, 3.2, 10, 10, 940,2016-06-16
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-32/fig_09c.png
+13, 36.1, 0.7, 0.7,1340,2019-02-15
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-42/figaux_26c.png
+13,140,0.3,0.3,1500,2022-05-12

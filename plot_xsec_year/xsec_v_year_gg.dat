@@ -1,0 +1,14 @@
+# gg-->qqqqXX
+# {sqrt(s), lumi [fb], xsec [fb] at mass excluded, xsec [fb] min excluded on plot, mass [GeV] excluded, date}
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2010-05/
+7, 0.035, 3000, 3000,490,2011-02-25
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2011-20/fig_12a.png
+7, 4.7, 14.8, 4.6, 950,2012-08-02
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2013-02/figaux_09a.png
+8, 20.3, 0.7, 0.7, 1425,2014-05-30
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2015-06/figaux_17b.png
+13, 3.2, 13, 10, 1510,2016-05-12
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-07/figaux_076b.png
+13, 36.1, 0.8, 0.6, 2040,2017-12-06 
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-22/figaux_10b.png
+13, 139, 0.22, 0.12, 2300,2020-10-27

@@ -1,0 +1,12 @@
+# tt-->all-hadronic X0
+# {sqrt(s), lumi [fb], xsec [fb] at mass excluded, xsec [fb] min excluded on plot, mass [GeV] excluded, date}
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2012-05/figaux_06.png
+7, 4.7, 50, 40,495,2012-08-07
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2013-16/figaux_07a.png
+8, 20.3, 13,10,660,2014-06-04
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2015-02/figaux_05b.png
+13,3.2,32,28,780,2016-06-13
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-15/figaux_12.png
+13,36.1,6.13,3.8,1000,2017-09-13
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-12/figaux_02a.png
+13,139,1.2,1.0,1260,2020-04-29

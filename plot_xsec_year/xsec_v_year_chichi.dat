@@ -1,0 +1,12 @@
+# chichi-->llXX or lllXX
+# {sqrt(s), lumi [fb], xsec [fb] at mass excluded, xsec [fb] min excluded on plot, mass [GeV] excluded, date}
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2011-10/figaux_16b.png
+7, 1.0, 700, 300, 200,2011-10-11
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2011-25/fig_02b.png
+7, 2.1, 100, 80, 310,2012-04-25
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2012-13/fig_04a.png
+7, 4.7, 7, 0.5, 500,2012-08-15
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2013-12/figaux_01a.png
+8, 20.3, 1.6, 1.4, 720,2014-02-17
+# https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-24/figaux_32a.png
+13, 36.1, 0.66, 0.6, 1130,2018-03-07
