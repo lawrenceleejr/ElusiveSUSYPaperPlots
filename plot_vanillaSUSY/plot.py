@@ -312,12 +312,14 @@ ax.spines['top'].set_visible(False)
 ax.text(200, 2050,       r"Sparticle Limits, Strong Production", size=11,clip_on=False, fontweight="bold")
 ax.text(200, 2050-1*150, r"Various Assumptions", size=11,clip_on=False)
 ax.text(200, 2050-2*150, r"Run-2 LHC", size=11,clip_on=False)
+ax.text(200, 2050-3*150, r"95% CL", size=11,clip_on=False)
 
-ax.text(1700, 1000, r"Gluinos", size=11,clip_on=False, color="k", alpha=0.6, fontweight='bold')
-ax.text(1000, 500, r"Squarks", size=11,clip_on=False,  color="k", alpha=0.6, fontweight='bold')
+ax.text(1700, 1000, r"Gluinos", size=11,clip_on=False, color="k", alpha=1.0, fontweight='bold')
+ax.text(500, 200, r"Squarks", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
 
 
-ax.text(1000, 500, r"Make another plot with EWK production", size=11,clip_on=False,  color="k", alpha=0.6, fontweight='bold')
+ax.text(1000, 300, r"Make another plot with EWK production", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
+ax.text(1000, 200, r"Add stops to the squark category", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
 
 
 
@@ -341,5 +343,6 @@ ax.plot( [0,2500], [0,2500], "--", lw=0.5, color="black" )
 
 
 
-fig.savefig("Vanilla.pdf")
+fig.savefig("Vanilla_Strong.pdf")
+plt.cla()
 # plt.show()

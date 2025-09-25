@@ -249,9 +249,11 @@ ax[1].set_xscale('log')
 
 ax[0].text(10**-0., 2400,       r"Limits on RPV SUSY, ATLAS", size=11,clip_on=False, ha="right", fontweight="bold")
 ax[0].text(10**-0., 2400-1*80, r"RPV Model Dependence", size=11,clip_on=False, ha="right")
+ax[0].text(10**-0., 2400-2*80, r"95% CL", size=11,clip_on=False, ha="right")
 
 ax[1].text(10**-0., 2400,       r"Limits on RPV SUSY, ATLAS", size=11,clip_on=False, ha="right", fontweight="bold")
 ax[1].text(10**-0., 2400-1*80, r"RPV Model Dependence", size=11,clip_on=False, ha="right")
+ax[1].text(10**-0., 2400-2*80, r"95% CL", size=11,clip_on=False, ha="right")
 
 
 ax[0].text(1e-3, 1200, r"$\Gamma_{\tilde{\chi}^0_1}\  (\lambda^{\prime\prime}_{323})=\Gamma_{\tilde{\chi}^0_1}/2$", size=13,clip_on=False,  color="k", alpha=1, fontweight='bold')

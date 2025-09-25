@@ -3,7 +3,7 @@ import seaborn as sns
 import ROOT
 
 
-def doFillBetween(x,y,axis,n=10,dy=1,color="k",alpha=0.03,log=True):
+def doFillBetween(x,y,axis,n=10,dy=1,color="k",alpha=0.03,log=True,clip_on=True):
     initialY = y
     tmpy = initialY
     print(x,y)
@@ -11,7 +11,7 @@ def doFillBetween(x,y,axis,n=10,dy=1,color="k",alpha=0.03,log=True):
     colorpal = sns.light_palette(color, n)[::-1]
     for i in range(n):
         if log:
-            axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) ,  clip_on=True)
+            axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) ,  clip_on=clip_on)
             tmpy = [thing*dy for thing in tmpy]
         # else:
         # 	axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
