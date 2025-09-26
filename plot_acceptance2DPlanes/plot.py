@@ -57,6 +57,8 @@ results = {
 
     "atlas_run2_mumu_smuon_500_0.01": {"label":r"A2 Disp $\mu\mu$ (500,0.01)","etrig":66.3/93.6, "axe":0.02/3.28, "xslimit":3.28e-3}, 
     "atlas_run2_mumu_smuon_500_0.1": {"label":r"A2 Disp $\mu\mu$ (500,0.1)","etrig":66.3/93.6, "axe":13.6/93.6, "xslimit":1.49e-04}, 
+    "atlas_run2_mumu_smuon_500_10": {"label":r"A2 Disp $\mu\mu$ (500,10)","etrig":0.5, "axe":4.969/93.6, "xslimit":0.00043}, # ditrack dedx
+
     "atlas_run2_micro_mumu_smuon_500_0.01": {"label":r"+µDisp $\mu\mu$","etrig":48.2/93.6, "axe":6.7/93.6, "xslimit":0.331e-3},
     # 0.13*0.63,
     #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2020-09/
@@ -186,6 +188,7 @@ listtoplot = [
     "atlas_run2_micro_mumu_smuon_500_0.01",
     # Add newer trigger for run 3
     "cms_run2_mumu_500_0.3",
+    "atlas_run2_mumu_smuon_500_10",
 
     "atlas_run2_mumu_smuon_500_0.1",
     "cms_run2_mumu_500_3",   
