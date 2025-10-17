@@ -41,7 +41,10 @@ colors = sns.color_palette("husl", 5)
 
 
 baselength=4
-fig, (ax2,ax1) = plt.subplots(2,1, figsize=(1.8*baselength, 2*1*baselength))
+# fig, (ax2,ax1) = plt.subplots(2,1, figsize=(1.8*baselength, 2*1*baselength))
+
+fig1, ax1 = plt.subplots(1,1, figsize=(1.5*baselength, 1.0*1*baselength))
+fig2, ax2 = plt.subplots(1,1, figsize=(1.5*baselength, 1.0*1*baselength))
 
 ax2.set_yscale('log')
 
@@ -309,7 +312,7 @@ for i,key in enumerate(listtoplot):
                         coordsA="data", coordsB="data",
                         axesA=ax1, axesB=ax2, color="k", lw=0.1, alpha=0.15)
     con.set_zorder(-100)
-    ax2.add_artist(con)
+    # ax2.add_artist(con)
     ax1.set_zorder(-1)
 
     if "atlas" in key:
@@ -378,11 +381,11 @@ ax2.set_ylim([1e-5,0.1])
 ax2.set_xlim([-0.00,maxxvalue])
 
 
-ax2.spines['bottom'].set_visible(False)
-ax2.xaxis.set_ticks_position('none')  # Optional: hide the ticks
-ax2.tick_params(bottom=False)     
-ax2.set_xticklabels([])
-ax2.set_xlabel("")
+# ax2.spines['bottom'].set_visible(False)
+# ax2.xaxis.set_ticks_position('none')  # Optional: hide the ticks
+# ax2.tick_params(bottom=False)     
+# ax2.set_xticklabels([])
+# ax2.set_xlabel("")
 
 
 # ax.text(200, 2050,       r"Sparticle Limits, Strong Production", size=11,clip_on=False, fontweight="bold")
@@ -400,7 +403,7 @@ breathe_logy(ax2)
 plt.subplots_adjust(top=0.99, bottom=0.0, left=0.15, right=0.95)
 
 # Force figure to render, so transforms are accurate
-fig.canvas.draw()
+fig1.canvas.draw()
 
 # Transform from data to display coordinates
 p0 = ax1.transData.transform((0, 0))
@@ -423,5 +426,9 @@ ax1.text(0.6, 0.25-0.12, r"Run-1/2/3 LHC", size=13,clip_on=False)
 
 
 
-fig.savefig("Axe.pdf")
+fig1.savefig("Axe_Trig.pdf")
+
+fig2.savefig("Axe_XS.pdf")
+
+
 # plt.show()

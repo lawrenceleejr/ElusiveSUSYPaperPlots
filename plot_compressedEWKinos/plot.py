@@ -101,10 +101,10 @@ data["soft2l_atlas_r2_36_higgsino"] = np.genfromtxt("data/soft2l_atlas_r2_36_hig
 
 
 # https://www.hepdata.net/record/ins1767649
-data["soft2l_atlas_r2_139_higgsino"] = np.genfromtxt("data/soft2l_atlas_r2_139_higgsino.txt", delimiter=",", skip_header=8, names=["x","y"])
+data["soft2l_atlas_r2_139_higgsino"] = np.genfromtxt("data/soft2l_atlas_r2_139_higgsino.txt", delimiter=",", skip_header=9, names=["x","y"])
 data["soft2l_atlas_r2_139_higgsino"] = add_box_endpoints_y(data["soft2l_atlas_r2_139_higgsino"])
 
-data["soft2l_cms_r2_137_higgsino"] = np.genfromtxt("data/soft2l_cms_r2_137_higgsino.txt", delimiter=",", skip_header=0, names=["x","y"])
+data["soft2l_cms_r2_137_higgsino"] = np.genfromtxt("data/soft2l_cms_r2_137_higgsino.txt", delimiter=",", skip_header=1, names=["x","y"])
 data["soft2l_cms_r2_137_higgsino"].sort(order="y")
 data["soft2l_cms_r2_137_higgsino"] = add_box_endpoints_y(data["soft2l_cms_r2_137_higgsino"])
 
@@ -167,8 +167,8 @@ ax.plot(data["disappearing_atlas_hl_3000_higgsino"]['x']-data["disappearing_atla
 ax.text(97, 10**-0.57, r"A2 36 fb${}^{-1}$" , rotation=0, size=7,clip_on=False)
 ax.text(210, 10**-0.73, r"C2 101 fb${}^{-1}$", rotation=-5, size=7,clip_on=False)
 ax.text(240, 10**-0.67, r"A2 136 fb${}^{-1}$", rotation=-5, size=7,clip_on=False)
-ax.text(108, 10**-0.48, r"C2 137 fb${}^{-1}$", rotation=-6, size=7,clip_on=False)
-ax.text(140, 10**-0.46, r"A6 3000 fb${}^{-1}$", rotation=-11, size=7,clip_on=False)
+ax.text(280, 10**-0.68, r"C2 137 fb${}^{-1}$", rotation=-4, size=7,clip_on=False)
+ax.text(170, 10**-0.51, r"A6 3000 fb${}^{-1}$", rotation=-9, size=7,clip_on=False)
 
 
 
@@ -176,20 +176,20 @@ ax.text(140, 10**-0.46, r"A6 3000 fb${}^{-1}$", rotation=-11, size=7,clip_on=Fal
 i=2
 
 
-ax.fill(data["soft2l_atlas_r2_36_higgsino"]['x']-data["soft2l_atlas_r2_36_higgsino"]['y'], (data["soft2l_atlas_r2_36_higgsino"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
-ax.fill(data["soft2l_atlas_r2_139_higgsino"]['x']-data["soft2l_atlas_r2_139_higgsino"]['y'], (data["soft2l_atlas_r2_139_higgsino"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
-ax.fill(data["soft2l_cms_r2_137_higgsino"]['x']-data["soft2l_cms_r2_137_higgsino"]['y'], (data["soft2l_cms_r2_137_higgsino"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
+ax.fill(data["soft2l_atlas_r2_36_higgsino"]['x']-data["soft2l_atlas_r2_36_higgsino"]['y'], (data["soft2l_atlas_r2_36_higgsino"]['y']/2.), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
+ax.fill(data["soft2l_atlas_r2_139_higgsino"]['x']-data["soft2l_atlas_r2_139_higgsino"]['y'], (data["soft2l_atlas_r2_139_higgsino"]['y']/2.), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
+ax.fill(data["soft2l_cms_r2_137_higgsino"]['x']-data["soft2l_cms_r2_137_higgsino"]['y'], (data["soft2l_cms_r2_137_higgsino"]['y']/2.), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
 
 
 
-ax.plot(data["soft2l_atlas_hl_3000_higgsino"]['x'], (data["soft2l_atlas_hl_3000_higgsino"]['y']), "--", color=colors[i], alpha=1, lw=1, zorder=0)
+ax.plot(data["soft2l_atlas_hl_3000_higgsino"]['x'], (data["soft2l_atlas_hl_3000_higgsino"]['y']/2.), "--", color=colors[i], alpha=1, lw=1, zorder=0)
 
 
 
-ax.text(100, 10**0.5, r"A2 36 fb${}^{-1}$" , rotation=32, size=7,clip_on=False)
-ax.text(135, 10**0.68, r"A2 139 fb${}^{-1}$" , rotation=30, size=7,clip_on=False)
-ax.text(125, 10**0.53, r"C2 137 fb${}^{-1}$" , rotation=0, size=7,clip_on=False)
-ax.text(100, 10**0.31, r"A6 3000 fb${}^{-1}$", rotation=0, size=7,clip_on=False)
+ax.text(100, 10**0.20, r"A2 36 fb${}^{-1}$" , rotation=30, size=7,clip_on=False)
+ax.text(140, 10**0.40, r"A2 139 fb${}^{-1}$" , rotation=27, size=7,clip_on=False)
+ax.text(160, 10**0.13, r"C2 137 fb${}^{-1}$" , rotation=45, size=7,clip_on=False)
+ax.text(130, 10**1.02, r"A6 3000 fb${}^{-1}$", rotation=-4, size=7,clip_on=False)
 # ax.text(200, 10**-0.0, r"--Angles and placement to be fixed too.", rotation=0, size=7,clip_on=False)
 # https://cms-results.web.cern.ch/cms-results/public-results/publications/SUS-18-004/index.html
 # ax.text(115, -0.50, r"Add Compressed RJR?", rotation=-14, size=7,clip_on=False)
@@ -254,8 +254,8 @@ ax.text(345, 10**(1.20-2*0.11), r"95% CL", size=11,clip_on=False, ha="right")
 
 ax.text(350, 10**-0.48,       r"Pure Higgsino LSP", size=9,clip_on=False, ha="right")
 
-ax.text(190, 10**0.6,       r"Soft Leptons", size=11,clip_on=False, fontweight="bold")
-ax.text(130, 10**0.05,       r"Soft Track", size=11,clip_on=False, fontweight="bold")
+ax.text(220, 10**0.4,       r"Soft Leptons", size=11,clip_on=False, fontweight="bold")
+ax.text(190, 10**-0.2,       r"Soft Displaced Track", size=11,clip_on=False, fontweight="bold")
 ax.text(100, 10**-0.71,       r"Disappearing Track", size=11,clip_on=False, fontweight="bold")
 
 ax.text(60, 10**-0.71,       r"LEP", size=11,clip_on=False, fontweight="bold")
