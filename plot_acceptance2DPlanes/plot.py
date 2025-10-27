@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 
+from pathlib import Path
+from matplotlib.lines import Line2D
+from matplotlib.patches import Rectangle, Circle
+
 from matplotlib_tufte import *
 setup()
 
 import matplotlib.font_manager as fm
-fm.fontManager.addfont("../fonts/MyriadPro-Regular.ttf")
-fm.fontManager.addfont("../fonts/MyriadPro-Bold.ttf")
+fm.fontManager.addfont(Path(__file__).parent.joinpath("../fonts/MyriadPro-Regular.ttf").resolve())
+fm.fontManager.addfont(Path(__file__).parent.joinpath("../fonts/MyriadPro-Bold.ttf").resolve())
 from matplotlib import rcParams
 rcParams['font.family'] = 'Myriad Pro'
 
@@ -58,24 +62,24 @@ results = {
     "atlas_run2_ee_selectron_300_1": {"label":r"A2 Disp $ee$ (300,1)","etrig":238/870, "axe":52.2/870, "xslimit":3/36000}, #fake
     "atlas_run2_ee_selectron_500_0.1": {"label":r"A2 Disp $ee$ (500,0.1)","etrig":66.3/93.6, "axe":17.7/93.6, "xslimit":3/36000}, #fake
 
-    "atlas_run2_mumu_smuon_500_0.01": {"label":r"A2 Disp $\mu\mu$ (500,0.01)","etrig":66.3/93.6, "axe":0.02/3.28, "xslimit":3.28e-3}, 
-    "atlas_run2_mumu_smuon_500_0.1": {"label":r"A2 Disp $\mu\mu$ (500,0.1)","etrig":66.3/93.6, "axe":13.6/93.6, "xslimit":1.49e-04}, 
-    "atlas_run2_mumu_smuon_500_10": {"label":r"A2 Disp $\mu\mu$ (500,10)","etrig":0.5, "axe":4.969/93.6, "xslimit":0.00043}, # ditrack dedx
+    "atlas_run2_mumu_smuon_500_0.01": {"label":r"(0.01 ns)","etrig":66.3/93.6, "axe":0.02/3.28, "xslimit":3.28e-3}, 
+    "atlas_run2_mumu_smuon_500_0.1": {"label":r"(0.1 ns)","etrig":66.3/93.6, "axe":13.6/93.6, "xslimit":1.49e-04}, 
+    "atlas_run2_mumu_smuon_500_10": {"label":r"(10 ns)","etrig":0.5, "axe":4.969/93.6, "xslimit":0.00043}, # ditrack dedx
 
-    "atlas_run2_micro_mumu_smuon_500_0.01": {"label":r"+µDisp $\mu\mu$","etrig":48.2/93.6, "axe":6.7/93.6, "xslimit":0.331e-3},
+    "atlas_run2_micro_mumu_smuon_500_0.01": {"label":r"(0.01 ns)","etrig":48.2/93.6, "axe":6.7/93.6, "xslimit":0.331e-3},
     # 0.13*0.63,
     #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2020-09/
     # Taking A*e for 500, 10ps. Assuming everything is in region 1. Then can use the model ind limits to calculate XS. 
     # 0.0237 fb / (6.7/93.6) = 0.3310925373 fb
 
     #HSCP CMS
-    "cms_run2_smuon_500_hscp": {"label":r"CMS (500,Stable)","etrig":0.86, "axe":0.6, "xslimit":1.8e-4},
+    "cms_run2_smuon_500_hscp": {"label":r"(Stable)","etrig":0.86, "axe":0.6, "xslimit":1.8e-4},
 
 
     # CMS full run2: https://cms-results.web.cern.ch/cms-results/public-results/publications/EXO-18-003/index.html
     # says trig eff somewhere between 20-40%
-    "cms_run2_mumu_500_0.3": {"label":r"CMS Disp $\mu\mu$","etrig":0.4, "axe":.26, "xslimit":0.0002172},
-    "cms_run2_mumu_500_3":   {"label":r"","etrig":0.4, "axe":0.23,   "xslimit":0.00017812},
+    "cms_run2_mumu_500_0.3": {"label":r"(0.3 cm)","etrig":0.4, "axe":.26, "xslimit":0.0002172},
+    "cms_run2_mumu_500_3":   {"label":r"(3 cm)","etrig":0.4, "axe":0.23,   "xslimit":0.00017812},
 
     "cms_run2_mumu_500_0.1": {"label":r"","etrig":0.4, "axe":.19,   "xslimit":0.00038671},
     "cms_run2_mumu_500_1":   {"label":r"","etrig":0.4, "axe":.33,   "xslimit":0.00015616},
@@ -94,12 +98,12 @@ results = {
 
 
     #  let's compare at 3cm, 0.1ns, 1 TeV, large dm.
-    "atlas_36_dvmet": {"label":r"+R2","etrig":717/827, "axe":442/827,"xslimit":1.5e-4}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
+    "atlas_36_dvmet": {"label":r"","etrig":717/827, "axe":442/827,"xslimit":1.5e-4}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
 
-    "atlas_137_dvmet": {"label":r"A2 137 DV+MET","etrig":0.99, "axe":0.255,"xslimit":9.539E-05}, #https://www.uvic.ca/science/physics/current/masters/theses/index.php
+    "atlas_137_dvmet": {"label":r"DV+MET","etrig":0.99, "axe":0.255,"xslimit":9.539E-05}, #https://www.uvic.ca/science/physics/current/masters/theses/index.php
     # backtracked from yields. Thesis says 40% A*e. But yield numbers say 2.55 events in this dataset at 2.6 TeV. There should be 10 events at 2.6 TeV. -> A*e 0.255
 
-    "atlas_137_dvjets_rpv": {"label":r"A2 DV+Jets","etrig":0.966, "axe":0.577,"xslimit":0.040096/1000}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-13/tabaux_05.png
+    "atlas_137_dvjets_rpv": {"label":r"DV+Jets","etrig":0.966, "axe":0.577,"xslimit":0.040096/1000}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-13/tabaux_05.png
     # 1500,0.1
 
 
@@ -115,8 +119,8 @@ results = {
     "atlas_1_dt": {"label":r"A1 DT","etrig":0.902, "axe":0.068,"xslimit":3.5e-2},
     # 1 ns
     "atlas_20_dt": {"label":r"+20 ifb","etrig":0.088, "axe":0.00087,"xslimit":1},
-    "atlas_36_dt": {"label":r"+R2","etrig":0.2, "axe":0.0038,"xslimit":0.11},
-    "atlas_139_dt": {"label":r"+Full R2","etrig":770/2800, "axe":8.6/2800,"xslimit":0.037},
+    "atlas_36_dt": {"label":r"","etrig":0.2, "axe":0.0038,"xslimit":0.11},
+    "atlas_139_dt": {"label":r"","etrig":770/2800, "axe":8.6/2800,"xslimit":0.037},
 
     # CMS staus https://arxiv.org/pdf/1807.02048
     # "cms_stau_"
@@ -127,12 +131,12 @@ results = {
     "atlas_140_selectron_200_dm50_bdt": {"label":r"A2 $\tilde{e} $\Delta m=50 GeV$ BDT","etrig":0.044, "axe":0.0019,"xslimit":0.0304},
 
     # ATLAS prompt sleptons https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/HMBS-2024-64/
-    "atlas_140_promptsmuon_200_dm50_bdt": {"label":r"A2 $\tilde{\mu}$ $\Delta m=50$ GeV BDT","etrig":371.9/8488, "axe":17.2/8488,"xslimit":0.0181},
-    "atlas_140_promptsmuon_200_dm20_bdt": {"label":r"$\Delta m=20$ GeV","etrig":376.4/8488, "axe":21.9/8488,"xslimit":0.0116},
-    "atlas_140_promptsmuon_200_dm5_bdt" : {"label":r"$\Delta m=5$ GeV", "etrig":358.1/8486.8, "axe":34.4/8486.8,"xslimit":0.00749},
+    "atlas_140_promptsmuon_200_dm50_bdt": {"label":r"(50 GeV)","etrig":371.9/8488, "axe":17.2/8488,"xslimit":0.0181},
+    "atlas_140_promptsmuon_200_dm20_bdt": {"label":r"(20 GeV)","etrig":376.4/8488, "axe":21.9/8488,"xslimit":0.0116},
+    "atlas_140_promptsmuon_200_dm5_bdt" : {"label":r"(5 GeV)", "etrig":358.1/8486.8, "axe":34.4/8486.8,"xslimit":0.00749},
 
     # https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-32/
-    "atlas_140_promptsmuon_bulk": {"label":r"$\Delta m=$Bulk","etrig":0.70, "axe":0.25,"xslimit":0.0006},
+    "atlas_140_promptsmuon_bulk": {"label":r"(Bulk)","etrig":0.70, "axe":0.25,"xslimit":0.0006},
 
 
 }
@@ -156,7 +160,7 @@ i=0
 
 
 # ax.plot( [0.8], [0.9], "o", label="Run-2 X Ana")
-doFillBetween([0,1], [0,1], axis=ax1, dy=0.99, alpha=0.2, n=100)
+doFillBetween([0,1], [0,1], axis=ax1, dy=0.01, alpha=0.2, n=50, log=False,clip_on=False)
 ax1.plot([0,1], [0,1], c="k",lw=0.5)
 
 # perfect analysis would exclude 3 events for a given dataset.
@@ -226,8 +230,8 @@ listtoplot = [
 
     "atlas_137_dvjets_rpv",
 
-    "atlas_36_rpvmultijet",
-    "atlas_140_rpvmultijet",
+    # "atlas_36_rpvmultijet",
+    # "atlas_140_rpvmultijet",
 
     # different masses of normal dijet. see TLA turn on
     
@@ -256,7 +260,7 @@ arrows = [
     # ("atlas_20_dvmet","atlas_36_dvmet",""),
     ("atlas_36_dvmet","atlas_137_dvmet",""),
     ("atlas_run2_mumu_smuon_500_0.01", "atlas_run2_micro_mumu_smuon_500_0.01",""),
-    ("atlas_36_rpvmultijet","atlas_140_rpvmultijet",""),
+    # ("atlas_36_rpvmultijet","atlas_140_rpvmultijet",""),
     ("atlas_36_dt","atlas_139_dt",""),
 ]
 
@@ -272,6 +276,27 @@ lines = [
     ("atlas_140_promptsmuon_200_dm5_bdt" ,"atlas_140_promptsmuon_bulk",""),
 
 ]
+
+
+
+#legend
+
+
+# Create custom legend handles (no data needed)
+custom_handles = [
+    Line2D([0], [0], label='Disappearing Track', marker='o', mfc=colormap["dt"], lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
+    Line2D([0], [0], label=r'Prompt $\tilde{\mu}$ ($\Delta m$)', marker='o', mfc=colormap["promptsmuon"], lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
+    Line2D([0], [0], label=r'Long-Lived $\tilde{\mu}$ ($m_{\tilde{\mu}}=500$ GeV, $\tau_{\tilde{\mu}}$)', marker='o', mfc=colormap["mumu"], lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
+    Line2D([0], [0], label=r'Displaced Vertex', marker='o', mfc=colormap["dvmet"], lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
+
+    Line2D([0], [0], label='ATLAS', marker='o', mfc='none', lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
+    Line2D([0], [0], label='CMS', marker='s', mfc='none', lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
+    Rectangle((0, 0), 0.5, 0.5, label='Partial Run-2', fill=False, hatch='//////', ec=None)
+]
+# Add the manual legend
+plt.legend(handles=custom_handles, loc='upper right', fontsize=9, handler_map={Rectangle: HandlerRect()})
+
+
 
 
 

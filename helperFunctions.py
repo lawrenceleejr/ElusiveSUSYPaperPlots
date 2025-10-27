@@ -1,6 +1,9 @@
 import numpy as np
 import seaborn as sns
 import ROOT
+from matplotlib.legend_handler import HandlerPatch
+
+from matplotlib.patches import Rectangle, Circle
 
 
 def doFillBetween(x,y,axis,n=10,dy=1,color="k",alpha=0.03,log=True,clip_on=True):
@@ -13,9 +16,9 @@ def doFillBetween(x,y,axis,n=10,dy=1,color="k",alpha=0.03,log=True,clip_on=True)
         if log:
             axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) ,  clip_on=clip_on)
             tmpy = [thing*dy for thing in tmpy]
-        # else:
-        # 	axis.fill_between(x,tmpy, [thing*dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
-        # 	tmpy = [thing*dy for thing in tmpy]
+        else:
+        	axis.fill_between(x,tmpy, [thing-dy for thing in tmpy],linewidth=0,color=colorpal[i],alpha = alpha*((n-i)/float(n) ) )
+        	tmpy = [thing-dy for thing in tmpy]
 
 
 def getArraysFromTGraph(tgraph):
@@ -96,3 +99,21 @@ def breathe_logx(ax):
     ax.spines.left.set_position(('data', m0))
 
 
+
+
+
+
+# Custom handler to scale rectangle in legend
+class HandlerRect(HandlerPatch):
+    def create_artists(self, legend, orig_handle,
+                       xdescent, ydescent, width, height, fontsize, trans):
+        # scale rectangle to desired size
+        patch = Rectangle([xdescent+5, ydescent],
+                            8,8,
+                        #   width, height,
+                          facecolor=orig_handle.get_facecolor(),
+                          edgecolor=orig_handle.get_edgecolor(),
+                          lw=0,#orig_handle.get_linewidth(),
+                          hatch=orig_handle.get_hatch(),
+                          transform=trans)
+        return [patch]

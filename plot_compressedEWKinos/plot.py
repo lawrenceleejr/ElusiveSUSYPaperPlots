@@ -115,6 +115,9 @@ data["soft2l_atlas_hl_3000_higgsino"] = add_box_endpoints_y(data["soft2l_atlas_h
 
 
 
+data["rjr_cms_r2_138_higgsino"] = np.genfromtxt("data/rjr_cms_r2_138_higgsino.txt", delimiter=",", skip_header=1, names=["x","y"])
+data["rjr_cms_r2_138_higgsino"].sort(order="y")
+# data["rjr_cms_r2_138_higgsino"] = add_box_endpoints_y(data["rjr_cms_r2_138_higgsino"])
 
 
 # data["displaced_"] = np.genfromtxt("data/GLUINOGLUINOX/arXiv_1908.04722/HEPData-ins1749379-v1-T1tttt_observed_mass_limit_curve.csv", delimiter=",", skip_header=11, names=["x","y"])
@@ -175,8 +178,11 @@ ax.text(170, 10**-0.51, r"A6 3000 fb${}^{-1}$", rotation=-9, size=7,clip_on=Fals
 
 i=2
 
+ax.fill(data["rjr_cms_r2_138_higgsino"]['x'], (data["rjr_cms_r2_138_higgsino"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
+
 
 ax.fill(data["soft2l_atlas_r2_36_higgsino"]['x']-data["soft2l_atlas_r2_36_higgsino"]['y'], (data["soft2l_atlas_r2_36_higgsino"]['y']/2.), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
+# ax.fill(data["soft2l_atlas_r2_139_higgsino"]['x'], (data["soft2l_atlas_r2_139_higgsino"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
 ax.fill(data["soft2l_atlas_r2_139_higgsino"]['x']-data["soft2l_atlas_r2_139_higgsino"]['y'], (data["soft2l_atlas_r2_139_higgsino"]['y']/2.), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
 ax.fill(data["soft2l_cms_r2_137_higgsino"]['x']-data["soft2l_cms_r2_137_higgsino"]['y'], (data["soft2l_cms_r2_137_higgsino"]['y']/2.), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
 
@@ -185,11 +191,12 @@ ax.fill(data["soft2l_cms_r2_137_higgsino"]['x']-data["soft2l_cms_r2_137_higgsino
 ax.plot(data["soft2l_atlas_hl_3000_higgsino"]['x'], (data["soft2l_atlas_hl_3000_higgsino"]['y']/2.), "--", color=colors[i], alpha=1, lw=1, zorder=0)
 
 
+ax.text(115, 10**0.70, r"C2 138 fb${}^{-1}$ RJR" , rotation=0, size=7,clip_on=False)
 
 ax.text(100, 10**0.20, r"A2 36 fb${}^{-1}$" , rotation=30, size=7,clip_on=False)
-ax.text(140, 10**0.40, r"A2 139 fb${}^{-1}$" , rotation=27, size=7,clip_on=False)
-ax.text(160, 10**0.13, r"C2 137 fb${}^{-1}$" , rotation=45, size=7,clip_on=False)
-ax.text(130, 10**1.02, r"A6 3000 fb${}^{-1}$", rotation=-4, size=7,clip_on=False)
+ax.text(140, 10**0.43, r"A2 139 fb${}^{-1}$" , rotation=29, size=7,clip_on=False)
+ax.text(160, 10**0.12, r"C2 137 fb${}^{-1}$" , rotation=45, size=7,clip_on=False)
+ax.text(180, 10**0.12, r"A6 3000 fb${}^{-1}$", rotation=9, size=7,clip_on=False)
 # ax.text(200, 10**-0.0, r"--Angles and placement to be fixed too.", rotation=0, size=7,clip_on=False)
 # https://cms-results.web.cern.ch/cms-results/public-results/publications/SUS-18-004/index.html
 # ax.text(115, -0.50, r"Add Compressed RJR?", rotation=-14, size=7,clip_on=False)
@@ -233,6 +240,7 @@ ax.set_ylabel(r'$\Delta m (\tilde{\chi}_1^\pm,\tilde{\chi}_1^0)$ [GeV]',)
 # ax.set_xlim([2e-6,2e4])
 # ax2.set_xlim([1.1e13,9e18])
 ax.set_yscale('log',base=10)
+# ax.set_ylim([10**-0.75,10**2.25])
 ax.set_ylim([10**-0.75,10**1.25])
 # ax.set_ylim([-0.75,1.25])
 ax.set_xlim([50,350])
