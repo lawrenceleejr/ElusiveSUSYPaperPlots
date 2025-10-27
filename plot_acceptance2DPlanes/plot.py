@@ -4,6 +4,10 @@ from pathlib import Path
 from matplotlib.lines import Line2D
 from matplotlib.patches import Rectangle, Circle
 
+from matplotlib.offsetbox import AnnotationBbox, AuxTransformBox
+import matplotlib.transforms as mtransforms
+
+
 from matplotlib_tufte import *
 setup()
 
@@ -21,6 +25,8 @@ from matplotlib.patches import ConnectionPatch
 
 import ROOT
 import seaborn as sns
+
+
 
 
 import sys
@@ -54,15 +60,12 @@ ax2.set_yscale('log')
 
 
 
-
-
-
 results = {
     #xslimit in pb
     "atlas_run2_ee_selectron_300_1": {"label":r"A2 Disp $ee$ (300,1)","etrig":238/870, "axe":52.2/870, "xslimit":3/36000}, #fake
     "atlas_run2_ee_selectron_500_0.1": {"label":r"A2 Disp $ee$ (500,0.1)","etrig":66.3/93.6, "axe":17.7/93.6, "xslimit":3/36000}, #fake
 
-    "atlas_run2_mumu_smuon_500_0.01": {"label":r"(0.01 ns)","etrig":66.3/93.6, "axe":0.02/3.28, "xslimit":3.28e-3}, 
+    "atlas_run2_mumu_smuon_500_0.01": {"label":r"","etrig":66.3/93.6, "axe":0.02/3.28, "xslimit":3.28e-3}, 
     "atlas_run2_mumu_smuon_500_0.1": {"label":r"(0.1 ns)","etrig":66.3/93.6, "axe":13.6/93.6, "xslimit":1.49e-04}, 
     "atlas_run2_mumu_smuon_500_10": {"label":r"(10 ns)","etrig":0.5, "axe":4.969/93.6, "xslimit":0.00043}, # ditrack dedx
 
@@ -78,8 +81,8 @@ results = {
 
     # CMS full run2: https://cms-results.web.cern.ch/cms-results/public-results/publications/EXO-18-003/index.html
     # says trig eff somewhere between 20-40%
-    "cms_run2_mumu_500_0.3": {"label":r"(0.3 cm)","etrig":0.4, "axe":.26, "xslimit":0.0002172},
-    "cms_run2_mumu_500_3":   {"label":r"(3 cm)","etrig":0.4, "axe":0.23,   "xslimit":0.00017812},
+    "cms_run2_mumu_500_0.3": {"label":r"","etrig":0.4, "axe":.26, "xslimit":0.0002172},
+    "cms_run2_mumu_500_3":   {"label":r"","etrig":0.4, "axe":0.23,   "xslimit":0.00017812},
 
     "cms_run2_mumu_500_0.1": {"label":r"","etrig":0.4, "axe":.19,   "xslimit":0.00038671},
     "cms_run2_mumu_500_1":   {"label":r"","etrig":0.4, "axe":.33,   "xslimit":0.00015616},
@@ -107,7 +110,7 @@ results = {
     # 1500,0.1
 
 
-    "cms_137_dijet": {"label":r"C2 Dijet","etrig":1, "axe":0.5,"xslimit":2e-2/0.5}, 
+    "cms_137_dijet": {"label":r"Dijet","etrig":1, "axe":0.5,"xslimit":2e-2/0.5}, 
 
 
     "atlas_36_rpvmultijet": {"label":r"A36 RPV Jets","etrig":0.997, "axe":3.9/99.8,"xslimit":1.5e-2}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-22/
@@ -160,7 +163,7 @@ i=0
 
 
 # ax.plot( [0.8], [0.9], "o", label="Run-2 X Ana")
-doFillBetween([0,1], [0,1], axis=ax1, dy=0.01, alpha=0.2, n=50, log=False,clip_on=False)
+doFillBetween([0,1], [0,1], axis=ax1, dy=0.005, alpha=0.5, n=30, log=False,clip_on=False)
 ax1.plot([0,1], [0,1], c="k",lw=0.5)
 
 # perfect analysis would exclude 3 events for a given dataset.
@@ -274,6 +277,7 @@ lines = [
     ("atlas_140_promptsmuon_200_dm50_bdt","atlas_140_promptsmuon_200_dm20_bdt",""),
     ("atlas_140_promptsmuon_200_dm20_bdt","atlas_140_promptsmuon_200_dm5_bdt",""),
     ("atlas_140_promptsmuon_200_dm5_bdt" ,"atlas_140_promptsmuon_bulk",""),
+    ("atlas_140_promptsmuon_bulk","cms_run2_smuon_500_hscp",""),
 
 ]
 
@@ -289,13 +293,14 @@ custom_handles = [
     Line2D([0], [0], label=r'Long-Lived $\tilde{\mu}$ ($m_{\tilde{\mu}}=500$ GeV, $\tau_{\tilde{\mu}}$)', marker='o', mfc=colormap["mumu"], lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
     Line2D([0], [0], label=r'Displaced Vertex', marker='o', mfc=colormap["dvmet"], lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
 
-    Line2D([0], [0], label='ATLAS', marker='o', mfc='none', lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
-    Line2D([0], [0], label='CMS', marker='s', mfc='none', lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
-    Rectangle((0, 0), 0.5, 0.5, label='Partial Run-2', fill=False, hatch='//////', ec=None)
+    Line2D([0], [0], label='ATLAS Collaboration', marker='o', mfc='none', lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
+    Line2D([0], [0], label='CMS Collaboration', marker='s', mfc='none', lw=0, ms=8, mew=0.5, mec="k", clip_on=False, zorder=100),
+    Rectangle((0, 0), 0.5, 0.5, label='Partial Run-2 Result', fill=False, hatch='//////', ec=None)
 ]
 # Add the manual legend
-plt.legend(handles=custom_handles, loc='upper right', fontsize=9, handler_map={Rectangle: HandlerRect()})
+ax2.legend(handles=custom_handles,  bbox_to_anchor=(0.55, 0.4), fontsize=9, handler_map={Rectangle: HandlerRect()}, frameon=True)
 
+ax1.legend(handles=custom_handles,  bbox_to_anchor=(0.5, 0.5), fontsize=9, handler_map={Rectangle: HandlerRect()})
 
 
 
@@ -352,6 +357,38 @@ for i,key in enumerate(listtoplot):
     ax1.plot( [results[key]["axe"]], [results[key]["etrig"]], marker, label=results[key]["label"], color=color, mew=0.5, mec="k", clip_on=False, zorder=100)
     ax2.plot( [results[key]["axe"]], [results[key]["xslimit"]], marker, label=results[key]["label"], color=color, mew=0.5, mec="k", clip_on=False, zorder=100)
 
+    if "_36_" in key:
+        print("Adding hatch for ", key, results[key]["axe"],results[key]["etrig"])
+        # circ1 = Circle([results[key]["axe"],results[key]["etrig"]], radius=0.01, facecolor='white', edgecolor='black', hatch='//////',transform=ax1.transAxes)
+        # ax1.add_patch(circ1)
+        def add_hatched_circle(ax,x,y, color):
+            # Create a circle in display coordinates with radius in pixels
+            bbox = ax.get_window_extent()
+            height_pixels = bbox.height
+            radius_display = 590 * height_pixels   # in display (pixel) units
+            disp_trans = mtransforms.Affine2D().scale(1 / ax.figure.dpi, 1 / ax.figure.dpi)  # inches per pixel
+            box = AuxTransformBox(disp_trans)
+            # box = AuxTransformBox(ax.transAxes)
+            circ2 = Circle((0,0), radius=radius_display / ax.figure.dpi, facecolor=color, edgecolor='black', lw=0.5, hatch='////////',transform=ax.transAxes, clip_on=False)
+            box.add_artist(circ2)
+
+            # AnnotationBbox puts that box at the data coordinate (xi, yi).
+            ab = AnnotationBbox(box,
+                                (x,y),           # position in data coords
+                                xycoords='data',
+                                frameon=False,
+                                box_alignment=(0.5, 0.5),
+                                pad=0,
+                                zorder=1e3,clip_on=False)
+            ax.add_artist(ab)
+            ax.set_clip_on(False)
+            ax.patch.set_clip_on(False)
+            # ax.add_patch(circ2)
+
+        add_hatched_circle(ax1,results[key]["axe"],results[key]["etrig"], color)
+        add_hatched_circle(ax2,results[key]["axe"],results[key]["xslimit"], color)
+
+
 # Run-2 ATLAS Displaced Leptons (ee channel, selectron (300,1))
 # ax.plot( [results["atlas_run2_ee_selectron_300_1"]["axe"]], [results["atlas_run2_ee_selectron_300_1"]["etrig"]], "o", label=r"Run-2 Displaced $ee$, $m, \tau = (300 GeV, 1 ns)$ ")
 # ax.plot( [results["atlas_run2_ee_selectron_500_0.1"]["axe"]], [results["atlas_run2_ee_selectron_500_0.1"]["etrig"]], "o", label=r"Run-2 Displaced $ee$, $m, \tau = (500 GeV, 0.1 ns)$ ")
@@ -376,23 +413,24 @@ for i,key in enumerate(listtoplot):
 
 maxxvalue = 1
 
-for i,line in enumerate(ax2.get_lines()):
-    label = line.get_label()
-    if label.startswith('_'):  # Ignore default/empty labels
-        continue
-    xdata, ydata = line.get_data()
-    if xdata[0]<0.7:
-        ha="left"
-        xoffset = 5
-    else:
-        ha="right"
-        xoffset = -5
-    ax2.annotate(label,
-                xy=(xdata[0], ydata[0]),
-                xytext=(xoffset, 5),
-                textcoords='offset points',
-                fontsize=9,
-                ha=ha, zorder=100)
+for ax in [ax1, ax2]:
+    for i,line in enumerate(ax.get_lines()):
+        label = line.get_label()
+        if label.startswith('_'):  # Ignore default/empty labels
+            continue
+        xdata, ydata = line.get_data()
+        if xdata[0]<0.7:
+            ha="left"
+            xoffset = 5
+        else:
+            ha="right"
+            xoffset = -5
+        ax.annotate(label,
+                    xy=(xdata[0], ydata[0]),
+                    xytext=(xoffset, 5),
+                    textcoords='offset points',
+                    fontsize=9,
+                    ha=ha, zorder=100)
 
 
 ax1.set_xlabel(r'$A\times\varepsilon$',)
@@ -402,7 +440,7 @@ ax1.set_xlim([-0.00,maxxvalue])
 
 ax2.set_xlabel(r'$A\times\varepsilon$',)
 ax2.set_ylabel(r'95% CL Excluded Cross Section [pb]',)
-ax2.set_ylim([1e-5,0.1])
+ax2.set_ylim([1e-5,0.108])
 ax2.set_xlim([-0.00,maxxvalue])
 
 
@@ -444,9 +482,9 @@ angle_deg = np.degrees(angle_rad)
 # doFillBetween([0,1], [0,1], axis=ax1, dy=0.99, alpha=0.5, n=100)
 
 
-ax1.text(0.6, 0.25 , r"SUSY Analysis Features", size=13,clip_on=False, fontweight="bold")
-ax1.text(0.6, 0.25-0.06, r"Various Assumptions", size=13,clip_on=False)
-ax1.text(0.6, 0.25-0.12, r"Run-1/2/3 LHC", size=13,clip_on=False)
+# ax1.text(0.6, 0.25 , r"SUSY Analysis Features", size=13,clip_on=False, fontweight="bold")
+# ax1.text(0.6, 0.25-0.06, r"Various Assumptions", size=13,clip_on=False)
+# ax1.text(0.6, 0.25-0.12, r"Run-1/2/3 LHC", size=13,clip_on=False)
 
 
 
