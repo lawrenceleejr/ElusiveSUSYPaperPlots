@@ -172,7 +172,7 @@ ax1.plot([0,1], [0,1], c="k",lw=0.5)
 # 3/lumi = xs limit
 x = np.linspace(0.001,1,1000)
 for lumibenchmark in [36,139]: #0.1 for test
-    doFillBetween(x, 3/(lumibenchmark*1000*x), axis=ax2, dy=0.994, alpha=0.2, n=200, clip_on=False)
+    doFillBetween(x, 3/(lumibenchmark*1000*x), axis=ax2, dy=0.97, alpha=0.5, n=20, clip_on=False)
     # doFillBetween([0,1], [3/(lumibenchmark*1000),3/(lumibenchmark*1000)], axis=ax2, dy=0.994, alpha=0.2, n=200)
 
     ax2.plot(x, 3/(lumibenchmark*1000*x),c="k",lw=0.5)
