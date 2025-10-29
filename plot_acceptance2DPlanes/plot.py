@@ -65,18 +65,18 @@ results = {
     "atlas_run2_ee_selectron_300_1": {"label":r"A2 Disp $ee$ (300,1)","etrig":238/870, "axe":52.2/870, "xslimit":3/36000}, #fake
     "atlas_run2_ee_selectron_500_0.1": {"label":r"A2 Disp $ee$ (500,0.1)","etrig":66.3/93.6, "axe":17.7/93.6, "xslimit":3/36000}, #fake
 
-    "atlas_run2_mumu_smuon_500_0.01": {"label":r"","etrig":66.3/93.6, "axe":0.02/3.28, "xslimit":3.28e-3}, 
+    "atlas_run2_mumu_smuon_500_0.01": {"label":r"","labeltrigplot":r"(0.01 ns)","etrig":66.3/93.6, "axe":0.02/3.28, "xslimit":3.28e-3}, 
     "atlas_run2_mumu_smuon_500_0.1": {"label":r"(0.1 ns)","etrig":66.3/93.6, "axe":13.6/93.6, "xslimit":1.49e-04}, 
-    "atlas_run2_mumu_smuon_500_10": {"label":r"(10 ns)","etrig":0.5, "axe":4.969/93.6, "xslimit":0.00043}, # ditrack dedx
+    "atlas_run2_mumu_smuon_500_10": {"label":r"(10 ns)","labeltrigplot":r"(10 ns)  ","etrig":0.5, "axe":4.969/93.6, "xslimit":0.00043}, # ditrack dedx
 
-    "atlas_run2_micro_mumu_smuon_500_0.01": {"label":r"(0.01 ns)","etrig":48.2/93.6, "axe":6.7/93.6, "xslimit":0.331e-3},
+    "atlas_run2_micro_mumu_smuon_500_0.01": {"label":r"(0.01 ns)","labeltrigplot":r"","etrig":48.2/93.6, "axe":6.7/93.6, "xslimit":0.331e-3},
     # 0.13*0.63,
     #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2020-09/
     # Taking A*e for 500, 10ps. Assuming everything is in region 1. Then can use the model ind limits to calculate XS. 
     # 0.0237 fb / (6.7/93.6) = 0.3310925373 fb
 
     #HSCP CMS
-    "cms_run2_smuon_500_hscp": {"label":r"(Stable)","etrig":0.86, "axe":0.6, "xslimit":1.8e-4},
+    "cms_run2_mumu_500_hscp": {"label":r"(Stable)","etrig":0.86, "axe":0.6, "xslimit":1.8e-4},
 
 
     # CMS full run2: https://cms-results.web.cern.ch/cms-results/public-results/publications/EXO-18-003/index.html
@@ -129,31 +129,40 @@ results = {
     # "cms_stau_"
 
     # ATLAS prompt sleptons https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/HMBS-2024-64/
-    "atlas_140_selectron_200_dm5_bdt" : {"label":r"A2 $\tilde{e} $\Delta m=5 GeV$ BDT","etrig":0.04, "axe":17.6/8486.8,"xslimit":0.00911},
-    "atlas_140_selectron_200_dm20_bdt": {"label":r"A2 $\tilde{e} $\Delta m=20 GeV$ BDT","etrig":0.044, "axe":0.0018,"xslimit":0.0167},
-    "atlas_140_selectron_200_dm50_bdt": {"label":r"A2 $\tilde{e} $\Delta m=50 GeV$ BDT","etrig":0.044, "axe":0.0019,"xslimit":0.0304},
+    # "atlas_140_selectron_200_dm5_bdt" : {"label":r"A2 $\tilde{e} $\Delta m=5 GeV$ BDT","etrig":0.04, "axe":17.6/8486.8,"xslimit":0.00911},
+    # "atlas_140_selectron_200_dm20_bdt": {"label":r"A2 $\tilde{e} $\Delta m=20 GeV$ BDT","etrig":0.044, "axe":0.0018,"xslimit":0.0167},
+    # "atlas_140_selectron_200_dm50_bdt": {"label":r"A2 $\tilde{e} $\Delta m=50 GeV$ BDT","etrig":0.044, "axe":0.0019,"xslimit":0.0304},
 
     # ATLAS prompt sleptons https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/HMBS-2024-64/
-    "atlas_140_promptsmuon_200_dm50_bdt": {"label":r"(50 GeV)","etrig":371.9/8488, "axe":17.2/8488,"xslimit":0.0181},
-    "atlas_140_promptsmuon_200_dm20_bdt": {"label":r"(20 GeV)","etrig":376.4/8488, "axe":21.9/8488,"xslimit":0.0116},
-    "atlas_140_promptsmuon_200_dm5_bdt" : {"label":r"(5 GeV)", "etrig":358.1/8486.8, "axe":34.4/8486.8,"xslimit":0.00749},
+    "atlas_140_promptsmuon_200_dm50_bdt": {"label":r"(50 GeV)","labeltrigplot":r"(≤50 GeV)","etrig":371.9/8488, "axe":17.2/8488,"xslimit":0.01108},# this XS limit from the XS twiki for 260 GeV.
+    # "atlas_140_promptsmuon_200_dm20_bdt": {"label":r"(20 GeV)","labeltrigplot":r"","etrig":376.4/8488, "axe":21.9/8488,"xslimit":0.0116},
+    "atlas_140_promptsmuon_200_dm5_bdt" : {"label":r"(5 GeV)", "labeltrigplot":r"","etrig":358.1/8486.8, "axe":34.4/8486.8,"xslimit":0.01514}, # this XS limit from the XS twiki for 235~240 GeV.
 
     # https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-32/
-    "atlas_140_promptsmuon_bulk": {"label":r"(Bulk)","etrig":0.70, "axe":0.25,"xslimit":0.0006},
+    "atlas_140_promptsmuon_bulk": {"label":r"(Bulk)","labeltrigplot":r"(Bulk)  ","etrig":0.70, "axe":0.25,"xslimit":0.0006},
 
 
 }
 
 
-colormap = {
-    "dt": colors[0],
-    "rpvmultijet": colors[1],
-    "dijet": colors[2],
-    "dvmet": colors[3],
-    "dvjets": colors[3],
-    "mumu": colors[4],
-    "promptsmuon": "k",
+# colormap = {
+#     "dt": colors[0],
+#     "rpvmultijet": colors[1],
+#     "dijet": colors[2],
+#     "dvmet": colors[3],
+#     "dvjets": colors[3],
+#     "mumu": colors[4],
+#     "promptsmuon": "k",
+# }
 
+colormap = {
+    "dt": coolorPalette[0],
+    "promptsmuon": coolorPalette[3],
+    "mumu": coolorPalette[6],
+    "dvmet": coolorPalette[9],
+    "dvjets": coolorPalette[9],
+    # "rpvmultijet": coolorPalette[2],
+    "dijet": coolorPalette[-1],
 }
 
 ### Actual Curves:
@@ -163,8 +172,11 @@ i=0
 
 
 # ax.plot( [0.8], [0.9], "o", label="Run-2 X Ana")
-doFillBetween([0,1], [0,1], axis=ax1, dy=0.005, alpha=0.5, n=30, log=False,clip_on=False)
+doFillBetween([0,1], [0,1], axis=ax1, dy=0.005, alpha=0.4, n=30, log=False,clip_on=False)
 ax1.plot([0,1], [0,1], c="k",lw=0.5)
+# ax1.text(0.7, 0.7 , r"$A\times\varepsilon=\varepsilon_{\mathrm{trigger}}$", size=9,clip_on=False, ha="right")
+ax1.text(0.6, 0.64 , r"Trigger Limited Searches Near Diagonal", rotation=31, size=9,clip_on=False, ha="left")
+
 
 # perfect analysis would exclude 3 events for a given dataset.
 # for 139 ifb, this corresponds to a cross section of 3/139 fb
@@ -202,7 +214,7 @@ listtoplot = [
 
     "atlas_run2_mumu_smuon_500_0.1",
     "cms_run2_mumu_500_3",   
-    "cms_run2_smuon_500_hscp",
+    "cms_run2_mumu_500_hscp",
 
     # "cms_run2_mumu_500_0.1", 
     # "cms_run2_mumu_500_1",   
@@ -250,7 +262,7 @@ listtoplot = [
 
 
     "atlas_140_promptsmuon_200_dm5_bdt" ,
-    "atlas_140_promptsmuon_200_dm20_bdt",
+    # "atlas_140_promptsmuon_200_dm20_bdt",
     "atlas_140_promptsmuon_200_dm50_bdt",
     "atlas_140_promptsmuon_bulk",
 
@@ -274,10 +286,10 @@ lines = [
     ("cms_run2_mumu_500_3","atlas_run2_mumu_smuon_500_0.1",""),
 
 
-    ("atlas_140_promptsmuon_200_dm50_bdt","atlas_140_promptsmuon_200_dm20_bdt",""),
-    ("atlas_140_promptsmuon_200_dm20_bdt","atlas_140_promptsmuon_200_dm5_bdt",""),
+    ("atlas_140_promptsmuon_200_dm50_bdt","atlas_140_promptsmuon_200_dm5_bdt",""),
+    # ("atlas_140_promptsmuon_200_dm20_bdt","atlas_140_promptsmuon_200_dm5_bdt",""),
     ("atlas_140_promptsmuon_200_dm5_bdt" ,"atlas_140_promptsmuon_bulk",""),
-    ("atlas_140_promptsmuon_bulk","cms_run2_smuon_500_hscp",""),
+    # ("atlas_140_promptsmuon_bulk","cms_run2_mumu_500_hscp",""),
 
 ]
 
@@ -354,7 +366,10 @@ for i,key in enumerate(listtoplot):
     for item in colormap:
         if item in key:
             color = colormap[item]
-    ax1.plot( [results[key]["axe"]], [results[key]["etrig"]], marker, label=results[key]["label"], color=color, mew=0.5, mec="k", clip_on=False, zorder=100)
+    if "labeltrigplot" in results[key]:
+        ax1.plot( [results[key]["axe"]], [results[key]["etrig"]], marker, label=results[key]["labeltrigplot"], color=color, mew=0.5, mec="k", clip_on=False, zorder=100)
+    else:
+        ax1.plot( [results[key]["axe"]], [results[key]["etrig"]], marker, label=results[key]["label"], color=color, mew=0.5, mec="k", clip_on=False, zorder=100)
     ax2.plot( [results[key]["axe"]], [results[key]["xslimit"]], marker, label=results[key]["label"], color=color, mew=0.5, mec="k", clip_on=False, zorder=100)
 
     if "_36_" in key:
@@ -365,7 +380,7 @@ for i,key in enumerate(listtoplot):
             # Create a circle in display coordinates with radius in pixels
             bbox = ax.get_window_extent()
             height_pixels = bbox.height
-            radius_display = 590 * height_pixels   # in display (pixel) units
+            radius_display = 165 * height_pixels   # in display (pixel) units
             disp_trans = mtransforms.Affine2D().scale(1 / ax.figure.dpi, 1 / ax.figure.dpi)  # inches per pixel
             box = AuxTransformBox(disp_trans)
             # box = AuxTransformBox(ax.transAxes)
@@ -425,9 +440,27 @@ for ax in [ax1, ax2]:
         else:
             ha="right"
             xoffset = -5
+        yoffset = 5
+        if label=="(≤50 GeV)":
+            xoffset += -15
+            yoffset = 10
+        elif label=="(10 ns)  ":
+            yoffset = -12
+            xoffset = -25
+        elif label=="(Bulk)  ":
+            yoffset = -12
+        elif label=="(10 ns)":
+            xoffset = -27
+            yoffset = -11
+        elif label=="(0.01 ns)":
+            xoffset += 1
+            yoffset -= 6
+        elif label=="(0.1 ns)":
+            xoffset += -6
+            yoffset += 3
         ax.annotate(label,
                     xy=(xdata[0], ydata[0]),
-                    xytext=(xoffset, 5),
+                    xytext=(xoffset, yoffset),
                     textcoords='offset points',
                     fontsize=9,
                     ha=ha, zorder=100)

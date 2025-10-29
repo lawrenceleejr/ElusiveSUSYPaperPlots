@@ -23,10 +23,15 @@ from helperFunctions import *
 
 # colors = sns.color_palette("husl", 3)
 # colors = ["#FF595E",  "#1982C4", "#8AC926",] 
-colors = ["#E07A5F",  # Terra Cotta
-		"#81B29A",
-		"#F2CC8F",  # Sand
-        ]  # Sage
+# colors = ["#E07A5F",  # Terra Cotta
+# 		"#81B29A",
+# 		"#F2CC8F",  # Sand
+#         ]  # Sage
+
+colors = [
+     coolorPalette[-1],
+     coolorPalette[5],
+]
 
 # colors = ["#FF0000", "#00FF00", "#0000FF"]
 # colors = ["#FF6B6B", "#6BCB77", "#4D96FF"]

@@ -117,3 +117,26 @@ class HandlerRect(HandlerPatch):
                           hatch=orig_handle.get_hatch(),
                           transform=trans)
         return [patch]
+    
+
+# 8 green/blue
+# 6 bubblegum
+coolorPalette = [
+     "#d9ed92",#0
+     "#b5e48c",#1
+     "#99d98c",#2
+     "#76c893",#3
+     "#52b69a",#4
+     "#34a0a4",#5
+     "#168aad",#6
+     "#1a759f",#7
+
+    "#f7b267",#8
+    "#f79d65",#9
+    "#f4845f",#10
+    "#f27059",#11
+    "#f25c54",#12
+
+    # 176,18,22
+    "#b01216", # red from template #13
+]
