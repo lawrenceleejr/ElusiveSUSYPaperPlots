@@ -66,7 +66,7 @@ results = {
     "atlas_run2_ee_selectron_500_0.1": {"label":r"A2 Disp $ee$ (500,0.1)","etrig":66.3/93.6, "axe":17.7/93.6, "xslimit":3/36000}, #fake
 
     "atlas_run2_mumu_smuon_500_0.01": {"label":r"","labeltrigplot":r"(0.01 ns)","etrig":66.3/93.6, "axe":0.02/3.28, "xslimit":3.28e-3}, 
-    "atlas_run2_mumu_smuon_500_0.1": {"label":r"(0.1 ns)","etrig":66.3/93.6, "axe":13.6/93.6, "xslimit":1.49e-04}, 
+    "atlas_run2_mumu_smuon_500_0.1": {"label":r"(0.1 ns)","labeltrigplot":r"(0.1 ns) ","etrig":66.3/93.6, "axe":13.6/93.6, "xslimit":1.49e-04}, 
     "atlas_run2_mumu_smuon_500_10": {"label":r"(10 ns)","labeltrigplot":r"(10 ns)  ","etrig":0.5, "axe":4.969/93.6, "xslimit":0.00043}, # ditrack dedx
 
     "atlas_run2_micro_mumu_smuon_500_0.01": {"label":r"(0.01 ns)","labeltrigplot":r"","etrig":48.2/93.6, "axe":6.7/93.6, "xslimit":0.331e-3},
@@ -77,6 +77,8 @@ results = {
 
     #HSCP CMS
     "cms_run2_mumu_500_hscp": {"label":r"(Stable)","etrig":0.86, "axe":0.6, "xslimit":1.8e-4},
+    # https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/HMBS-2024-68/figaux_07.pdf
+    "atlas_run2_mumu_500_dedxtiming": {"label":r"","etrig":0.2, "axe":0.02/0.8, "xslimit":0.8e-3},
 
 
     # CMS full run2: https://cms-results.web.cern.ch/cms-results/public-results/publications/EXO-18-003/index.html
@@ -215,6 +217,7 @@ listtoplot = [
     "atlas_run2_mumu_smuon_500_0.1",
     "cms_run2_mumu_500_3",   
     "cms_run2_mumu_500_hscp",
+    # "atlas_run2_mumu_500_dedxtiming",
 
     # "cms_run2_mumu_500_0.1", 
     # "cms_run2_mumu_500_1",   
@@ -288,7 +291,7 @@ lines = [
 
     ("atlas_140_promptsmuon_200_dm50_bdt","atlas_140_promptsmuon_200_dm5_bdt",""),
     # ("atlas_140_promptsmuon_200_dm20_bdt","atlas_140_promptsmuon_200_dm5_bdt",""),
-    ("atlas_140_promptsmuon_200_dm5_bdt" ,"atlas_140_promptsmuon_bulk",""),
+    ("atlas_140_promptsmuon_200_dm50_bdt" ,"atlas_140_promptsmuon_bulk",""),
     # ("atlas_140_promptsmuon_bulk","cms_run2_mumu_500_hscp",""),
 
 ]
@@ -322,12 +325,12 @@ for key1,key2,label in arrows:
     ax1.annotate("",
         xy=(results[key2]["axe"],results[key2]["etrig"]),
         xytext=(results[key1]["axe"],results[key1]["etrig"]),
-        arrowprops=dict(arrowstyle="-|>", color='black', lw=0.75)
+        arrowprops=dict(arrowstyle="-|>", color='black', lw=0.75),zorder=200
     )
     ax2.annotate("",
         xy=(results[key2]["axe"],results[key2]["xslimit"]),
         xytext=(results[key1]["axe"],results[key1]["xslimit"]),
-        arrowprops=dict(arrowstyle="-|>", color='black', lw=0.75)
+        arrowprops=dict(arrowstyle="-|>", color='black', lw=0.75),zorder=200
     )
 
     # ax1.plot( [results[key1]["axe"],results[key2]["axe"]], [results[key1]["etrig"],results[key2]["etrig"]], "-", label=label, c="k",lw=0.75)
@@ -370,7 +373,14 @@ for i,key in enumerate(listtoplot):
         ax1.plot( [results[key]["axe"]], [results[key]["etrig"]], marker, label=results[key]["labeltrigplot"], color=color, mew=0.5, mec="k", clip_on=False, zorder=100)
     else:
         ax1.plot( [results[key]["axe"]], [results[key]["etrig"]], marker, label=results[key]["label"], color=color, mew=0.5, mec="k", clip_on=False, zorder=100)
-    ax2.plot( [results[key]["axe"]], [results[key]["xslimit"]], marker, label=results[key]["label"], color=color, mew=0.5, mec="k", clip_on=False, zorder=100)
+
+    mec,mew="k",0.5
+    if "micro" in key:
+        mec,mew=coolorPalette[-1],1
+        results[key]["label"]+="*"
+
+    ax2.plot( [results[key]["axe"]], [results[key]["xslimit"]], marker, label=results[key]["label"], color=color, mew=mew, mec=mec, clip_on=False, zorder=100)
+
 
     if "_36_" in key:
         print("Adding hatch for ", key, results[key]["axe"],results[key]["etrig"])
@@ -380,7 +390,8 @@ for i,key in enumerate(listtoplot):
             # Create a circle in display coordinates with radius in pixels
             bbox = ax.get_window_extent()
             height_pixels = bbox.height
-            radius_display = 165 * height_pixels   # in display (pixel) units
+            # radius_display = 170 * height_pixels   # in display (pixel) units
+            radius_display = 585 * height_pixels   # in display (pixel) units #laptop
             disp_trans = mtransforms.Affine2D().scale(1 / ax.figure.dpi, 1 / ax.figure.dpi)  # inches per pixel
             box = AuxTransformBox(disp_trans)
             # box = AuxTransformBox(ax.transAxes)
@@ -452,12 +463,18 @@ for ax in [ax1, ax2]:
         elif label=="(10 ns)":
             xoffset = -27
             yoffset = -11
-        elif label=="(0.01 ns)":
+        elif label=="(0.01 ns)*":
             xoffset += 1
-            yoffset -= 6
+            yoffset -= 9
         elif label=="(0.1 ns)":
-            xoffset += -6
-            yoffset += 3
+            xoffset += -38
+            yoffset += -12
+        elif label=="(50 GeV)":
+            xoffset += 2
+            yoffset += -8
+        elif label=="(5 GeV)":
+            xoffset += 2
+            yoffset += -8
         ax.annotate(label,
                     xy=(xdata[0], ydata[0]),
                     xytext=(xoffset, yoffset),

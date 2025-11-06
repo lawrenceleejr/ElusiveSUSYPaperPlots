@@ -5,8 +5,9 @@ client = Client(verbose=True)
 
 reactionsList = [
     # "(\"P P --> GLU GLU\" OR \"P P --> GLU GLU X\" OR \"PP --> GLUINO GLUINO\" OR \"PP --> GLUINO GLUINO X\" OR \"P P --> GLUINO GLUINO\" OR \"P P --> GLUINO GLUINO X\")",
-    "(\"PP --> SQUARK SQUARK\" OR \"PP --> SQUARK SQUARK X\" OR \"P P --> SQUARK SQUARK\" OR \"P P --> SQUARK SQUARK X\")",
-    "(\"PP --> STOP STOP\" OR \"PP --> STOP STOP X\" OR \"P P --> STOP STOP\" OR \"P P --> STOP STOP X\")",
+    # "(\"PP --> SQUARK SQUARK\" OR \"PP --> SQUARK SQUARK X\" OR \"P P --> SQUARK SQUARK\" OR \"P P --> SQUARK SQUARK X\")",
+    # "(\"PP --> STOP STOP\" OR \"PP --> STOP STOP X\" OR \"P P --> STOP STOP\" OR \"P P --> STOP STOP X\")",
+    "(\"P P --> SLEPTON SLEPTON\" OR \"pp --> SLEPTON SLEPTON\" OR \"P P --> SLEPTON+ SLEPTON- X\" OR \"PP --> SLEP SLEP, SLEP < l N1 >\" OR \"PP --> SMU SMU, SMU < mu N1 >\" OR \"PP --> SEL SEL, SEL < e N1 >\" OR \"P P --> SLEPTON(R) SLEPTON(R) X\" OR \"P P --> STAU+ STAU- X\" OR \"P P --> SLEPTON+ SLEPTON-\" OR \"PP --> stau stau, stau --> tau\" OR \"P P --> SleptonSlepton\" OR \"P P --> SLEPTON X\" OR \"P P --> STAU+ STAU- X\")",
 ]
 
 outputList = []

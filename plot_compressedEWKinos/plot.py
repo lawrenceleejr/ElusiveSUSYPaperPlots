@@ -261,7 +261,7 @@ ax.text(345, 10**1.20,       r"Higgsino LSP Limits", size=11,clip_on=False, font
 ax.text(345, 10**(1.20-1*0.11), r"Run-2 LHC, HL-LHC Proj.", size=11,clip_on=False, ha="right")
 ax.text(345, 10**(1.20-2*0.11), r"95% CL", size=11,clip_on=False, ha="right")
 
-ax.text(350, 10**-0.48,       r"Pure Higgsino LSP", size=9,clip_on=False, ha="right")
+ax.text(350, 10**-0.48,       r"Decoupled $\tilde{W}, \tilde{B}$", size=9,clip_on=False, ha="right")
 
 ax.text(220, 10**0.4,       r"Soft Leptons", size=11,clip_on=False, fontweight="bold")
 ax.text(190, 10**-0.2,       r"Soft Displaced Track", size=11,clip_on=False, fontweight="bold")

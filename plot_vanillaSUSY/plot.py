@@ -37,7 +37,12 @@ from helperFunctions import *
 colors = [
      coolorPalette[8],
      coolorPalette[-1],
+     coolorPalette[3],
+     coolorPalette[6],
+     
 ]
+
+
 
 data_gg = {}
 
@@ -184,6 +189,86 @@ data_qq["arXiv_2307.01094_2"] = add_zero_endpoints(data_qq["arXiv_2307.01094_2"]
 
 
 
+data_slsl = {}
+
+data_slsl["arXiv_1908.08215"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_1908.08215/HEPData-ins1750597-v4-Exclusion_contour_(obs)_3.csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_1908.08215"] = add_zero_endpoints(data_slsl["arXiv_1908.08215"],(0,0))
+
+
+data_slsl["arXiv_2209.13935_1"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2209.13935/HEPData-ins2157951-v1-excl_comb_obs_nominal_SR0j.csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2209.13935_1"] = add_zero_endpoints(data_slsl["arXiv_2209.13935_1"],(0,0))
+
+data_slsl["arXiv_2209.13935_2"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2209.13935/HEPData-ins2157951-v1-excl_comb_obs_nominal_SR1j.csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2209.13935_2"] = add_zero_endpoints(data_slsl["arXiv_2209.13935_2"],(0,0))
+
+data_slsl["arXiv_2209.13935_3"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2209.13935/HEPData-ins2157951-v1-excl_ee_obs_nominal.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2209.13935_3"] = add_zero_endpoints(data_slsl["arXiv_2209.13935_3"],(0,0))
+
+data_slsl["arXiv_2209.13935_4"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2209.13935/HEPData-ins2157951-v1-excl_eLeL_obs_nominal.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2209.13935_4"] = add_zero_endpoints(data_slsl["arXiv_2209.13935_4"],(0,0))
+
+data_slsl["arXiv_2209.13935_5"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2209.13935/HEPData-ins2157951-v1-excl_eReR_obs_nominal.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2209.13935_5"] = add_zero_endpoints(data_slsl["arXiv_2209.13935_5"],(0,0))
+
+data_slsl["arXiv_2209.13935_6"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2209.13935/HEPData-ins2157951-v1-excl_mm_obs_nominal.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2209.13935_6"] = add_zero_endpoints(data_slsl["arXiv_2209.13935_6"],(0,0))
+
+data_slsl["arXiv_2209.13935_7"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2209.13935/HEPData-ins2157951-v1-excl_mLmL_obs_nominal.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2209.13935_7"] = add_zero_endpoints(data_slsl["arXiv_2209.13935_7"],(0,0))
+
+data_slsl["arXiv_2209.13935_8"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2209.13935/HEPData-ins2157951-v1-excl_mRmR_obs_nominal.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2209.13935_8"] = add_zero_endpoints(data_slsl["arXiv_2209.13935_8"],(0,0))
+
+
+
+# data_slsl["arXiv_2503.13135_1"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2503.13135/HEPData-ins2901728-v1-Observed_exclusion_limit_from_Aux._Fig._3.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+# data_slsl["arXiv_2503.13135_1"] = add_zero_endpoints(data_slsl["arXiv_2503.13135_1"],(0,0))
+
+# data_slsl["arXiv_2503.13135_2"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2503.13135/HEPData-ins2901728-v1-Observed_exclusion_limit_from_Fig._15.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+# data_slsl["arXiv_2503.13135_2"] = add_zero_endpoints(data_slsl["arXiv_2503.13135_2"],(0,0))
+
+
+# data_slsl["arXiv_2503.13135_3"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2503.13135/HEPData-ins2901728-v1-Observed_exclusion_limit_from_Fig._16a.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+# data_slsl["arXiv_2503.13135_3"] = add_zero_endpoints(data_slsl["arXiv_2503.13135_3"],(0,0))
+
+
+# data_slsl["arXiv_2503.13135_4"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2503.13135/HEPData-ins2901728-v1-Observed_exclusion_limit_from_Fig._16b.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+# data_slsl["arXiv_2503.13135_4"] = add_zero_endpoints(data_slsl["arXiv_2503.13135_4"],(0,0))
+
+
+
+
+data_slsl["arXiv_1911.12606_1"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_1911.12606/HEPData-ins1767649-v5-Figure_2a_LH_slepton_Observed.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_1911.12606_1"] = add_zero_endpoints(data_slsl["arXiv_1911.12606_1"],(0,0))
+
+data_slsl["arXiv_1911.12606_2"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_1911.12606/HEPData-ins1767649-v5-Figure_2a_RH_slepton_Observed.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_1911.12606_2"] = add_zero_endpoints(data_slsl["arXiv_1911.12606_2"],(0,0))
+
+data_slsl["arXiv_1911.12606_3"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_1911.12606/HEPData-ins1767649-v5-Figure_16a_Observed.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_1911.12606_3"] = add_zero_endpoints(data_slsl["arXiv_1911.12606_3"],(0,0))
+
+
+data_slsl["arXiv_2402.00603_1"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2402.00603/HEPData-ins2754043-v1-Table_13.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2402.00603_1"] = add_zero_endpoints(data_slsl["arXiv_2402.00603_1"],(0,0))
+
+data_slsl["arXiv_2402.00603_2"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2402.00603/HEPData-ins2754043-v1-Table_19.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2402.00603_2"] = add_zero_endpoints(data_slsl["arXiv_2402.00603_2"],(0,0))
+
+data_slsl["arXiv_2402.00603_3"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2402.00603/HEPData-ins2754043-v1-Table_25.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2402.00603_3"] = add_zero_endpoints(data_slsl["arXiv_2402.00603_3"],(0,0))
+
+
+data_slsl["arXiv_2207.02254_1"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2207.02254/HEPData-ins2106478-v1-Figure_007-a_observed_exclusions.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2207.02254_1"] = add_zero_endpoints(data_slsl["arXiv_2207.02254_1"],(0,0))
+
+data_slsl["arXiv_2207.02254_2"] = np.genfromtxt("data/SLEPTONSLEPTON/arXiv_2207.02254/HEPData-ins2106478-v1-Figure_007-b_observed_exclusions.csv", delimiter=",", skip_header=9, skip_footer=0, names=["x","y"])
+data_slsl["arXiv_2207.02254_2"] = add_zero_endpoints(data_slsl["arXiv_2207.02254_2"],(0,0))
+
+
+
+
+
+
 
 
 baselength=4
@@ -315,16 +400,16 @@ ax.spines['top'].set_visible(False)
 # ax.text(1e-6, 160, "Prompt", size=9,clip_on=False)
 # ax2.text(1.1e17, 160, "Stable", size=9,clip_on=False)
 
-ax.text(200, 2050,       r"Sparticle Limits, Strong Production", size=11,clip_on=False, fontweight="bold")
-ax.text(200, 2050-1*150, r"Various Assumptions", size=11,clip_on=False)
-ax.text(200, 2050-2*150, r"Run-2 LHC", size=11,clip_on=False)
-ax.text(200, 2050-3*150, r"95% CL", size=11,clip_on=False)
+ax.text(0.1,0.9,       r"Sparticle Limits, Strong Production", size=11,clip_on=False, fontweight="bold",transform=ax.transAxes)
+ax.text(0.1,0.9-1*0.05, r"Various Assumptions", size=11,clip_on=False,transform=ax.transAxes)
+ax.text(0.1,0.9-2*0.05, r"Run-2 LHC", size=11,clip_on=False,transform=ax.transAxes)
+ax.text(0.1,0.9-3*0.05, r"95% CL", size=11,clip_on=False,transform=ax.transAxes)
 
 ax.text(1700, 1000, r"Gluinos", size=11,clip_on=False, color="k", alpha=1.0, fontweight='bold')
 ax.text(500, 200, r"Squarks", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
 
 
-ax.text(1000, 300, r"Make another plot with EWK production", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
+# ax.text(1000, 300, r"Make another plot with EWK production", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
 ax.text(1000, 200, r"Add stops to the squark category", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
 
 
@@ -344,11 +429,147 @@ dx, dy = p1 - p0
 angle_rad = np.arctan2(dy, dx)
 angle_deg = np.degrees(angle_rad)
 
-ax.text(100, 160, r"$m_{\tilde{\chi}^0_1}>m_X$", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
-ax.plot( [0,2500], [0,2500], "--", lw=0.5, color="black" )
+ax.text(100, 190, r"$m_{\tilde{\chi}^0_1}>m_X$", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
+doFillBetween([0,2500], [0,2500], axis=ax, dy=-10, alpha=0.4, n=30, log=False,clip_on=False)
+ax.plot( [0,2500], [0,2500], "-", lw=0.5, color="black" )
+# ax1.plot([0,1], [0,1], c="k",lw=0.5)
+# ax1.text(0.7, 0.7 , r"$A\times\varepsilon=\varepsilon_{\mathrm{trigger}}$", size=9,clip_on=False, ha="right")
+# ax1.text(0.6, 0.64 , r"Trigger Limited Searches Near Diagonal", rotation=31, size=9,clip_on=False, ha="left")
+
+
 
 
 
 fig.savefig("Vanilla_Strong.pdf")
+
+
 plt.cla()
-# plt.show()
+plt.clf()
+
+
+
+
+
+
+baselength=4
+fig, ax = plt.subplots(1,1, figsize=(1.5*baselength, 1*baselength))
+
+
+### Actual Curves:
+
+#
+i=2
+
+alpha=2/len(data_slsl)#0.3
+if alpha>0.5:
+     alpha=0.5
+
+ax.fill(data_slsl["arXiv_1908.08215"]['x'], data_slsl["arXiv_1908.08215"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+ax.fill(data_slsl["arXiv_2209.13935_1"]['x'], data_slsl["arXiv_2209.13935_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_2209.13935_2"]['x'], data_slsl["arXiv_2209.13935_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_2209.13935_3"]['x'], data_slsl["arXiv_2209.13935_3"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_2209.13935_4"]['x'], data_slsl["arXiv_2209.13935_4"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_2209.13935_5"]['x'], data_slsl["arXiv_2209.13935_5"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_2209.13935_6"]['x'], data_slsl["arXiv_2209.13935_6"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_2209.13935_7"]['x'], data_slsl["arXiv_2209.13935_7"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_2209.13935_8"]['x'], data_slsl["arXiv_2209.13935_8"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+# ax.fill(data_slsl["arXiv_2503.13135_1"]['x'], data_slsl["arXiv_2503.13135_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+# ax.fill(data_slsl["arXiv_2503.13135_2"]['x'], data_slsl["arXiv_2503.13135_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+# ax.fill(data_slsl["arXiv_2503.13135_3"]['x'], data_slsl["arXiv_2503.13135_3"]['y'], color=colors[i], alpha=alpha, lw=0)
+# ax.fill(data_slsl["arXiv_2503.13135_4"]['x'], data_slsl["arXiv_2503.13135_4"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+
+ax.fill(data_slsl["arXiv_1911.12606_1"]['x'], data_slsl["arXiv_1911.12606_1"]['x']-data_slsl["arXiv_1911.12606_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_1911.12606_2"]['x'], data_slsl["arXiv_1911.12606_2"]['x']-data_slsl["arXiv_1911.12606_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_1911.12606_3"]['x'], data_slsl["arXiv_1911.12606_3"]['x']-data_slsl["arXiv_1911.12606_3"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+
+
+ax.fill(data_slsl["arXiv_2402.00603_1"]['x'], data_slsl["arXiv_2402.00603_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_2402.00603_2"]['x'], data_slsl["arXiv_2402.00603_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_2402.00603_3"]['x'], data_slsl["arXiv_2402.00603_3"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+
+
+ax.fill(data_slsl["arXiv_2207.02254_1"]['x'], data_slsl["arXiv_2207.02254_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_slsl["arXiv_2207.02254_2"]['x'], data_slsl["arXiv_2207.02254_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+
+
+ax.set_xlabel(r'$m_{X}$ [GeV]',)
+ax.set_ylabel(r'$m_{\chi^0_1}$ [GeV]',)
+# ax.xaxis.set_label_coords(1.02, -0.07)
+# ax.set_ylabel(r'Excluded Stop Squark Mass $m_{\tilde{t}}$ [GeV]')
+# ax.set_xlim([2e-6,2e4])
+# ax2.set_xlim([1.1e13,9e18])
+ax.set_ylim([0,1500])
+ax.set_xlim([0,1700])
+# plt.grid()
+
+
+# plt.subplots_adjust(wspace=0.03)
+
+
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+# ax.yaxis.tick_left()
+# ax.tick_params(labelright='off')
+# ax2.yaxis.tick_right()
+# ax2.tick_params(top='off', right='off', which='both')
+
+# d = .015 # how big to make the diagonal lines in axes coordinates
+# # arguments to pass plot, just so we don't keep repeating them
+# kwargs = dict(transform=ax.transAxes, color='k', clip_on=False)
+# ax.plot((1-d,1+d), (-d,+d), **kwargs)
+# ax.plot((1-d,1+d),(1-d,1+d), **kwargs)
+
+# kwargs.update(transform=ax2.transAxes)  # switch to the bottom axes
+# ax2.plot((-3*d,+3*d), (1-d,1+d), **kwargs)
+# ax2.plot((-3*d,+3*d), (-d,+d), **kwargs, )
+
+
+# ax.text(1e-6, 160, "Prompt", size=9,clip_on=False)
+# ax2.text(1.1e17, 160, "Stable", size=9,clip_on=False)
+
+ax.text(0.1,0.9,       r"Sparticle Limits, EW Production", size=11,clip_on=False, fontweight="bold",transform=ax.transAxes)
+ax.text(0.1,0.9-1*0.05, r"Various Assumptions", size=11,clip_on=False,transform=ax.transAxes)
+ax.text(0.1,0.9-2*0.05, r"Run-2 LHC", size=11,clip_on=False,transform=ax.transAxes)
+ax.text(0.1,0.9-3*0.05, r"95% CL", size=11,clip_on=False,transform=ax.transAxes)
+
+ax.text(1000, 400, r"EWKinos", size=11,clip_on=False, color="k", alpha=1.0, fontweight='bold')
+ax.text(300, 100, r"Sleptons", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
+
+
+# ax.text(1000, 300, r"Make another plot with EWK production", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
+# ax.text(1000, 200, r"Add stops to the squark category", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
+
+
+
+breathe(ax)
+
+
+# Force figure to render, so transforms are accurate
+fig.canvas.draw()
+
+# Transform from data to display coordinates
+p0 = ax.transData.transform((0, 0))
+p1 = ax.transData.transform((1, 1))
+
+# Compute angle in screen/display space
+dx, dy = p1 - p0
+angle_rad = np.arctan2(dy, dx)
+angle_deg = np.degrees(angle_rad)
+
+ax.text(100, 190, r"$m_{\tilde{\chi}^0_1}>m_X$", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
+doFillBetween([0,2500], [0,2500], axis=ax, dy=-10, alpha=0.4, n=30, log=False,clip_on=False)
+ax.plot( [0,2500], [0,2500], "-", lw=0.5, color="black" )
+
+fig.savefig("Vanilla_EW.pdf")
