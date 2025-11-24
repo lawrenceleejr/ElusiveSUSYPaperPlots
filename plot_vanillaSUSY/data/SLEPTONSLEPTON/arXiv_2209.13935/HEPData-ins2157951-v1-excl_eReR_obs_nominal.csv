@@ -1,0 +1,43 @@
+#: table_doi: 10.17182/hepdata.134068.v1/t69
+#: name: excl_eReR_obs_nominal
+#: description: Observed and expected exclusion limits on SUSY simplified models for direct selectron production in the (a) $m(\tilde{e})-m(\tilde{\chi}_1^0)$ and (c) $m(\tilde{e})-\Delta m(\tilde{e},\tilde{\chi}_1^0)$ planes, and for direct smuon production in the (b) $m(\tilde{\mu})-m(\tilde{\chi}_1^0)$ and (d) $m(\tilde{\mu})-\Delta m(\tilde{\mu},\tilde{\chi}_1^0)$ planes. In Figure (a) and (c) the observed (solid thick lines) and expected (dashed lines) exclusion contours are indicated for combined $\tilde{e}_{\textup{L,R}}$ and for $\tilde{e}_{\textup{L}}$ and $\tilde{e}_{\textup{R}}$. In Figure (b) and (d) the observed (solid thick lines) and expected (dashed lines) exclusion contours are indicated for combined $\tilde{\mu}_{\textup{L,R}}$ and for $\tilde{\mu}_{\textup{L}}$. No unique sensitivity to $\tilde{\mu}_{\textup{R}}$ is observed. All limits are computed at 95% CL. The observed limits obtained at LEP and by the ATLAS experiment in previous searches are also shown in the shaded areas.
+#: data_file: excl_erer_obs_nominal.yaml
+#: keyword observables: CLS
+#: keyword cmenergies: 13000
+#: keyword phrases: SUSY | Supersymmetry | Proton-Proton Scattering
+#: keyword reactions: P P --> SLEPTON+ SLEPTON- X
+$m(\tilde{\ell})$ [GeV],$m(\tilde{\chi}_1^0)$ [GeV]
+169.52,1.00
+169.24,5.03
+169.08,9.06
+169.03,13.09
+168.97,17.12
+168.77,21.15
+168.13,25.18
+166.82,29.21
+166.23,30.49
+164.83,33.24
+162.20,37.05
+162.01,37.28
+158.17,41.05
+157.82,41.31
+154.14,43.65
+150.11,45.13
+146.19,45.34
+146.08,45.34
+146.03,45.34
+142.05,44.93
+138.01,44.34
+133.98,43.70
+129.95,43.03
+125.92,42.28
+121.89,41.46
+121.14,41.31
+117.86,40.66
+113.83,40.04
+109.80,39.62
+105.77,39.37
+101.74,39.20
+97.71,38.95
+93.68,38.62
+

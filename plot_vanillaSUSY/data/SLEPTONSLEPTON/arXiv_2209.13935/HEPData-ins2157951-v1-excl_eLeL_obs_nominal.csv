@@ -1,0 +1,87 @@
+#: table_doi: 10.17182/hepdata.134068.v1/t67
+#: name: excl_eLeL_obs_nominal
+#: description: Observed and expected exclusion limits on SUSY simplified models for direct selectron production in the (a) $m(\tilde{e})-m(\tilde{\chi}_1^0)$ and (c) $m(\tilde{e})-\Delta m(\tilde{e},\tilde{\chi}_1^0)$ planes, and for direct smuon production in the (b) $m(\tilde{\mu})-m(\tilde{\chi}_1^0)$ and (d) $m(\tilde{\mu})-\Delta m(\tilde{\mu},\tilde{\chi}_1^0)$ planes. In Figure (a) and (c) the observed (solid thick lines) and expected (dashed lines) exclusion contours are indicated for combined $\tilde{e}_{\textup{L,R}}$ and for $\tilde{e}_{\textup{L}}$ and $\tilde{e}_{\textup{R}}$. In Figure (b) and (d) the observed (solid thick lines) and expected (dashed lines) exclusion contours are indicated for combined $\tilde{\mu}_{\textup{L,R}}$ and for $\tilde{\mu}_{\textup{L}}$. No unique sensitivity to $\tilde{\mu}_{\textup{R}}$ is observed. All limits are computed at 95% CL. The observed limits obtained at LEP and by the ATLAS experiment in previous searches are also shown in the shaded areas.
+#: data_file: excl_elel_obs_nominal.yaml
+#: keyword observables: CLS
+#: keyword cmenergies: 13000
+#: keyword phrases: SUSY | Supersymmetry | Proton-Proton Scattering
+#: keyword reactions: P P --> SLEPTON+ SLEPTON- X
+$m(\tilde{\ell})$ [GeV],$m(\tilde{\chi}_1^0)$ [GeV]
+253.17,1.00
+252.97,5.03
+252.93,9.06
+253.13,13.09
+253.57,17.12
+254.08,21.15
+254.12,25.18
+252.88,29.21
+251.27,33.24
+250.87,34.57
+249.86,37.28
+249.05,41.31
+248.78,45.34
+248.69,49.37
+247.16,53.40
+246.84,54.12
+245.10,57.43
+243.22,61.46
+242.81,62.37
+241.18,65.49
+238.81,69.52
+238.78,69.57
+235.66,73.55
+234.75,74.49
+231.33,77.58
+230.72,78.02
+226.69,80.77
+225.45,81.61
+222.66,83.29
+219.35,85.64
+218.63,86.15
+214.66,89.67
+214.59,89.74
+211.18,93.70
+210.56,94.55
+208.22,97.73
+206.53,99.90
+204.67,101.76
+202.50,103.20
+198.47,103.68
+194.44,102.34
+193.15,101.76
+190.41,100.52
+186.38,98.88
+183.06,97.73
+182.35,97.48
+178.32,96.00
+174.29,93.95
+173.93,93.70
+170.26,91.59
+166.51,89.67
+166.23,89.54
+162.20,87.75
+158.17,86.25
+156.43,85.64
+154.14,84.79
+150.11,82.99
+147.66,81.61
+146.08,80.81
+142.05,78.69
+139.74,77.58
+138.01,76.80
+133.98,75.20
+129.95,73.94
+128.45,73.55
+125.92,72.69
+121.89,70.08
+121.09,69.52
+117.86,67.49
+114.35,65.49
+113.83,65.22
+109.80,63.44
+105.77,62.17
+101.82,61.46
+101.74,61.44
+97.71,60.93
+93.68,60.61
+

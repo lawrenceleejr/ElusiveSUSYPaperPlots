@@ -1,0 +1,47 @@
+#: table_doi: 10.17182/hepdata.131308.v1/t22
+#: name: Figure_007-b observed exclusions
+#: description: Observed exclusion limits assuming NLO+NLL predictions for signal cross sections for purely left-handed stau pair production in the stau-LSP mass plane
+#: data_file: figure_007-b_observed_exclusions.yaml
+#: keyword observables: mass
+#: keyword reactions: PP --> stau$_{L}$stau$_{L}$, stau$_{L}$ --> tau N1
+#: keyword cmenergies: 13000
+#: keyword phrases: Supersymmetry | SUSY
+m(stau) [GeV],max. m(LSP) excluded [GeV]
+116.39,0.5025
+125.23,8.2875
+128.22,9.525
+128.06,10.653
+130.83,19.55
+134.79,23.36
+144.29,29.575
+150.38,44.44
+161.94,49.625
+174.75,50.41
+175.53,51.919
+194.95,68.971
+200.69,73.347
+202.2,73.177
+206.23,74.688
+223.87,76.651
+225.84,77.741
+243.87,81.783
+250.99,91.143
+259.11,91.662
+265.31,99.75
+276.14,105.22
+295.01,99.75
+301.3,95.18
+314.38,87.722
+326.45,86.48
+333.17,81.384
+335.7,74.688
+340.13,61.059
+342.37,49.625
+340.09,38.749
+339.82,29.575
+347.11,21.341
+344.3,19.55
+343.03,12.94
+346.05,9.525
+341.9,3.9804
+344.0,0.5025

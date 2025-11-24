@@ -1,0 +1,83 @@
+#: table_doi: 10.17182/hepdata.134068.v1/t91
+#: name: excl_comb_obs_nominal_SR1j
+#: description: Observed and expected exclusion limits on SUSY simplified models for slepton-pair production in the $m(\tilde{\ell})-m(\tilde{\chi}_1^0)$ plane. Only $\tilde{e}$ and $\tilde{\mu}$ are considered. The observed (solid thick line) and expected (thin dashed line) exclusion contours are indicated. The red contour shows the exclusion limits obtained using both the SR-0J and SR-1J region, as presented in Figure 6. The blue and green contours correspond to the result obtained considering only SR-0J and SR-1J region respectively. All limits are computed at 95% CL. The observed limits obtained by the ATLAS experiment in previous searches are also shown.
+#: data_file: excl_comb_obs_nominal_sr1j.yaml
+#: keyword observables: CLS
+#: keyword cmenergies: 13000
+#: keyword phrases: SUSY | Supersymmetry | Proton-Proton Scattering
+#: keyword reactions: P P --> SLEPTON+ SLEPTON- X
+#: Region,SR-1J
+$m(\tilde{\ell})$ [GeV],$m(\tilde{\chi}_1^0)$ [GeV]
+259.63,1.00
+259.87,5.03
+260.60,9.06
+261.41,13.09
+261.93,17.12
+261.94,21.15
+261.31,25.18
+259.98,29.21
+258.93,31.48
+258.11,33.24
+256.09,37.28
+254.90,40.12
+254.35,41.31
+253.07,45.34
+252.32,49.37
+250.87,52.67
+250.31,53.40
+247.35,57.43
+246.84,58.27
+244.44,61.46
+242.81,64.13
+241.89,65.49
+239.47,69.52
+238.78,70.62
+236.82,73.55
+234.75,75.84
+232.94,77.58
+230.72,78.90
+226.69,80.26
+222.66,80.12
+218.63,78.70
+216.34,77.58
+214.59,76.49
+210.56,74.15
+209.45,73.55
+206.53,72.35
+202.50,71.51
+198.47,72.27
+196.60,73.55
+194.44,75.75
+192.35,77.58
+190.41,79.24
+186.38,81.54
+186.20,81.61
+182.35,82.87
+178.32,83.43
+174.29,83.27
+170.26,82.41
+167.88,81.61
+166.23,81.04
+162.20,79.44
+158.17,77.99
+156.66,77.58
+154.14,76.83
+150.11,75.81
+146.08,73.84
+145.41,73.55
+142.05,71.70
+138.01,70.47
+133.98,69.90
+129.95,69.69
+128.72,69.52
+125.92,69.02
+121.89,66.93
+119.23,65.49
+117.86,64.89
+113.83,63.39
+109.80,62.51
+105.77,62.25
+101.74,62.52
+97.71,62.50
+93.68,62.29
+
