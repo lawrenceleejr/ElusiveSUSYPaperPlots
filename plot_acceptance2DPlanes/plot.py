@@ -105,7 +105,7 @@ results = {
     #  let's compare at 3cm, 0.1ns, 1 TeV, large dm.
     "atlas_36_dvmet": {"label":r"","etrig":717/827, "axe":442/827,"xslimit":1.5e-4}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2016-16/
 
-    "atlas_137_dvmet": {"label":r"DV+MET","etrig":0.99, "axe":0.255,"xslimit":9.539E-05}, #https://www.uvic.ca/science/physics/current/masters/theses/index.php
+    "atlas_137_dvmet": {"label":r"DV+$p_T^{miss}$","labeltrigplot":r"DV+$p_T^{miss}$ ","etrig":0.99, "axe":0.255,"xslimit":9.539E-05}, #https://www.uvic.ca/science/physics/current/masters/theses/index.php
     # backtracked from yields. Thesis says 40% A*e. But yield numbers say 2.55 events in this dataset at 2.6 TeV. There should be 10 events at 2.6 TeV. -> A*e 0.255
 
     "atlas_137_dvjets_rpv": {"label":r"DV+Jets","etrig":0.966, "axe":0.577,"xslimit":0.040096/1000}, #https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-13/tabaux_05.png
@@ -475,6 +475,9 @@ for ax in [ax1, ax2]:
         elif label=="(5 GeV)":
             xoffset += 2
             yoffset += -8
+        elif label==r"DV+$p_T^{miss}$":
+            xoffset += -43
+            yoffset += -17
         ax.annotate(label,
                     xy=(xdata[0], ydata[0]),
                     xytext=(xoffset, yoffset),
