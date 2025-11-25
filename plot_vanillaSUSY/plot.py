@@ -461,7 +461,7 @@ ax.text(500, 200, r"Squarks", size=11,clip_on=False,  color="k", alpha=1.0, font
 
 
 # ax.text(1000, 300, r"Make another plot with EWK production", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
-ax.text(1000, 200, r"Add stops to the squark category", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
+# ax.text(1000, 200, r"Add stops to the squark category", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
 
 
 
