@@ -279,10 +279,10 @@ ax[1].text(0.8e-3, 2300, r"$≥3$ b-jets", size=11,clip_on=False,  color="k", al
 
 
 
-ax[1].text(0.6e-3, 1050, r"$\tilde{g}\rightarrow t\bar{t}\chi^0_1$,"+"\n"+r"Detector-Stable $\chi^0_1$ LSP", size=8,clip_on=False,  color="k", alpha=1, rotation=40, fontweight='regular')
-ax[1].text(0.6e-2, 1050, r"$\tilde{g}\rightarrow t\bar{t}\chi^0_1$,"+"\n"+r"Displaced $\chi^0_1\rightarrow tbs$", size=8,clip_on=False,  color="k", alpha=1, rotation=40, fontweight='regular')
-ax[1].text(0.6e-1, 1050, r"$\tilde{g}\rightarrow t\bar{t}\chi^0_1$,"+"\n"+r"Prompt $\chi^0_1\rightarrow tbs$", size=8,clip_on=False,  color="k", alpha=1, rotation=40, fontweight='regular')
-ax[1].text(0.3e-0, 1050, r"$\tilde{g}\rightarrow tbs$", size=8,clip_on=False,  color="k", alpha=1, rotation=40, fontweight='regular')
+ax[1].text(0.6e-3, 1050, r"$\tilde{g}\rightarrow t\bar{t}\chi^0_1$,"+"\n"+r"Detector-Stable $\chi^0_1$ LSP", size=10,clip_on=False,  color="k", alpha=1, rotation=40, fontweight='regular')
+ax[1].text(0.6e-2, 1050, r"$\tilde{g}\rightarrow t\bar{t}\chi^0_1$,"+"\n"+r"Displaced $\chi^0_1\rightarrow tbs$", size=10,clip_on=False,  color="k", alpha=1, rotation=40, fontweight='regular')
+ax[1].text(0.6e-1, 1050, r"$\tilde{g}\rightarrow t\bar{t}\chi^0_1$,"+"\n"+r"Prompt $\chi^0_1\rightarrow tbs$", size=10,clip_on=False,  color="k", alpha=1, rotation=40, fontweight='regular')
+ax[1].text(0.3e-0, 1050, r"$\tilde{g}\rightarrow tbs$", size=10,clip_on=False,  color="k", alpha=1, rotation=40, fontweight='regular')
 
 
 

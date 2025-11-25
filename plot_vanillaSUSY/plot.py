@@ -269,6 +269,57 @@ data_slsl["arXiv_2207.02254_2"] = add_zero_endpoints(data_slsl["arXiv_2207.02254
 
 
 
+data_ewk = {}
+
+data_ewk["arXiv_2205.09597_1"] = np.genfromtxt("data/EWKinos/arXiv_2205.09597/HEPData-ins2085373-v2-Figure_4a_Observed_Lines.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2205.09597_1"] = add_zero_endpoints(data_ewk["arXiv_2205.09597_1"],(0,0))
+
+data_ewk["arXiv_2205.09597_2"] = np.genfromtxt("data/EWKinos/arXiv_2205.09597/HEPData-ins2085373-v2-Figure_4b_Observed_Lines.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2205.09597_2"] = add_zero_endpoints(data_ewk["arXiv_2205.09597_2"],(0,0))
+
+data_ewk["arXiv_2205.09597_3"] = np.genfromtxt("data/EWKinos/arXiv_2205.09597/HEPData-ins2085373-v2-Figure_4c_Observed_Lines.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2205.09597_3"] = add_zero_endpoints(data_ewk["arXiv_2205.09597_3"],(0,0))
+
+data_ewk["arXiv_2205.09597_4"] = np.genfromtxt("data/EWKinos/arXiv_2205.09597/HEPData-ins2085373-v2-Figure_5a_WW_WH_Observed_Lines.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2205.09597_4"] = add_zero_endpoints(data_ewk["arXiv_2205.09597_4"],(0,0))
+
+data_ewk["arXiv_2205.09597_5"] = np.genfromtxt("data/EWKinos/arXiv_2205.09597/HEPData-ins2085373-v2-Figure_5a_WW_WZ_Observed_Lines.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2205.09597_5"] = add_zero_endpoints(data_ewk["arXiv_2205.09597_5"],(0,0))
+
+data_ewk["arXiv_2205.09597_6"] = np.genfromtxt("data/EWKinos/arXiv_2205.09597/HEPData-ins2085373-v2-Figure_5b_Observed_Lines.csv", delimiter=",", skip_header=8, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2205.09597_6"] = add_zero_endpoints(data_ewk["arXiv_2205.09597_6"],(0,0))
+
+
+
+
+
+
+data_ewk["arXiv_2402.00603_1"] = np.genfromtxt("data/EWKinos/arXiv_2402.00603/HEPData-ins2754043-v1-Table_31.csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2402.00603_1"] = add_zero_endpoints(data_ewk["arXiv_2402.00603_1"],(0,0))
+
+data_ewk["arXiv_2402.00603_2"] = np.genfromtxt("data/EWKinos/arXiv_2402.00603/HEPData-ins2754043-v1-Table_35.csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2402.00603_2"] = add_zero_endpoints(data_ewk["arXiv_2402.00603_2"],(0,0))
+
+data_ewk["arXiv_2402.00603_3"] = np.genfromtxt("data/EWKinos/arXiv_2402.00603/HEPData-ins2754043-v1-Table_37.csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2402.00603_3"] = add_zero_endpoints(data_ewk["arXiv_2402.00603_3"],(0,0))
+
+data_ewk["arXiv_2402.00603_4"] = np.genfromtxt("data/EWKinos/arXiv_2402.00603/HEPData-ins2754043-v1-Table_51.csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2402.00603_4"] = add_zero_endpoints(data_ewk["arXiv_2402.00603_4"],(0,0))
+
+
+
+data_ewk["arXiv_2402.08347_1"] = np.genfromtxt("data/EWKinos/arXiv_2402.08347/HEPData-ins2758009-v1-Table_4.csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2402.08347_1"] = add_zero_endpoints(data_ewk["arXiv_2402.08347_1"],(0,0))
+
+data_ewk["arXiv_2402.08347_2"] = np.genfromtxt("data/EWKinos/arXiv_2402.08347/HEPData-ins2758009-v1-Table_10.csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2402.08347_2"] = add_zero_endpoints(data_ewk["arXiv_2402.08347_2"],(0,0))
+
+data_ewk["arXiv_2402.08347_3"] = np.genfromtxt("data/EWKinos/arXiv_2402.08347/HEPData-ins2758009-v1-Table_16.csv", delimiter=",", skip_header=10, skip_footer=0, names=["x","y"])
+data_ewk["arXiv_2402.08347_3"] = add_zero_endpoints(data_ewk["arXiv_2402.08347_3"],(0,0))
+
+
+
+
 
 
 baselength=4
@@ -457,12 +508,49 @@ fig, ax = plt.subplots(1,1, figsize=(1.5*baselength, 1*baselength))
 
 ### Actual Curves:
 
+
+
+#
+i=3
+
+alpha=2/len(data_ewk)#0.3
+if alpha>0.5:
+     alpha=0.5
+if alpha<0.1:
+     alpha=0.1
+alpha=0.3
+
+ax.fill(data_ewk["arXiv_2205.09597_1"]['x'], data_ewk["arXiv_2205.09597_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_ewk["arXiv_2205.09597_2"]['x'], data_ewk["arXiv_2205.09597_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_ewk["arXiv_2205.09597_3"]['x'], data_ewk["arXiv_2205.09597_3"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_ewk["arXiv_2205.09597_4"]['x'], data_ewk["arXiv_2205.09597_4"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_ewk["arXiv_2205.09597_5"]['x'], data_ewk["arXiv_2205.09597_5"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_ewk["arXiv_2205.09597_6"]['x'], data_ewk["arXiv_2205.09597_6"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+ax.fill(data_ewk["arXiv_2402.00603_1"]['x'], data_ewk["arXiv_2402.00603_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_ewk["arXiv_2402.00603_2"]['x'], data_ewk["arXiv_2402.00603_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_ewk["arXiv_2402.00603_3"]['x'], data_ewk["arXiv_2402.00603_3"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_ewk["arXiv_2402.00603_4"]['x'], data_ewk["arXiv_2402.00603_4"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+
+ax.fill(data_ewk["arXiv_2402.08347_1"]['x'], data_ewk["arXiv_2402.08347_1"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_ewk["arXiv_2402.08347_2"]['x'], data_ewk["arXiv_2402.08347_2"]['y'], color=colors[i], alpha=alpha, lw=0)
+ax.fill(data_ewk["arXiv_2402.08347_3"]['x'], data_ewk["arXiv_2402.08347_3"]['y'], color=colors[i], alpha=alpha, lw=0)
+
+
+
+
 #
 i=2
 
 alpha=2/len(data_slsl)#0.3
 if alpha>0.5:
      alpha=0.5
+if alpha<0.1:
+     alpha=0.1
+alpha=0.3
 
 ax.fill(data_slsl["arXiv_1908.08215"]['x'], data_slsl["arXiv_1908.08215"]['y'], color=colors[i], alpha=alpha, lw=0)
 
@@ -504,14 +592,22 @@ ax.fill(data_slsl["arXiv_2207.02254_2"]['x'], data_slsl["arXiv_2207.02254_2"]['y
 
 
 
+
+
+
+
+
+
+
+
 ax.set_xlabel(r'$m_{X}$ [GeV]',)
 ax.set_ylabel(r'$m_{\chi^0_1}$ [GeV]',)
 # ax.xaxis.set_label_coords(1.02, -0.07)
 # ax.set_ylabel(r'Excluded Stop Squark Mass $m_{\tilde{t}}$ [GeV]')
 # ax.set_xlim([2e-6,2e4])
 # ax2.set_xlim([1.1e13,9e18])
-ax.set_ylim([0,1500])
-ax.set_xlim([0,1700])
+ax.set_ylim([0,1200])
+ax.set_xlim([0,1200])
 # plt.grid()
 
 
@@ -544,8 +640,8 @@ ax.text(0.1,0.9-1*0.05, r"Various Assumptions", size=11,clip_on=False,transform=
 ax.text(0.1,0.9-2*0.05, r"Run-2 LHC", size=11,clip_on=False,transform=ax.transAxes)
 ax.text(0.1,0.9-3*0.05, r"95% CL", size=11,clip_on=False,transform=ax.transAxes)
 
-ax.text(1000, 400, r"EWKinos", size=11,clip_on=False, color="k", alpha=1.0, fontweight='bold')
-ax.text(300, 100, r"Sleptons", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
+ax.text(750, 200, r"EWKinos", size=11,clip_on=False, color="k", alpha=1.0, fontweight='bold')
+ax.text(200, 50, r"Sleptons", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
 
 
 # ax.text(1000, 300, r"Make another plot with EWK production", size=11,clip_on=False,  color="k", alpha=1.0, fontweight='bold')
@@ -568,7 +664,7 @@ dx, dy = p1 - p0
 angle_rad = np.arctan2(dy, dx)
 angle_deg = np.degrees(angle_rad)
 
-ax.text(100, 190, r"$m_{\tilde{\chi}^0_1}>m_X$", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
+ax.text(100, 150, r"$m_{\tilde{\chi}^0_1}>m_X$", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
 doFillBetween([0,2500], [0,2500], axis=ax, dy=-10, alpha=0.4, n=30, log=False,clip_on=False)
 ax.plot( [0,2500], [0,2500], "-", lw=0.5, color="black" )
 

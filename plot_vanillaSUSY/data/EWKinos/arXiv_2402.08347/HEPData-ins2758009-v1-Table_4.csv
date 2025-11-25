@@ -1,0 +1,47 @@
+#: table_doi: 10.17182/hepdata.149530.v1/t4
+#: name: Table 4
+#: description: Observed 95% CL exclusion limits on the simplified models of chargino-pair production decaying via W bosons.
+
+#: data_file: fig_01a_obs.yaml
+#: keyword observables: CLS
+#: keyword cmenergies: 13000.0
+#: keyword reactions: p p -> chargino pair
+#: keyword phrases: Supersymmetry | SUSY | proton-proton scattering
+$m(\tilde{\chi}_{1}^{\pm})$ [GEV],$m(\tilde{\chi}_{1}^{0})$ [GEV]
+127.8,15.0
+134.9,20.4
+163.9,45.0
+164.9,46.0
+190.8,75.0
+194.9,80.5
+224.9,104.0
+230.0,105.0
+254.9,110.9
+284.9,124.2
+311.9,135.0
+314.9,136.5
+344.9,147.2
+374.9,156.9
+404.9,164.7
+418.8,165.0
+434.9,165.3
+437.5,165.0
+464.9,159.7
+494.9,152.3
+524.9,154.6
+554.9,161.8
+569.5,165.0
+584.9,168.4
+615.0,171.3
+645.0,169.1
+662.1,165.0
+675.0,161.2
+705.0,148.8
+735.0,135.7
+735.8,135.0
+756.6,105.0
+765.0,80.7
+766.9,75.0
+775.4,45.0
+781.7,15.0
+

@@ -1,0 +1,50 @@
+#: table_doi: 10.17182/hepdata.145758.v1/t51
+#: name: Table 51
+#: description: Observed 95\% CL exclusion limits on the simplified models of $\tilde{\chi}_1^{\pm}\tilde{\chi}_2^0$ production decaying via $Wh$.
+
+#: data_file: wh_srcombine_obs.yaml
+#: keyword observables: CLS
+#: keyword cmenergies: 13000.0
+#: keyword reactions: p p -> chargino-neutralino decaying via Wh
+#: keyword phrases: Supersymmetry | SUSY | proton-proton scattering
+MASS CHARGINO-1/NEUTRALINO-2 [GeV],MASS NEUTRALINO-1 [GeV]
+129.65,2.24
+139.02,6.29
+143.92,9.25
+148.4,12.77
+154.62,18.75
+157.77,21.48
+165.42,28.25
+167.15,29.91
+175.42,37.75
+176.53,38.83
+185.9,47.22
+185.96,47.25
+195.28,53.25
+201.71,56.75
+204.65,58.67
+214.03,64.15
+217.43,66.25
+223.41,70.85
+231.12,75.75
+232.78,76.8
+242.16,79.31
+251.53,79.04
+260.29,75.75
+260.91,75.3
+269.88,66.25
+270.29,65.65
+278.28,56.75
+279.66,55.61
+289.04,53.47
+298.41,52.93
+307.79,51.22
+313.31,47.25
+317.17,45.01
+321.87,37.75
+326.05,28.25
+326.54,26.65
+328.42,18.75
+329.62,9.25
+330.12,0.0
+

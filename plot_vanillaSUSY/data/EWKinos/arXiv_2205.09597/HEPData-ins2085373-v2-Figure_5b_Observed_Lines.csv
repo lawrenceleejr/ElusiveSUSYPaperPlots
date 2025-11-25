@@ -1,0 +1,32 @@
+#: table_doi: 10.17182/hepdata.127766.v2/t22
+#: name: Figure 5b Observed Lines
+#: description: Observed exclusion limits assuming the approximate-NLO+NLL cross sections
+#: data_file: figure_5b_observed_lines.yaml
+#: keyword cmenergies: 13000
+#: keyword observables: Cross-section
+#: keyword phrases: Supersymmetry | SUSY
+m(NSLP) [GeV],max m(LSP) [GeV] excluded
+296.9,0.5
+304.73,19.938
+315.77,29.692
+329.86,40.493
+346.86,51.878
+365.61,62.931
+384.7,73.083
+404.16,81.544
+422.7,88.559
+440.26,93.795
+457.76,97.676
+475.12,100.65
+493.7,102.4
+513.13,103.68
+533.7,103.72
+555.22,101.74
+576.66,97.613
+596.06,91.18
+613.45,82.877
+627.83,72.21
+638.02,60.544
+645.09,48.558
+649.15,37.049
+651.59,0.5
