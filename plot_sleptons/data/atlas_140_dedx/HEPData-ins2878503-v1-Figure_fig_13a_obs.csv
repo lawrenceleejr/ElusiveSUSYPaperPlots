@@ -1,0 +1,23 @@
+#: table_doi: 10.17182/hepdata.158643.v1/t6
+#: name: Figure_fig_13a_obs
+#: description: The contour for the excluded mass--lifetime region for stau pair production obtained with the di-track search. All masses and lifetimes shown that are below the curve and above 200 GeV are excluded by the observed data (while the expected exclusion is between the upper curve down to 210 GeV for lifetimes above 3000 ns). The sensitivity extends indefinitely to longer lifetimes.
+#: data_file: fig_13a_obs.yaml
+#: keyword cmenergies: 13000.0
+#: keyword reactions: Stau --> tau Gluino
+#: keyword phrases: Proton-Proton Scattering | Supersymmetry | SUSY | Long-lived particles
+#: keyword observables: CLS
+#: SQRT(S) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],140
+#: Limit,Observed
+"$\tau(\tilde{\tau}_{L,R})$ [ns]","$m(\tilde{\tau}_{L,R})$ [GeV]"
+#3000,455
+170,110000
+500,110000
+500,1100
+578,30
+564,10
+500,5
+405,3
+400,3
+170,3
+
