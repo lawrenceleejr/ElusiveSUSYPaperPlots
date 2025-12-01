@@ -1,0 +1,6 @@
+CMS https://inspirehep.net/literature/1113310
+m_slep dm
+100 0
+100 1.4
+223 1.4
+223 0
