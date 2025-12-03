@@ -1,5 +1,5 @@
 import numpy as np
-import seaborn as sns
+#import seaborn as sns
 import ROOT
 from matplotlib.legend_handler import HandlerPatch
 
@@ -61,15 +61,18 @@ def add_box_endpoints_y(arr, point=1e-8):
 # https://arxiv.org/pdf/1810.12602
 def lifetimeToDm(lifetime):
 	return 0.93*0.1/np.power(lifetime,1/3)
-
+    
 def dmToLifetime(dm):
 	return np.power(0.93/dm,3)*1e-3
 
 def arrLifetimeToDm(arr):
       return [lifetimeToDm(x) for x in arr]
 
-
-
+def m1_dm(contour):
+    x = [m1 for m1, m2 in contour]
+    y = [m1 - m2 for m1, m2 in contour]
+    return {"x": x, "y": y}
+    
 def add_zero_endpoints(arr, point=(0,0)):
     # Create the (0, 0) point with same dtype
     zero_point = np.array([point], dtype=arr.dtype)
