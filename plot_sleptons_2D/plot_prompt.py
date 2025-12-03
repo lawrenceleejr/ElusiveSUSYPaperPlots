@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import ROOT
-#import seaborn as sns
+import seaborn as sns
 
 from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
 from matplotlib.colors import to_rgba
@@ -89,8 +89,26 @@ ax.set_xlim([45,700])
 #draw line
 xmin, xmax = ax.get_xlim()
 x = np.linspace(xmin, xmax, 500)
+# ax.plot(x, x, "--", color="gray", linewidth=1)
+ax.plot( [xmin,xmax], [xmin, xmax], "-", lw=0.5, color="black" )
 
-ax.plot(x, x, "--", color="gray", linewidth=1)
+
+doFillBetween([xmin,xmax], [xmin, xmax], axis=ax, dy=-2, alpha=0.4, n=30, log=False,clip_on=False)
+
+
+#plt.show()
+# Compute angle in screen/display space
+
+# Transform from data to display coordinates
+p0 = ax.transData.transform((0, 0))
+p1 = ax.transData.transform((1, 1))
+dx, dy = p1 - p0
+angle_rad = np.arctan2(dy, dx)
+angle_deg = np.degrees(angle_rad)
+
+ax.text(50, 70, r"$m_{\tilde{\chi}^0_1}>m_{\tilde{\tau}}$", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
+
+
 
 # try to make piece-wise linear scale
 ymin, ymax = ax.get_ylim()
@@ -181,7 +199,7 @@ for y in yticks:
     if np.isclose(y, threshold):
         yticklabels.append(r"$m_\tau$")  # LaTeX label
     else:
-        yticklabels.append(f"{y:.1f}")
+        yticklabels.append(f"{y:.0f}")
 
 ax.yaxis.set_major_locator(FixedLocator(yticks))
 ax.yaxis.set_major_formatter(FixedFormatter(yticklabels))
@@ -207,7 +225,7 @@ ax.text(100, 395, r"95% CL", size=11,clip_on=False)
 #ax.text(100, 10**-0.71,       r"Disappearing Track", size=11,clip_on=False, fontweight="bold")
 
 ax.text(490, 300,       r"Taus + $p_T^{miss}$", size=11,clip_on=False, fontweight="bold")
-ax.text(45, 90,       r"LEP", size=11,clip_on=False, fontweight="bold")
+ax.text(105, 30,       r"LEP", size=11,clip_on=False, fontweight="bold")
 ax.text(230, 10,       r"Stable LLPs", size=11,clip_on=False, fontweight="bold")
 
 breathe_logy(ax)
@@ -217,7 +235,6 @@ breathe_logy(ax)
 fig.subplots_adjust(left=0.15, right=0.93, bottom=0.18, top=0.96)
 fig.canvas.draw()
 
-#plt.show()
 
 fig.savefig("sleptons.pdf")
 # plt.show()

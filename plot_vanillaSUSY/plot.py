@@ -530,7 +530,7 @@ ax.fill(data_ewk["arXiv_2205.09597_6"]['x'], data_ewk["arXiv_2205.09597_6"]['y']
 
 ax.fill(data_ewk["arXiv_2402.00603_1"]['x'], data_ewk["arXiv_2402.00603_1"]['y'], color=colors[i], alpha=alpha, lw=0)
 ax.fill(data_ewk["arXiv_2402.00603_2"]['x'], data_ewk["arXiv_2402.00603_2"]['y'], color=colors[i], alpha=alpha, lw=0)
-ax.fill(data_ewk["arXiv_2402.00603_3"]['x'], data_ewk["arXiv_2402.00603_3"]['y'], color=colors[i], alpha=alpha, lw=0)
+# ax.fill(data_ewk["arXiv_2402.00603_3"]['x'], data_ewk["arXiv_2402.00603_3"]['y'], color=colors[i], alpha=alpha, lw=0)
 ax.fill(data_ewk["arXiv_2402.00603_4"]['x'], data_ewk["arXiv_2402.00603_4"]['y'], color=colors[i], alpha=alpha, lw=0)
 
 
@@ -607,7 +607,7 @@ ax.set_ylabel(r'$m_{\chi^0_1}$ [GeV]',)
 # ax.set_xlim([2e-6,2e4])
 # ax2.set_xlim([1.1e13,9e18])
 ax.set_ylim([0,1200])
-ax.set_xlim([0,1200])
+ax.set_xlim([0,1300])
 # plt.grid()
 
 
@@ -664,8 +664,8 @@ dx, dy = p1 - p0
 angle_rad = np.arctan2(dy, dx)
 angle_deg = np.degrees(angle_rad)
 
-ax.text(100, 150, r"$m_{\tilde{\chi}^0_1}>m_X$", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
-doFillBetween([0,2500], [0,2500], axis=ax, dy=-10, alpha=0.4, n=30, log=False,clip_on=False)
+ax.text(50, 100, r"$m_{\tilde{\chi}^0_1}>m_X$", size=9,clip_on=False, rotation=angle_deg, ha='left', va='bottom')
+doFillBetween([0,2500], [0,2500], axis=ax, dy=-5, alpha=0.4, n=30, log=False,clip_on=False)
 ax.plot( [0,2500], [0,2500], "-", lw=0.5, color="black" )
 
 fig.savefig("Vanilla_EW.pdf")
