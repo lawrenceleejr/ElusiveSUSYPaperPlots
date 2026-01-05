@@ -47,6 +47,10 @@ fig1, (ax[0],ax[1]) = plt.subplots(1,2, figsize=(2.5*baselength, 1*baselength))
 
 #fig1, ax = plt.subplots(1,1, figsize=(1.5*baselength, 1*baselength))
 
+
+
+
+
 ### Actual Curves:
 
 i=2
@@ -93,7 +97,13 @@ ax[0].set_xlim([45,700])
 xmin, xmax = ax[0].get_xlim()
 x = np.linspace(xmin, xmax, 500)
 
-ax[0].plot(x, x, "--", color="gray", linewidth=1)
+# ax[0].plot(x, x, "--", color="gray", linewidth=1)
+ax[0].plot( x,x, "-", lw=0.5, color="black" )
+
+doFillBetween([xmin,xmax], [xmin, xmax], axis=ax[0], dy=-2, alpha=0.4, n=30, log=False,clip_on=False)
+
+
+
 
 # try to make piece-wise linear scale
 ymin, ymax = ax[0].get_ylim()
@@ -184,7 +194,7 @@ for y in yticks:
     if np.isclose(y, threshold):
         yticklabels.append(r"$m_\tau$")  # LaTeX label
     else:
-        yticklabels.append(f"{y:.1f}")
+        yticklabels.append(f"{y:.0f}")
 
 ax[0].yaxis.set_major_locator(FixedLocator(yticks))
 ax[0].yaxis.set_major_formatter(FixedFormatter(yticklabels))
@@ -211,7 +221,7 @@ ax[0].text(100, 375,       r"$\tilde{\tau}\tilde{\tau}, \tilde{\tau}\rightarrow 
 #ax[0].text(100, 10**-0.71,       r"Disappearing Track", size=11,clip_on=False, fontweight="bold")
 
 ax[0].text(490, 300,       r"Taus + $p_T^{miss}$", size=11,clip_on=False, fontweight="bold")
-ax[0].text(45, 90,       r"LEP", size=11,clip_on=False, fontweight="bold")
+ax[0].text(105, 30,       r"LEP", size=11,clip_on=False, fontweight="bold")
 ax[0].text(230, 10,       r"Stable LLPs", size=11,clip_on=False, fontweight="bold")
 
 breathe_logy(ax[0])
@@ -235,6 +245,8 @@ dataLLP["stauR_cms_lt_101"] = np.genfromtxt("data/cms_stauR_lt.txt", delimiter="
 dataLLP["stauR_cms_lt_7"] = np.genfromtxt("data/cms_stauR_7_lt.txt", delimiter=",", skip_header=2, names=["x","y"])
 
 dataLLP["stauR_lep_lt"] = np.genfromtxt("data/lep_stauR_lt.txt", delimiter=",", skip_header=2, names=["y","x"])
+
+
 
 ### Actual Curves:
 
