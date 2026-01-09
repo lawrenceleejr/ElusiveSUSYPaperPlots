@@ -30,6 +30,14 @@ data["stauR_prompt_atlas_140"] = np.genfromtxt("data/HEPData-ins2754043-v1-Table
 data["stauR_prompt_atlas_dm"] = m1_dm(data["stauR_prompt_atlas_140"])
 #print(data["stau_prompt_atlas_dm"])
 
+data["stau_prompt_atlas_139"] = np.genfromtxt("data/HEPData-ins1765529-v2-Exclusion_contour_1.csv", delimiter=",", skip_header=10, names=["x","y"])
+data["stau_prompt_atlas_dm1"] = m1_dm(data["stau_prompt_atlas_139"])
+
+
+data["stau_prompt_cms_138"] = np.genfromtxt("data/HEPData-ins2106478-v1-Figure_007-a_observed_exclusions.csv", delimiter=",", skip_header=9, names=["x","y"])
+data["stau_prompt_cms_dm"] = m1_dm(data["stau_prompt_cms_138"])
+
+
 data["lep_stauR"] = np.genfromtxt("data/lep_stauR.txt", delimiter=" ", skip_header=1, names=["x","y"])
 data["lep_stauR_dm"] = m1_dm(data["lep_stauR"])
 #print(data["lep_stauR_dm"])
@@ -62,7 +70,14 @@ ax[0].set_ylim([10**-0.5,10**2.75])
 ax[0].fill((data["stau_prompt_atlas_dm"]['x']),(data["stau_prompt_atlas_dm"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
 ax[0].fill((data["stauR_prompt_atlas_dm"]['x']),(data["stauR_prompt_atlas_dm"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
 ax[0].fill((data["stauR_prompt_atlas_dm"]['x']),(data["stauR_prompt_atlas_dm"]['y']), facecolor='none',ec=to_rgba(colors[i],0.6),hatch='\\\\\\', lw=1)
-ax[0].text(325,145 , r"A2 140 fb${}^{-1}$" , rotation=38, size=7,clip_on=False)
+ax[0].text(460,365 , r"A2 140 fb${}^{-1}$" , rotation=75, size=7,clip_on=False)
+ax[0].text(190,110 , r"A2 140 fb${}^{-1}$" , rotation=40, size=7,clip_on=False)
+
+ax[0].fill((data["stau_prompt_cms_dm"]['x']),(data["stau_prompt_cms_dm"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
+ax[0].text(342,220 , r"C2 138 fb${}^{-1}$" , rotation=60, size=7,clip_on=False)
+
+ax[0].fill((data["stau_prompt_atlas_dm1"]['x']),(data["stau_prompt_atlas_dm1"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
+ax[0].text(345,275 , r"A2 139 fb${}^{-1}$" , rotation=70, size=7,clip_on=False)
 
 
 i=1
@@ -209,7 +224,7 @@ ax[0].spines['top'].set_visible(False)
 
 ax[0].text(100, 500,       r"Stau Limits", size=11,clip_on=False, fontweight="bold")
 #ax[0].text(50, 10**(1.20-1*0.09), r"Various Assumptions", size=11,clip_on=False, ha="right")
-ax[0].text(100, 465, r"LEP, Run-1 LHC, Run-2 LHC", size=11,clip_on=False)
+ax[0].text(100, 465, r"LEP, LHC Run-1, Run-2, Run-3", size=11,clip_on=False)
 ax[0].text(100, 430, r"95% CL", size=11,clip_on=False)
 
 ax[0].text(100, 375,       r"$\tilde{\tau}\tilde{\tau}, \tilde{\tau}\rightarrow \tau \tilde{\chi}_1^0$", size=11,clip_on=False, fontweight="bold")
@@ -235,8 +250,10 @@ breathe_logy(ax[0])
 dataLLP = {}
 
 dataLLP["stau_dl_atlas_140"] = np.genfromtxt("data/HEPData-ins1831504-v1-Observed_stau_limits.csv", delimiter=",", skip_header=8, names=["x","y"])
+dataLLP["stau_dl_atlas_run3"] = np.genfromtxt("data/ATLAS_Run3_displacedLeptons.csv", delimiter=",", skip_header=8, names=["x","y"])
 dataLLP["stau_ditrack_atlas_140"] = np.genfromtxt("data/HEPData-ins2878503-v1-Figure_fig_13a_obs_d1s.csv", delimiter=",", skip_header=12, names=["x","y"])
 dataLLP["atlas_sketchy"] = np.genfromtxt("data/atlas_sketchy.txt", delimiter=",", skip_header=12, names=["x","y"])
+dataLLP["stau_dedx_atlas_139"] = np.genfromtxt("data/HEPData-ins2080541-v1-Mass_Limit_vs._Lifetime_Stau_Observed.csv", delimiter=",", skip_header=9, names=["y","x"])
 
 dataLLP["stau_dl_cms_113"] = np.genfromtxt("data/HEPData-ins1940976-stau.csv", delimiter=",", skip_header=9, names=["y","x"])
 dataLLP["stauLR_cms_lt_101"] = np.genfromtxt("data/cms_stauLR_lt.txt", delimiter=",", skip_header=2, names=["x","y"])
@@ -259,6 +276,8 @@ ax[1].set_yscale('log')
 
 ax[1].fill((dataLLP["stau_dl_atlas_140"]['x']),(dataLLP["stau_dl_atlas_140"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
 ax[1].text(200,0.04, r"A2 140 fb${}^{-1}$" , rotation=10, size=7,clip_on=False)
+ax[1].fill((dataLLP["stau_dl_atlas_run3"]['x']),(dataLLP["stau_dl_atlas_run3"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
+ax[1].text(280,0.033, r"A2 140 fb${}^{-1}$ + A3 56 fb${}^{-1}$" , rotation=25, size=7,clip_on=False)
 
 ax[1].fill((dataLLP["stau_dl_cms_113"]['x']),(dataLLP["stau_dl_cms_113"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
 ax[1].text(325,0.4, r"C2 113 fb${}^{-1}$" , rotation=45, size=7,clip_on=False)
@@ -267,9 +286,10 @@ ax[1].text(325,0.4, r"C2 113 fb${}^{-1}$" , rotation=45, size=7,clip_on=False)
 i=3
 
 ax[1].fill((dataLLP["stau_ditrack_atlas_140"]['x']),(dataLLP["stau_ditrack_atlas_140"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
+ax[1].fill((dataLLP["stau_dedx_atlas_139"]['x']),(dataLLP["stau_dedx_atlas_139"]['y']), color=to_rgba(colors[i],alpha), ec=to_rgba(colors[i],0.6), lw=1)
 ax[1].text(400,5, r"A2 140 fb${}^{-1}$" , rotation=10, size=7,clip_on=False)
+ax[1].text(210,4, r"A2 139 fb${}^{-1}$" , rotation=0, size=7,clip_on=False)
 ax[1].fill((dataLLP["atlas_sketchy"]['x']),(dataLLP["atlas_sketchy"]['y']), facecolor='none', ec=to_rgba(colors[i],0.6), lw=1, hatch='...')
-
 
 i=0
 
@@ -356,11 +376,11 @@ ax[1].spines['top'].set_visible(False)
 
 #ax[1].text(490, 300,       r"Taus + $p_T^{miss}$", size=11,clip_on=False, fontweight="bold")
 
-ax[1].text(100, 0.01,       r"LEP", size=11,clip_on=False, fontweight="bold")
+ax[1].text(50, 300,       r"LEP", size=11,clip_on=False, fontweight="bold")
 ax[1].text(500, 0.02,       r"$\tilde{\tau}\tilde{\tau}, \tilde{\tau}\rightarrow \tau \tilde{G}$", size=11,clip_on=False, fontweight="bold")
 
 
-ax[1].text(375, 0.2,       r"Displaced Leptons", size=11,clip_on=False, fontweight="bold")
+ax[1].text(420, 0.95,       r"Displaced Leptons", size=11,clip_on=False, fontweight="bold")
 ax[1].text(225, 50,       r"Anomalous Ionization", size=11,clip_on=False, fontweight="bold")
 ax[1].text(550, 450,       r"Stable LLPs", size=11,clip_on=False, fontweight="bold")
 
